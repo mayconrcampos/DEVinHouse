@@ -1,0 +1,106 @@
+.main h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    color: brown;
+    text-align: center;
+}
+
+h1 img {
+    width: 100%;
+}
+
+body {
+    background-color: yellow;
+}
+
+body div p {
+    font-size: 14px;
+}
+
+body button {
+    border-radius: 10px 10px 15px 15px;
+    padding: 10px;
+
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    
+    margin-top: 20px;
+}
+
+body .main {
+    width: auto;
+    text-align: center;
+    margin-top: 120px;
+}
+
+
+body navbar {
+    width: 100%;
+    background-color: yellowgreen;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+
+    
+}
+navbar h1 {
+    
+    text-align: center;
+}
+
+navbar div img {
+    margin-top: 20px;
+    width: 50px;
+    margin-left: 100px;
+}
+
+
+navbar ul li:hover{
+    background-color: azure;
+    color: black;
+    
+}
+
+
+navbar ul li {
+    transition: 300ms;
+    list-style: none;
+    display: inline-flex;
+    margin-bottom: 30px;
+    margin-left: 50px;
+}
+
+ul li a {
+    text-decoration: none;
+}
+
+
+.esq {
+    display: inline-block;
+}
+
+.dir {
+    display: inline-block;
+}
+
+.rodape {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    background-color: aquamarine;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+}
+
+
+.rodape ul li {
+    list-style: none;
+    margin: 10px;
+    display: inline;
+}
+
+.rodape ul li img {
+    width: 20px;
+}
