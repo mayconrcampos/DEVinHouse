@@ -78,6 +78,7 @@ ul li a {
 
 .esq {
     display: inline-block;
+    vertical-align: middle;
 }
 
 .dir {

@@ -8,6 +8,7 @@ html, body {
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     font-size: larger;
+
 }
 
 h1 {
@@ -24,7 +25,10 @@ div p {
 }
 
 body .p3 {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,106,121,1) 72%, rgba(0,212,255,1) 100%); 
     color: aqua;
+    
 }
 
 /* Pegando todos os elementos de dentro de Body */
@@ -52,11 +56,61 @@ a {
 .link {
     text-align: center;
     width: 90vw;
-    
+    padding: 3em;
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,112,121,1) 72%, rgba(0,212,255,1) 100%); 
     background-color: orange;
 }
 
 ul {
     list-style: none;
     
+}
+
+.bordas {
+    margin: 20px;
+    border: 30px tomato;
+    padding: 1em;
+    border-style: solid;
+    box-shadow: 7px 10px 10px black;
+    border-radius: 20px 0px 20px;
+
+}
+
+.boxmodel {
+    border: 25px tomato;
+    margin: 30px;
+    border-style: solid;
+    border-radius: 20px 0px 20px;
+    box-shadow: 7px 10px 10px black;
+    background-color: cadetblue;
+    padding: 3em;
+}
+
+/* width + border + padding - dá prioridade pro tamanho do conteúdo */
+.borda1 {
+    border: 10px black;
+    border-style: solid;
+    box-sizing: content-box;
+    background-color: green;
+    width: 10%;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+/* prioridade pro tamanho total da caixa...
+Se definimos 80px pra caixa, ela terá exatamente 80px..
+O espaço do conteúdo será reduzido
+*/
+.borda2 {
+    border: 10px black;
+    border-style: solid;
+    box-sizing: border-box;
+    background-color: green;
+    width: 10%;
+    padding: 10px;
+    margin: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
