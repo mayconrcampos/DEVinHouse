@@ -1,0 +1,110 @@
+body {
+    text-align: center;
+    background-color: beige;
+    padding: 65px;
+}
+
+h1 {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    color: chocolate;
+    text-align: center;
+    background-image: url(../img/fundoWood.jpg);
+    background-repeat: no-repeat; /* não repete a imagem*/
+    background-size: cover; /* cobre todo elemento*/
+    padding: 10px;
+   
+}
+
+p {
+    font-size: 14px;
+}
+
+img {
+    max-width: 200px;
+    display: inline-block;
+}
+
+.botao {
+    margin: 20px 0 0 0; /*cima, direita, baixo, esquerda*/
+    border: 4px solid black;
+    border-radius: 20%;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    max-width: 30%;
+}
+
+.caixaImagens {
+    margin: 30px;
+    display: flex; /* Possibilita a organização da disposição dos elementos filhos */
+    justify-content: space-evenly;
+    flex-direction: row; /* Alinha na vertival ou horizontal*/
+}
+
+.video {
+    align-items: center;
+    width: 100%;
+    display: block;
+}
+
+.topo {
+    left: 0;
+    top: 0;
+    right: 0;
+    position: fixed;
+    background-color: burlywood;
+    padding: 10px;
+    width: 100%;
+}
+
+.topo ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-right: 20px;
+    list-style: none;
+ 
+}
+
+.topo a {
+    
+    text-decoration: none;
+    
+}
+
+.topo ul li:hover {
+    background-color: whitesmoke;
+    transition: background-color 500ms, color 500ms;
+    
+}
+
+.topo ul li {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.topo a:visited {
+    color: black;
+}
+
+/* Seleciona tudo que não seja o body*/
+/*
+
+*:not(body){
+    background-color: black;
+}
+
+div:not(.botao){
+    selecnando toda div que não tenha a classe botão
+}
+*/
+
+
+    
+
+
+    
+    
+    
