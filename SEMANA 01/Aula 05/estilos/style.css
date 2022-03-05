@@ -2,10 +2,12 @@ body {
     text-align: center;
     background-color: beige;
     padding: 65px;
+    min-height: 100vh;
+    position: relative;
 }
 
 h1 {
-    margin: 0;
+    margin: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
     color: chocolate;
@@ -69,7 +71,6 @@ img {
 }
 
 .topo a {
-    
     text-decoration: none;
     
 }
@@ -87,6 +88,19 @@ img {
 
 .topo a:visited {
     color: black;
+}
+
+.rodape {
+    padding: 25px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    text-align: center;
+    background-color: burlywood;
+    color: black;
+    
 }
 
 /* Seleciona tudo que não seja o body*/
