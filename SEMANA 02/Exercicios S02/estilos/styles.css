@@ -1,0 +1,134 @@
+body {
+    top: 0;
+    background-color: #C5D9D7;
+   
+}
+
+.principal {
+    border: 2px solid black;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+
+}
+
+/* Headers */
+
+header {
+    width: 100%;
+    top: 0;
+    height: 100px;
+    background-color: #6E918F;
+    
+
+    
+
+}
+
+header h1 {
+    text-align: center;
+    color: darkslategray;
+    padding-top: 20px;
+}
+/* Nav itens - Cabeçalho */
+
+nav {
+    background-color: #3C4242;
+
+}
+
+nav ul li {
+    padding: 0;
+    list-style: none;
+    display: inline-flex;
+    
+
+
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: larger;
+    padding: 10px;
+}
+
+nav ul li a:hover {
+    color: black;
+    background-color: #C5D9D7;
+   
+}
+
+/* Div Sobre */
+
+.sobre {
+
+    color: black;
+    padding: 20px;
+    width: 70%;
+    margin: 0 auto;
+    
+
+}
+
+.sobre h2 {
+    text-align: center;
+    
+}
+
+/* Formulário */
+
+.formulario {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.formulario form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+footer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    margin-top: 200px;
+    padding: 20px;
+    display: inline-flex;
+    width: 100%;
+    background-color: #4E5C5B;
+}
+
+footer .footer-left {
+    
+    width: 50%;
+    text-align: center;
+}
+
+.footer-left ul li a {
+    text-decoration: none;
+    color: #C5D9D7;
+}
+
+
+footer .footer-right {
+    text-align: center;
+    width: 50%;
+
+}
+
+.footer-right ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+footer div ul {
+    list-style: none;
+    
+}
+
+footer div ul li a {
+    text-decoration: none;
+}
