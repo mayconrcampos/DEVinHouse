@@ -1,0 +1,16 @@
+body {
+    background-color: bisque;
+    color: black;
+    text-align: center;
+}
+
+main {
+    width: 50%;
+    margin: 0 auto;
+    background-color: cadetblue;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px 0 20px 0;
+    box-shadow: 5px 8px 6px black;
+}
