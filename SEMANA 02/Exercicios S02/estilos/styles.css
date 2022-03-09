@@ -1,7 +1,7 @@
 body {
     top: 0;
     background-color: #C5D9D7;
-    background-image: url("../imagens/fundo.png");
+    background-image: url("../imagens/fundo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
    
@@ -37,10 +37,11 @@ header img {
 
 header h1 {
     width: auto;
-
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
     display: inline-flex;
     margin-left: 30%;
-    color: darkslategray;
+    color: white;
     padding-top: 30px;
     font-size: 60px;
 }
