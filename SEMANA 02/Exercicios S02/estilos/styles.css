@@ -126,10 +126,16 @@ nav ul li a:hover {
 /* Formulário */
 
 .formulario {
+    font-size: x-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    padding: 20px;
+    border-radius: 10px 10px 10px 10px;
     text-align: center;
     width: 70%;
     margin: 0 auto;
     margin-top: 370px;
+    background-color: #8a9493;
 }
 
 .formulario form {
@@ -139,7 +145,8 @@ nav ul li a:hover {
 
 .formulario h2 a {
     text-decoration: none;
-    color: black;
+    color: white;
+    
 }
 
 form label {
