@@ -137,6 +137,11 @@ nav ul li a:hover {
     margin: 0 auto;
 }
 
+.formulario h2 a {
+    text-decoration: none;
+    color: black;
+}
+
 form label {
     text-align: left;
 }
