@@ -10,7 +10,6 @@ body {
     margin: 0 auto;
     padding: 0;
 
-
 }
 
 /* Headers */
@@ -75,7 +74,7 @@ nav ul li a:hover {
 /* Div Sobre */
 
 .sobre {
-
+    
     color: black;
     padding: 20px;
     width: 70%;
