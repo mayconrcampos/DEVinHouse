@@ -21,5 +21,6 @@ area.addEventListener("mouseleave", function mouseSai(){
 area.addEventListener("dblclick", function duploClique(){
     area.style.backgroundColor = "skyblue"
     area.innerText = "Duplo clique"
+    area.style.color = "black"
 })
 
