@@ -1,0 +1,21 @@
+body {
+    background-color: beige;
+}
+
+header div {
+    color: black;
+}
+
+#area {
+    background-color: cadetblue;
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    border: 2px solid black;
+    font: arial;
+    font-size: 40px;
+    color: burlywood;
+    overflow: hidden;
+
+}
