@@ -13,21 +13,30 @@ function Calcula(){
 
 
         if(multiplica.checked == true ){
-            console.log("aqui")
+          
             var res = eval(`${primeiro.value} ${multiplica.value} ${segundo.value}`)
             resultado.innerText = `${primeiro.value} x ${segundo.value} = ${res}`
+            primeiro.value = ''
+            segundo.value = ''
 
         }else if(divide.checked == true){
             var res = eval(`${primeiro.value} ${divide.value} ${segundo.value}`)
             resultado.innerText = `${primeiro.value} / ${segundo.value} = ${res}`
+            primeiro.value = ''
+            segundo.value = ''
 
         }else if(soma.checked == true){
             var res = eval(`${primeiro.value} ${soma.value} ${segundo.value}`)
             resultado.innerText = `${primeiro.value} + ${segundo.value} = ${res}`
+            primeiro.value = ''
+            segundo.value = ''
+
         }else{
             var res = eval(`${primeiro.value} ${subtrai.value} ${segundo.value}`)
         
             resultado.innerText = `${primeiro.value} - ${segundo.value} = ${res}`
+            primeiro.value = ''
+            segundo.value = ''
         }
         
     
