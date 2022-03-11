@@ -25,6 +25,7 @@ h1 {
     margin: auto;
     border: 2px solid black;
     width: 40%;
+    cursor: pointer;
 }
 
 #resultado {
