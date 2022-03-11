@@ -8,25 +8,27 @@ function Calcula(){
     var operador = document.getElementsByName("operador")
     var resultado = document.getElementById("resultado")
 
+    console.log(multiplica.checked)
     
-    
-    if(typeof primeiro.value == "number" && typeof segundo.value == "number"){
 
-        if(operador[0].checked ){
+
+        if(multiplica.checked == true ){
+            console.log("aqui")
             var res = eval(`${primeiro.value} ${multiplica.value} ${segundo.value}`)
             resultado.innerText = `${primeiro.value} x ${segundo.value} = ${res}`
 
-        }else if(operador[1].checked){
+        }else if(divide.checked == true){
             var res = eval(`${primeiro.value} ${divide.value} ${segundo.value}`)
             resultado.innerText = `${primeiro.value} / ${segundo.value} = ${res}`
 
-        }else if(operador[2].checked){
+        }else if(soma.checked == true){
             var res = eval(`${primeiro.value} ${soma.value} ${segundo.value}`)
             resultado.innerText = `${primeiro.value} + ${segundo.value} = ${res}`
         }else{
-            var res = eval(`${primeiro.value} ${multiplica.value} ${segundo.value}`)
+            var res = eval(`${primeiro.value} ${subtrai.value} ${segundo.value}`)
+        
             resultado.innerText = `${primeiro.value} - ${segundo.value} = ${res}`
         }
         
-    }
+    
 }
