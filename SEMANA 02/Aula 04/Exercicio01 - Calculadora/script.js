@@ -9,7 +9,6 @@ function Calcula(){
 
     var resultado = document.getElementById("resultado")
   
-
     if(primeiro.value != "" && segundo.value != ""){
         if(multiplica.checked == true ){
           
