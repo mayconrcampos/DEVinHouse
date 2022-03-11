@@ -1,6 +1,6 @@
 function mensagem(){
     var nome = document.getElementById("nome").value 
-    var email = document.getElementById("email").value 
+    var email = document.getElementById("email").value
 
     var modal = document.getElementById("modal")
     var modalNome = document.getElementById("modalNome")
@@ -9,7 +9,6 @@ function mensagem(){
     var formulario = document.getElementById("form")
     var sobre = document.getElementById("sobre")
 
-
     if(nome.length > 0 && email.length > 0){
         modalNome.innerText = `Nome: ${nome}`
         modalEmail.innerText = `Email: ${email}`
@@ -17,7 +16,6 @@ function mensagem(){
         formulario.style.display = "none"
         sobre.style.display = "none"
        
-
     }else{
         
         alert("ERRO! Digite seu nome e email.")
