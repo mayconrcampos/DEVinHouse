@@ -34,7 +34,7 @@ for (const key in nomeIdade) {
 
 var i = 0
 
-while(i <= carros.length - 1){
+while(i < carros.length){
     console.log(carros[i])
     i++
 }
