@@ -15,7 +15,9 @@
 
     <label for="">Razão</label>
     <input type="number" id="raiz" placeholder="Digite a Razão"><br><br>
-    <button onclick="pa()">Calcular PA</button>
+    <button onclick="pa()">Calcular PA</button><br>
+    <label for="">Bônus</label><br>
+    <button onclick="pg()">Calcular PG</button>
 
     <p id="res"></p>
 
@@ -37,6 +39,26 @@
                 resultado.innerText += ` ${ini} ` 
                 ini += r
                 contaTamanho++
+            }
+        }
+
+        function pg(){
+            var inicio = document.getElementById("inicio")
+            var raiz = document.getElementById("raiz")
+            var tamanho = 10
+            var resultado = document.getElementById("res")
+
+            resultado.innerText = ""
+
+            var ini = parseInt(inicio.value)
+            var r = parseInt(raiz.value)
+            var contaTamanho = 0
+            var pg = ini
+
+            while (contaTamanho < tamanho) {
+                resultado.innerText += ` ${ini} `
+                ini *= r
+                contaTamanho++ 
             }
         }
 
