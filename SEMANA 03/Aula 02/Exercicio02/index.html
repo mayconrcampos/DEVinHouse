@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 02</title>
+</head>
+<body>
+    <h1>Linguagens</h1>
+
+    <h2>Adicione uma linguagem</h2>
+    <input type="text" id="ling">
+    <button onclick="add()">Adiciona</button>
+    
+    <ul id="item">
+        
+    </ul>
+
+    <script>
+        var lista = document.getElementById("item")
+        var linguagens = ["Java", "JavaScript", "Python", "C", "C++", "Rust", "Php", "Delphi", "C#"]
+        
+        for (const item of linguagens) {
+            lista.innerHTML += `<li>${item}</li>`
+        }
+
+        function add(){
+            lista.innerHTML = ""
+            var lingua = document.getElementById("ling")
+            
+            linguagens.push(lingua.value)
+            console.log(lingua.value, linguagens)
+
+            for (const item of linguagens) {
+            lista.innerHTML += `<li>${item}</li>`
+
+            lingua.value = ""
+        }
+
+        }
+
+    </script>
+</body>
+</html>
