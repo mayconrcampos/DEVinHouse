@@ -18,3 +18,4 @@ switch (num) {
     default:
         console.log('diferente de 0, 1, 2 e 3');
     }
+    
