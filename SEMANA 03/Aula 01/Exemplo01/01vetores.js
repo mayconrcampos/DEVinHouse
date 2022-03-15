@@ -1,4 +1,5 @@
 // Vetores - array
+// Estruturas de repetição
 
 var carros = []
 
@@ -26,4 +27,14 @@ for (const carro of carros) {
 
 for (const key in nomeIdade) {
     console.log(nomeIdade[key], key)
+}
+
+
+// while
+
+var i = 0
+
+while(i <= carros.length - 1){
+    console.log(carros[i])
+    i++
 }
