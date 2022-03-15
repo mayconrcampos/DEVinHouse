@@ -2,11 +2,10 @@ function f(x, y){
     return (x ** 2) + y
 }
 
-var executa = f
-console.log(executa(2, 3))
 
 
 function primo(x){
+    
     var div = 0
     for(var i = 1; i <= x; i++){
         if(x % i == 0){
@@ -14,12 +13,22 @@ function primo(x){
         }
     }
     if(div == 2){
-        console.log(x+" É primo!")
+        return `<li>${x} É primo!</li>`
     }else{
-        console.log(x+ " Não é primo!")
+        return `<li>${x} Não é primo!</li>`
     }
 }
 
-for(var i = 1; i < 100; i++){
-    primo(i)
+
+function listar(){
+    var lista = document.getElementById("lista")
+    var numero = document.getElementById("numero")
+
+    lista.innerHTML = ""
+
+    numero = parseInt(numero.value)
+    console.log(numero)
+    for(var i = 1; i < numero; i++){
+        lista.innerHTML += primo(i)
+    }
 }
