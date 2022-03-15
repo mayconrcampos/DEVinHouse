@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEVinHouse</title>
+</head>
+<body>
+    <h1>Semana 03</h1>
+
+    <p id="res">Clique aqui</p>
+
+
+    <script>
+        var res = document.getElementById("res")
+        var numero = window.prompt("Digite um numero")
+
+        if(numero < 5){
+            res.innerText = "É menor que 5"
+        }else if(numero === 5){
+            res.innerText = "É igual a 5"
+        }else{
+            res.innerText = "É maior que 5"
+        }
+    </script>
+    
+</body>
+</html>
