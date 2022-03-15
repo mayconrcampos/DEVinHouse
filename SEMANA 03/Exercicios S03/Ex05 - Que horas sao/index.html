@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex05 - Semana 03</title>
+</head>
+<body>
+    <h1>Ex05 - Que horas são?</h1>
+
+    <h2 id="timestamp"></h2>
+
+
+    <script>
+
+        setInterval(() => {
+            var timestamp = document.getElementById("timestamp")
+
+            var hora = new Date();
+            var horaCertaHora = hora.getHours() < 10 ? `0${hora.getHours()}` : `${hora.getHours()}`
+            var horaCertaMinuto = hora.getMinutes() < 10 ? `0${hora.getMinutes()}` : `${hora.getMinutes()}`
+            var horaCertaSegundos = hora.getSeconds() < 10 ? `0${hora.getSeconds()}` : `${hora.getSeconds()}`
+
+            timestamp.innerText = `${horaCertaHora}:${horaCertaMinuto}:${horaCertaSegundos}`
+        }, 1000);
+        
+    
+    </script>
+</body>
+</html>
