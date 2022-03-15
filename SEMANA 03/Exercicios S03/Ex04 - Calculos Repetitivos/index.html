@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex04 - Semana 03</title>
+</head>
+<body>
+    <h1>Ex04 - Cálculos repetitivos</h1>
+
+    <label for="">Primeiro termo</label>
+    <input type="number" id="inicio" placeholder="Digite o Primeiro termo"><br>
+
+
+    <label for="">Razão</label>
+    <input type="number" id="raiz" placeholder="Digite a Razão"><br><br>
+    <button onclick="pa()">Calcular PA</button>
+
+    <p id="res"></p>
+
+
+    <script>
+        function pa(){
+            var inicio = document.getElementById("inicio")
+            var raiz = document.getElementById("raiz")
+            var tamanho = 10
+            var resultado = document.getElementById("res")
+
+            resultado.innerText = ""
+
+            var ini = parseInt(inicio.value)
+            var r = parseInt(raiz.value)
+            var contaTamanho = 0
+
+            while(contaTamanho < tamanho){
+                resultado.innerText += ` ${ini} ` 
+                ini += r
+                contaTamanho++
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
