@@ -16,7 +16,7 @@ function primo(x){
     if(div == 2){
         console.log(x+" É primo!")
     }else{
-        console.log(x+ "Não é primo!")
+        console.log(x+ " Não é primo!")
     }
 }
 
