@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex03 - Semana 03</title>
+</head>
+<body>
+    <h1>Ex03 - Calculadora Simples</h1>
+
+    <input type="number" id="n1" placeholder="Digite um número">
+    <input type="number" id="n2" placeholder="Digite um número">
+
+    <button onclick="soma()">+</button>
+    <button onclick="subtrai()">-</button>
+    <button onclick="divide()">/</button>
+    <button onclick="multiplica()">x</button><br><br>
+
+
+    <input type="text" id="res" placeholder="Resultado" readonly>
+
+
+    <script>
+
+        function variaveis(){
+            var n1 = document.getElementById("n1")
+            var n2 = document.getElementById("n2")
+            var res = document.getElementById("res")
+
+            var vars = {
+                numero1 : parseInt(n1.value),
+                numero2 : parseInt(n2.value),
+                resultado : res,
+                n1 : n1,
+                n2 : n2
+            }
+
+            return vars
+        }
+        
+
+        function soma(){
+            if(variaveis().n1.value != "" && variaveis().n2.value != ""){
+                variaveis().resultado.value = `${variaveis().numero1} + ${variaveis().numero2} = ${variaveis().numero1 + variaveis().numero2}`
+                variaveis().n1.value = ""
+                variaveis().n2.value = ""
+            }else{
+
+                alert("ERRO! Preencha os campos")
+            }
+        }
+
+        function subtrai(){
+
+            if(variaveis().n1.value != "" && variaveis().n2.value != ""){
+                variaveis().resultado.value = `${variaveis().numero1} - ${variaveis().numero2} = ${variaveis().numero1 - variaveis().numero2}`
+                variaveis().n1.value = ""
+                variaveis().n2.value = ""
+            }else{
+                alert("ERRO! Preencha os campos")
+            }
+        }
+
+        function divide(){
+            if(variaveis().n1.value != "" && variaveis().n2.value != ""){
+                if(variaveis().numero1 != 0 && variaveis().numero2 != 0){
+                    variaveis().resultado.value = `${variaveis().numero1} / ${variaveis().numero2} = ${variaveis().numero1 / variaveis().numero2}`
+                    variaveis().n1.value = ""
+                    variaveis().n2.value = ""
+                }else{
+                    variaveis().resultado.value = "ERRO! Divisão por zero."
+                }
+                
+            }else{
+                alert("ERRO! Preencha os campos")
+            }
+        }
+
+        function multiplica(){
+            if(variaveis().n1.value != "" && variaveis().n2.value != ""){
+                variaveis().resultado.value = `${variaveis().numero1} x ${variaveis().numero2} = ${variaveis().numero1 * variaveis().numero2}`
+                variaveis().n1.value = ""
+                variaveis().n2.value = ""
+            }else{
+                alert("ERRO! Preencha os campos")
+            }
+        }
+    </script>
+    
+</body>
+</html>
