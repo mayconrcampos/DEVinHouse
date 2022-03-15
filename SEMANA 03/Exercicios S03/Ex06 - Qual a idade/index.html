@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex06 - Semana 03</title>
+</head>
+<body>
+    <h1>Ex06 - Qual a idade?</h1>
+
+    <label for="">Insira sua data de nascimento</label>
+    <input type="date" id="data">
+    <button onclick="calculaIdade()">Calcular Idade</button>
+
+    <h2 id="mostraIdade"></h2>
+
+    <script>
+        function calculaIdade(){
+            var data = document.getElementById("data")
+            var hoje = new Date()
+            var mostraIdade = document.getElementById("mostraIdade")
+
+            var diferenca = Math.abs(hoje.getTime() - data.valueAsDate.getTime())
+
+            var idade = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365))
+
+            // 1000 é o número de milisegundos em 1 segundo 
+            // 60 segundos em um minuto    
+            // 60 minutos em uma hora ?    
+            // 24 horas em um dia  ??
+            // 365 dias em 1 ano
+
+            // 1.a Multiplique tudo e você obtem o número de milisegundos em um dia.
+            // 1.b Use essa constante se preferir 86400000.
+            // 2. Divida pela diferença entre datas e você tem o número de dias 
+
+
+
+            mostraIdade.innerText = `Você tem ${idade} anos.`
+            
+            // Abaixo também funcionou, faltando apenas os ajustes da diferença entre meses.
+            // A diferença apresentada acima é mais precisa.
+
+            //dataNascimento = data.valueAsDate.getFullYear()
+            //hoje =  hoje.getFullYear()
+
+            //var idade = hoje - dataNascimento
+
+            //console.log(idade)
+        }
+    </script>
+    
+</body>
+</html>
