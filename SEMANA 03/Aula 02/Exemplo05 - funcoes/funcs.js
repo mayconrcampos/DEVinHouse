@@ -23,7 +23,7 @@ function listar(){
 
     numero = parseInt(numero.value)
     console.log(numero)
-    for(var i = 1; i < numero; i++){
+    for(var i = 1; i <= numero; i++){
         lista.innerHTML += primo(i)
     }
 }
