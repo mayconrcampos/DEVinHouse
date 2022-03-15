@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex07 - Semana 03</title>
+
+    <style>
+        body {
+            text-align: center;
+            background-color: beige;
+        }
+        .container {
+            width: 70%;
+            margin: auto;
+            background-color: burlywood;
+            color: black;
+        }
+        .campo {
+            width: 70%;
+            background-color: white;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ex07 - Em qual estação estamos?</h1>
+
+    <div class="container">
+        <h1 id="data"></h1>
+
+    </div>
+    <div class="campo">
+        <h1 id="frase"></h1>
+        <img id="imagem" src="" alt="">
+    </div>
+
+
+    <script>
+ 
+
+        var frase = document.getElementById("frase")
+        var imagem = document.getElementById("imagem")
+        var campoData = document.getElementById("data")
+
+        var hoje = new Date()
+
+        var dia = hoje.getDate()
+        var mes = hoje.getMonth()
+
+        var dataFormatada = `${mes}/${dia}`
+
+        console.log(dataFormatada)
+        dataFormatada = "0/24"
+        if((dataFormatada >= "12/22" && dataFormatada <= "12/31") && (dataFormatada >= "0/1" && dataFormatada <= "0/31")){
+            console.log("será?")
+        }
+
+        
+        
+        /*
+        
+
+
+        var dia = data.getDate()
+        var mes = data.getMonth() + 1
+        var ano = data.getFullYear()
+
+        var veraoIni = new Date("2021/12/22")
+        var veraoFim = new Date("2022/03/21")
+        console.log(veraoIni, veraoFim)
+
+        var dataFormatada = new Date(`${mes}/${dia}/${ano}`)
+
+        campoData.innerText = dataFormatada
+
+        if(dataFormatada >= veraoIni && dataFormatada <= veraoFim){
+            frase.innerText = `Estamos no verão`
+            imagem.src = "./img/Summer.png"
+        }*/
+        
+
+        
+
+    </script>
+</body>
+</html>
