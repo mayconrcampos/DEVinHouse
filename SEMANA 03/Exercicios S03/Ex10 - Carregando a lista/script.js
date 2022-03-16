@@ -11,20 +11,21 @@ var carregar = document.getElementById("btn-carregar")
 function onLoad(){
     var meusItens = localStorage.getItem("itens")
     var listaString = JSON.parse(meusItens)
-    compras = []
-    for (const item of listaString) {
-        compras.push({"item": item.item})
-    }
 
-    listar(compras, listaDeCompras)
-
-    alert("Lista carregada da localStorage")
-}
+    if(listaString.length != 0){
+        compras = []
+        for (const item of listaString) {
+            compras.push({"item": item.item})
+        }
     
-
-
-
-
+        listar(compras, listaDeCompras)
+    
+        alert("Lista carregada da localStorage")
+    }else{
+        alert("Seu localStorage está vazio. Insira itens na lista e clique em salvar listar.")
+    }
+    
+}
 
 btn.addEventListener("click", () => {
     if(item.value != ""){
@@ -87,7 +88,7 @@ carregar.addEventListener("click", () => {
 function listar(lista, ul){
     
     for (const index in lista) {
-        ul.innerHTML += `<li>${lista[index].item} <button onclick='deleteItem(${index})'>X</button></li>`
+        ul.innerHTML += `<li><img src='./img/seta.png' width="30px"'> ${lista[index].item} <button onclick='deleteItem(${index})'>X</button></li>`
     }
 }
 

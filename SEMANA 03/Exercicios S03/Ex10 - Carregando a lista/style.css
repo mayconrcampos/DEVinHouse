@@ -50,17 +50,18 @@ body {
 
 #lista {
     width: 30%;
+    padding: 10px;
     margin: auto;
     list-style: none;
     border: 2px solid black;
     border-radius: 5px;
     box-shadow: 1px 5px 20px black;
+    background-color: skyblue;
 }
 
 #lista ul {
     list-style: none;
     text-align: left;
-    margin-left: 30%;
 }
 
 #lista ul li {
