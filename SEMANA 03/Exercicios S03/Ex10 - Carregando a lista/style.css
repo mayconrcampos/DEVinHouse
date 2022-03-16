@@ -65,6 +65,7 @@ body {
 }
 
 #lista ul li {
+    cursor: pointer;
     margin: 5px;
     font-size: x-large;
     font-family: 'Courier New', Courier, monospace;

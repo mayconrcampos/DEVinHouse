@@ -93,7 +93,7 @@ carregar.addEventListener("click", () => {
 function listar(lista, ul){
     
     for (const index in lista) {
-        ul.innerHTML += `<li><img src='./img/seta.png' width="30px"'> ${lista[index].item} <button onclick='deleteItem(${index})'>X</button></li>`
+        ul.innerHTML += `<li class='itemLista' ondblclick='riscar(${index})' ><img src='./img/seta.png' width="30px"'> ${lista[index].item} <button onclick='deleteItem(${index})'>X</button></li>`
     }
 }
 
@@ -106,6 +106,17 @@ function deleteItem(index){
     listar(compras, listaDeCompras)
     item.focus()
 
+}
+
+function riscar(index){
+    var itemLista = document.querySelectorAll(".itemLista")
+
+    if(itemLista[index].style.textDecoration == "line-through"){
+        itemLista[index].style.textDecoration = "none"
+    }else{
+        itemLista[index].style.textDecoration = "line-through"
+    }
+    
 }
 
 
