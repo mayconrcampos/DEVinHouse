@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body id="bode">
+    <h1 id="titulo">Semana 03</h1>
+
+    <input type="text" id="entrada">
+    <button id="btn">Clicar</button>
+    
+
+    <script>
+        var btn = document.getElementById("btn")
+        var entrada = document.getElementById("entrada")
+        var titulo = document.getElementById("titulo")
+
+        function clicando(e){
+            console.count(e+"Clicado")
+        }
+
+        btn.onclick = clicando
+
+        entrada.onkeydown = (e) => console.count(e+"Tecla apertada")
+
+        titulo.addEventListener("click", (e) => console.count(e+" Titulo"))
+
+      
+    </script>
+</body>
+</html>
