@@ -1,0 +1,67 @@
+body {
+    background-color: skyblue;
+    text-align: center;
+    background-image: url("./img/fundo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#adiciona {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    
+    margin-bottom: 10px;
+}
+
+#adiciona input {
+
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px darkslategrey;
+
+}
+
+#btn-salvar:hover {
+    background-color: coral;
+}
+
+#btn:hover {
+    background-color: skyblue;
+}
+
+#adiciona button {
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    font-weight: bold;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+#lista {
+    width: 30%;
+    margin: auto;
+    list-style: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 5px 20px black;
+}
+
+#lista ul {
+    list-style: none;
+    text-align: left;
+    margin-left: 30%;
+}
+
+#lista ul li {
+    margin: 5px;
+    font-size: x-large;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
