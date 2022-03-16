@@ -9,21 +9,26 @@ var carregar = document.getElementById("btn-carregar")
 
 
 function onLoad(){
-    var meusItens = localStorage.getItem("itens")
-    var listaString = JSON.parse(meusItens)
-
-    if(listaString.length != 0){
-        compras = []
-        for (const item of listaString) {
-            compras.push({"item": item.item})
+    if(window.localStorage.getItem("itens")){
+        var meusItens = localStorage.getItem("itens")
+        var listaString = JSON.parse(meusItens)
+    
+        if(listaString.length != 0){
+            compras = []
+            for (const item of listaString) {
+                compras.push({"item": item.item})
+            }
+        
+            listar(compras, listaDeCompras)
+        
+            alert("Lista carregada da localStorage")
+        }else{
+            alert("Seu localStorage existe mas está vazio. Insira itens na lista e clique em 'salvar lista'.")
         }
-    
-        listar(compras, listaDeCompras)
-    
-        alert("Lista carregada da localStorage")
     }else{
-        alert("Seu localStorage está vazio. Insira itens na lista e clique em salvar listar.")
+        alert("ERRO! Não existe nenhum localStorage salvo em seu navegador!\n Comece a criar sua lista e clique em salvar para criar seu localStorage.")
     }
+    
     
 }
 
