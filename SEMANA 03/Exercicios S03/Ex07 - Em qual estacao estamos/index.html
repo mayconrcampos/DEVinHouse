@@ -44,41 +44,56 @@
         var imagem = document.getElementById("imagem")
         var campoData = document.getElementById("data")
 
-        var hoje = new Date()
-
-        var dia = hoje.getDate()
-        var mes = hoje.getMonth()
-
-        var dataFormatada = `${mes}/${dia}`
-
-        console.log(dataFormatada)
-        dataFormatada = "0/24"
-        if((dataFormatada >= "12/22" && dataFormatada <= "12/31") && (dataFormatada >= "0/1" && dataFormatada <= "0/31")){
-            console.log("será?")
-        }
-
+        var data = new Date()
         
-        
-        /*
-        
-
-
+        // hoje
         var dia = data.getDate()
         var mes = data.getMonth() + 1
         var ano = data.getFullYear()
 
+        // Verão
         var veraoIni = new Date("2021/12/22")
         var veraoFim = new Date("2022/03/21")
+
+        // Outono
+        var outonoIni = new Date("2022/03/22")
+        var outonoFim = new Date("2022/06/21")
+
+        // Inverno
+        var invernoIni = new Date("2022/06/22")
+        var invernoFim = new Date("2022/09/21")
+
+        // Primavera
+        var primaveraIni = new Date("2022/09/22")
+        var primaveraFim = new Date("2022/12/21")
+
+
         console.log(veraoIni, veraoFim)
 
         var dataFormatada = new Date(`${mes}/${dia}/${ano}`)
 
-        campoData.innerText = dataFormatada
+        console.log(dataFormatada)
+        dia = dia < 10 ? `0${dia}` : dia
+        mes = mes < 10 ? `0${mes}` : mes
+
+        campoData.innerText = `Hoje: ${dia}/${mes}/${ano}`
 
         if(dataFormatada >= veraoIni && dataFormatada <= veraoFim){
             frase.innerText = `Estamos no verão`
             imagem.src = "./img/Summer.png"
-        }*/
+        
+        }else if(dataFormatada >= outonoIni && dataFormatada <= outonoFim){
+            frase.innerText = "Estamos no Outono"
+            imagem.src = "./img/outono.png"
+        
+        }else if(dataFormatada >= invernoIni && dataFormatada <= invernoFim){
+            frase.innerText = "Estamos no Inverno"
+            imagem.src = "./img/inverno.png"
+        
+        }else if(dataFormatada >= primaveraIni && dataFormatada <= primaveraFim){
+            frase.innerText = "Estamos na Primavera"
+            imagem.src = "./img/primavera.jpg"
+        }
         
 
         
