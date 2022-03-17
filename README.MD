@@ -1,5 +1,7 @@
-<h1 align="center">Hi 👋, I'm Maycon R Campos</h1>
+<h1 align="center">Olá 👋, Eu sou Maycon R Campos</h1>
 <h3 align="center">Estudante FullStack no curso SENAI DEVinHouse[ConectaNuvem]</h3>
+
+<p align="center">Este repositório irá receber todos os arquivos de slides e códigos gerados das aulas do curso DEVinHouse.</p>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
