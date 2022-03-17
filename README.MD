@@ -1,5 +1,3 @@
-conflito criado no local
-criando conflito no remoto
 
 <h1 align="center">Olá 👋, Eu sou Maycon R Campos</h1>
 <h3 align="center">Estudante FullStack no curso SENAI DEVinHouse[ConectaNuvem]</h3>
