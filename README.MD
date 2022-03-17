@@ -1,15 +1,4 @@
-Repositório que irá receber todos os arquivos gerados nas aulas e exercícios do Curso DEVinHouse SENAI.
+# Repositório DEVinHouse
 
-# teste
-## Teste
-### Teste
+## Repositório que irá receber todos os arquivos gerados nas aulas e exercícios do Curso DEVinHouse SENAI.
 
-- ola
-- ola
-- ola
-> ola
-> ola
-
-"Mas que legal"
-""Muito mais legal""
-"""Bem mais legal"""
