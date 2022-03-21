@@ -32,4 +32,30 @@ console.log({
     global, bloco
 })
 
-console.log(func)
+
+var largura = 100
+
+function funcLargura(){
+    console.log(largura)
+
+    var largura = 50
+
+    console.log(largura)
+}
+
+
+console.log(largura)
+funcLargura()
+
+// outro exemplo
+console.log("-=-=-=-=-=-=-=-=-=-=")
+var altura = 100
+if(altura > 90){
+    let altura = 50
+    console.log("altura dentro "+altura)
+    const largura = 100
+    console.log(largura)
+}
+
+console.log("altura fora: "+altura)
+console.log(largura)
