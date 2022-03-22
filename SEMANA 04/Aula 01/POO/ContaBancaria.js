@@ -1,10 +1,16 @@
 class ContaBanco {
+    nomeBanco
+    agencia
+    numeroConta
+    saldo
+    limite
+
     constructor(nome, agencia, numero, saldo, limite){
-        this.nomeBanco = nome
-        this.agencia = agencia
-        this.numeroConta = numero
-        this.saldo = saldo
-        this.limite = -limite
+        this.setNomeBanco(nome)
+        this.setAgencia(agencia)
+        this.setNumeroConta(numero)
+        this.setSaldo(saldo)
+        this.setLimite(-limite)
     }
 
     setNomeBanco(nome){
