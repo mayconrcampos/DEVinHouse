@@ -56,9 +56,8 @@ btn.addEventListener("click", () => {
 
 salvar.addEventListener("click", () => {
     var listaJson = JSON.stringify(compras)
-    listaJson = JSON.parse(listaJson)
-    console.log(listaJson)
-    localStorage.setItem("itens", JSON.stringify(listaJson))
+
+    localStorage.setItem("itens", listaJson)
     
     alert("Lista salva na localStorage")
     
