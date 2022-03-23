@@ -97,12 +97,4 @@ class Cliente {
         
     }
 
-    imprimeDadosCliente(){
-        console.log("-=-=-=-=-=-=-= Dados do Cliente -=-=-=-=-=-=-=-=")
-        console.log(`Nome: ${this.nome}`)
-        console.log(`CPF: ${this.cpf}`)
-        console.log(`Endereço: ${this.endereco}`)
-        console.log(`Nº Celular: ${this.numeroCelular}`)
-        console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-    }
 }
