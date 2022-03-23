@@ -38,6 +38,7 @@ function limparCadastro(){
     endereco.value = ""
     celular.value = ""
     nomeshow.innerText = ``
+    cpfshow.innerText = ``
     enderecoshow.innerText = ``
     celularshow.innerText = ``
 }
@@ -65,7 +66,7 @@ function limparCadastro(){
         enderecoshow.innerText = `Endereço: ${cliente.getEndereco()}`
         celularshow.innerText = `Nº Celular: ${cliente.getNumeroCelular()}`
     }else{
-        cpfshow.innerText = `CPF ${cpf.value} Inválido`
+        alert(`CPF ${cpf.value} Inválido`)
         limparCadastro()
 
     }
