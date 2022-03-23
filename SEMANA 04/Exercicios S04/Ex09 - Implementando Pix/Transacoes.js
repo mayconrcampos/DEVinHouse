@@ -59,6 +59,12 @@ conta1.deposito(2000)
 conta1.transferencia(50)
 conta1.transferencia(2000)
 
+console.log(conta1.conta)
+conta1.conta = 1234
+console.log(conta1.conta)
+
+conta1.mostrarSaldo()
+
 
 
 
