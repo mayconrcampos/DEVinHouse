@@ -87,8 +87,6 @@ class Cliente {
                 
                 return false;
             } 
-    
-            console.log(`${strCPF} é um CPF válido.`);
 
             this.setCPF(strCPF)
             return strCPF;
