@@ -1,59 +1,65 @@
+const conta = Symbol()
+const valorTransacao = Symbol()
+
 class Transacoes{
-    conta
-    valorTransacao 
-
     constructor(valor){
-        this.setSaldoConta(valor)
+        this[conta] = valor
+        this[valorTransacao]
     }
 
-    getSaldoConta(){
-        return this.conta
+    get saldoConta(){
+        return this[conta]
     }
 
-    setSaldoConta(valor){
-        this.conta = valor
+    set saldoConta(valor){
+        this[conta] = valor
     }
 
-    getValorTransacao(){
-        return this.valorTransacao
+    get valorTransacao(){
+        return this[valorTransacao]
     }
 
-    setValorTransacao(valor){
-        this.valorTransacao = valor
+    set valorTransacao(valor){
+        this[valorTransacao] = valor
     }
 
     transferencia(valor){
-        if(valor <= this.getSaldoConta()){
-            this.setValorTransacao(valor)
+        if(valor <= this.saldoConta){
+            this.valorTransacao = valor
 
-            this.conta -= this.getValorTransacao()
+            this.saldoConta -= this.valorTransacao
 
-            console.log(`Pix de R$${this.getValorTransacao()} realizado com sucesso.`)
-            console.log(`Saldo Conta: R$ ${this.getSaldoConta()}`)
+            console.log(`Pix de R$${this.valorTransacao} realizado com sucesso.`)
+            console.log(`Saldo Conta: R$ ${this.saldoConta}`)
         }else{
             console.log(`Saldo insuficiente`)
         }
     }
 
     deposito(valor){
-        this.getValorTransacao(valor)
+        this.valorTransacao = valor
 
-        this.conta += this.getValorTransacao()
+        this.saldoConta += this.valorTransacao
 
-        console.log(`Depósito de R$ ${this.getValorTransacao()} efetuado com sucesso`)
-        console.log(`Saldo Conta: R$ ${this.getSaldoConta()}`)
+        console.log(`Depósito de R$ ${this.valorTransacao} efetuado com sucesso`)
+        console.log(`Saldo Conta: R$ ${this.saldoConta}`)
 
     }
 
     mostrarSaldo(){
-        console.log(`Saldo Conta: R$ ${this.getSaldoConta()}`)
+        console.log(`Saldo Conta: R$ ${this.saldoConta}`)
     }
 }
 
-var conta = new Transacoes(1000)
-conta.mostrarSaldo()
-conta.transferencia(1500)
-conta.transferencia(800)
-conta.deposito(2000)
-conta.transferencia(50)
+var conta1 = new Transacoes(1000)
+conta1.mostrarSaldo()
+conta1.transferencia(1500)
+conta1.transferencia(800)
+conta1.deposito(2000)
+conta1.transferencia(50)
+conta1.transferencia(2000)
+
+
+
+
 
