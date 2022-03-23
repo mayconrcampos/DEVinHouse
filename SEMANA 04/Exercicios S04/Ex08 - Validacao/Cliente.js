@@ -43,6 +43,15 @@ class Cliente {
         this.cpf = cpf
     }
 
+    /**
+     * Função de validação de CPF conforme fórmula utilizada pela Receita Federal.
+     * 
+     * Algoritmo retirado do seguinte artigo: https://www.devmedia.com.br/validar-cpf-com-javascript/23916
+     * 
+     * Depois adaptado para este caso de uso pra funcionar na classe Cliente deste exercício.
+     *  
+     */
+
     validaCPF(strCPF){
         if(strCPF.length == 14){
 
