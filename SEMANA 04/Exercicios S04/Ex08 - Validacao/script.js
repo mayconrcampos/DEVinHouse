@@ -62,7 +62,7 @@ function limparCadastro(){
 
     if(cliente.validaCPF(cpf.value)){
         nomeshow.innerText = `Nome: ${cliente.getNome()}`
-        cpfshow.innerText = `CPF ${cliente.getCPF()} Validado.`
+        cpfshow.innerText = `CPF ${cpf.value} Validado.`
         enderecoshow.innerText = `Endereço: ${cliente.getEndereco()}`
         celularshow.innerText = `Nº Celular: ${cliente.getNumeroCelular()}`
     }else{
