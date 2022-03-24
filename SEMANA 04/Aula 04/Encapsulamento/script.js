@@ -26,6 +26,22 @@ class Pessoa{
     mostrarNomeEidade(){
         console.log(`Nome: ${this.#nome} Idade: ${this.#idade}`)
     }
+
+    setNome(nome){
+        this.#nome = nome
+    }
+
+    getNome(){
+        return this.#nome
+    }
+
+    setIdade(idade){
+        this.#idade = idade
+    }
+
+    getIdade(){
+        return this.#idade
+    }
 }
 
 var maycon = new Pessoa("Maycon", 39)
@@ -37,6 +53,10 @@ console.log(Ariana.nome)
 Ariana.nome = "Arianaa"
 Ariana.idade = "Lindjo"
 Ariana.mostrarNomeEidade()
+
+maycon.setNome("Maycon R Campos")
+maycon.setIdade(40)
+console.log(maycon.getNome(), maycon.getIdade())
 
 // Agora sim, sem utilização
 
