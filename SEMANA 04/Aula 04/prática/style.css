@@ -78,3 +78,18 @@ main {
     font-weight: bolder;
 
 }
+
+#btns {
+    border: 1px solid gray;
+    background-color: lightgray;
+    margin: auto;
+    width: 400px;
+    padding: 2px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#btns button {
+    margin-top: 5px;
+    padding: 2px;
+}

@@ -109,6 +109,33 @@ class Produto {
         }
     }
 
+    salvaDB(){
+        if(this.#_lista.length > 0){
+            var dados = JSON.stringify(this.#_lista)
+            localStorage.setItem("produtos", dados)
+            alert("Dados salvos no Banco de Dados localStorage")
+        }else{
+            alert("ERRO! É preciso inserir itens na lista antes de salvar.")
+        }
+        
+    }
+
+    carregaDB(){
+        this.#_lista = []
+        var dados = localStorage.getItem("produtos")
+        dados = JSON.parse(dados)
+        this.#id = 0
+        if(dados.length > 0){
+            for (let index = 0; index < dados.length; index++) {
+                this.#_lista.push(dados[index])
+                this.incrementaID()
+            }
+            this.listaProdutos()
+        }else{
+            alert("ERRO! Não há itens salvos no DB")
+        }
+    }
+
 }
 
 var produto = new Produto()
