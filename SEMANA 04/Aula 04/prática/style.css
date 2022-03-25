@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    text-align: center;
+
+}
+
+header {
+    background-color: burlywood;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+}
+
+main {
+    margin: auto;
+    padding: 30px 50px;
+
+}
+
+.card {
+    background-color: beige;
+    border: 1px solid gray;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.card .lineInput {
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-bottom: 10px;
+    
+}
+.lineInput input {
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    border: 2px solid gray;
+    box-shadow: 2px 2px 2px gray;
+    font-size: x-large;
+}
+
+.card button:hover{
+    background-color: tomato;
+    color: white;
+}
+
+.card button {
+    padding: 5px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+} 
+
+.conteudo {
+    margin-top: 10px;
+    width: 60%;
+    margin: auto;
+
+}
+.conteudo table {
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px gray;
+}
