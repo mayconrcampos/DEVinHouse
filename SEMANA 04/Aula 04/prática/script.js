@@ -6,14 +6,14 @@ class Produto {
     #_editar
     #_indice
     #_editaID
-    constructor(produto, valor){
+    constructor(){
         this.#id = 0
         this.#produto = produto
         this.#valor = valor
         this.#_lista = []
         this.#_editar
         this.#indice
-        this.#_editaID
+        this.#_editaID = false
 
     }
     set #editaID(id){
@@ -85,7 +85,7 @@ class Produto {
             }
         }else{
             if(this.lerDados()){
-                console.log(this.lerDados())
+                //console.log(this.lerDados())
                 this.#_lista.splice(this.#_indice, 1, this.lerDados())
                 this.limpaCampos()
             }
@@ -182,7 +182,7 @@ class Produto {
         this.#_indice = produto.indice
         this.#editaID = produto.id
 
-        console.log(this.#_indice)
+        //console.log(this.#_indice)
         this.salvarOuEditar(this.#_editar)
     }
 
