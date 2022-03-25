@@ -142,7 +142,7 @@ nav ul li a:hover {
     color: white;
     padding: 20px;
     border-radius: 10px 10px 10px 10px;
-    box-shadow: 10px 10px 20px black;
+    box-shadow: 10px 10px 100px black;
     text-align: center;
     width: 90%;
     margin: 0 auto;
