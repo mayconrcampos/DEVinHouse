@@ -128,7 +128,7 @@ class Produto {
         if(dados.length > 0){
             for (let index = 0; index < dados.length; index++) {
                 this.#_lista.push(dados[index])
-                this.incrementaID()
+                this.#id = dados[index]["id"]
             }
             this.listaProdutos()
         }else{
