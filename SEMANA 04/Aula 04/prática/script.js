@@ -38,10 +38,6 @@ class Produto {
         this.#id++
     }
 
-    decrementaID(){
-        this.#id--
-    }
-
     salvar(){
         if(this.lerDados()){
             this.#_lista.push(this.lerDados())
