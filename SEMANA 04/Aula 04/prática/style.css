@@ -61,9 +61,14 @@ main {
     font-size: x-large;
 }
 
+.lineInput input:hover {
+    box-shadow: 4px 4px 10px black;
+}
+
 .card button:hover{
     background-color: tomato;
     color: white;
+    box-shadow: 4px 4px 10px tomato;
 }
 
 .card button {
@@ -95,6 +100,12 @@ main {
     color: white;
 }
 
+#tbody tr:hover {
+    background-color: skyblue;
+    
+    box-shadow: 7px 7px 15px skyblue;
+}
+
 #tbody td {
     font-family: 'Courier New', Courier, monospace;
     font-style: italic;
@@ -118,6 +129,7 @@ main {
 #btns button:hover{
     background-color: skyblue;
     color: black;
+    box-shadow: 4px 4px 10px skyblue;
 }
 
 #btns button {
