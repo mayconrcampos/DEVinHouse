@@ -38,25 +38,54 @@ class Produto {
         this.#id++
     }
 
-    salvar(){
-        this.#_lista.push(this.lerDados())
+    decrementaID(){
+        this.#id--
+    }
 
-        console.log(this.#_lista)
+    salvar(){
+        if(this.lerDados()){
+            this.#_lista.push(this.lerDados())
+        }
+        
         this.listaProdutos()
     }
 
     lerDados(){
         let produto = {}
-        this.incrementaID()
-        produto.id = this.#id
+        
         produto.nome = document.getElementById("produto").value
         produto.valor = document.getElementById("valor").value
+        
 
-        return produto
+        if(this.validaDados(produto.nome, produto.valor) == 2){
+            this.incrementaID()
+            produto.id = this.#id
+            
+            return produto
+
+        }else if(this.validaDados(produto.nome, produto.valor) == 3){
+
+            alert("ERRO! É preciso digitar um valor numérico válido.")
+            
+        }else{
+
+            alert("ERRO! É preciso preencher ambos os campos.")
+        }
+    }
+
+    validaDados(produto, valor){
+        if(produto.length > 0 && valor.length > 0){
+            if(!isNaN(valor)) return 2
+            if(isNaN(valor)) return 3
+      
+        }else{
+            return 4
+        } 
+        
     }
 
     cancelar(){
-
+        // para implementar
     }
 
     listaProdutos(){
@@ -65,13 +94,8 @@ class Produto {
 
         for (let index = 0; index < this.#_lista.length; index++) {
             
-            table.innerHTML += `<td>${this.#_lista[index]["id"]}</td> <td>${this.#_lista[index]["nome"]}</td> <td>${this.#_lista[index]["valor"]}</td> <td>X</td>`
-
-            
+            table.innerHTML += `<td>${this.#_lista[index]["id"]}</td> <td>${this.#_lista[index]["nome"]}</td> <td>${Number(this.#_lista[index]["valor"]).toFixed(2)}</td> <td>X</td>`
         }
-
-        console.log(table.innerHTML)
-        
     }
 
 }
