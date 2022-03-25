@@ -87,6 +87,7 @@ class Produto {
             if(this.lerDados()){
                 console.log(this.lerDados())
                 this.#_lista.splice(this.#_indice, 1, this.lerDados())
+                this.limpaCampos()
             }
         }
         
