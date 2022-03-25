@@ -139,5 +139,3 @@ class Produto {
 }
 
 var produto = new Produto()
-
-
