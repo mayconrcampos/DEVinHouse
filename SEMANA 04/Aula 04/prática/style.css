@@ -59,6 +59,7 @@ main {
     border: 2px solid gray;
     box-shadow: 2px 2px 2px gray;
     font-size: x-large;
+    border-radius: 5px;
 }
 
 .lineInput input:hover {
@@ -77,6 +78,7 @@ main {
     color: black;
     font-weight: bold;
     margin-bottom: 10px;
+    border-radius: 5px;
 } 
 
 .conteudo {
