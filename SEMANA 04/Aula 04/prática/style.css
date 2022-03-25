@@ -108,6 +108,10 @@ main {
     box-shadow: 7px 7px 15px skyblue;
 }
 
+#tbody tr {
+    cursor: pointer;
+}
+
 #tbody td {
     font-family: 'Courier New', Courier, monospace;
     font-style: italic;
