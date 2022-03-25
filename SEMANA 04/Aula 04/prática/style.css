@@ -4,8 +4,14 @@
 
 }
 
+body {
+    background: rgb(245,245,220);
+    background: radial-gradient(circle, rgba(245,245,220,1) 0%, rgba(204,182,105,1) 100%, rgba(181,147,40,1) 100%, rgba(222,184,135,1) 100%, rgba(117,117,117,1) 100%); 
+}
+
 header {
-    background-color: burlywood;
+    background: rgb(245,245,220);
+    background: radial-gradient(circle, rgba(245,245,220,1) 0%, rgba(74,59,16,1) 0%, rgba(133,114,56,1) 0%, rgba(204,182,105,1) 100%, rgba(222,184,135,1) 100%, rgba(117,117,117,1) 100%); 
     padding: 10px;
     text-align: center;
     color: white;
@@ -66,9 +72,16 @@ main {
 }
 .conteudo table {
     width: 100%;
-    background-color: white;
+    
     border-radius: 5px;
     box-shadow: 5px 5px 10px gray;
+    background: rgb(245,245,220);
+    background: radial-gradient(circle, rgba(245,245,220,1) 0%, rgba(249,242,223,1) 89%, rgba(204,182,105,1) 100%, rgba(222,184,135,1) 100%, rgba(117,117,117,1) 100%); 
+}
+
+.conteudo table thead {
+    background-color: black;
+    color: white;
 }
 
 #tbody td {
@@ -81,15 +94,24 @@ main {
 
 #btns {
     border: 1px solid gray;
-    background-color: lightgray;
+    
     margin: auto;
     width: 400px;
     padding: 2px;
     margin-bottom: 10px;
     border-radius: 5px;
+    background: rgb(245,245,220);
+    background: radial-gradient(circle, rgba(245,245,220,1) 0%, rgba(181,147,40,1) 92%, rgba(222,184,135,1) 100%, rgba(117,117,117,1) 100%); 
+}
+
+#btns button:hover{
+    background-color: skyblue;
+    color: black;
 }
 
 #btns button {
     margin-top: 5px;
-    padding: 2px;
+    padding: 5px;
+    font-size: x-small;
+
 }
