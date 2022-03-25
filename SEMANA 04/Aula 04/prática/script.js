@@ -3,11 +3,21 @@ class Produto {
     #_produto 
     #_valor 
     #_lista
+    #_indice
     constructor(produto, valor){
         this.#id = 0
         this.#produto = produto
         this.#valor = valor
         this.#_lista = []
+        this.#indice
+    }
+
+    set #indice(indice){
+        this.#_indice = indice
+    }
+
+    get #indice(){
+        return this.#_indice
     }
 
     set #id(id){
@@ -105,8 +115,28 @@ class Produto {
 
         for (let index = 0; index < this.#_lista.length; index++) {
             
-            table.innerHTML += `<td>${this.#_lista[index]["id"]}</td> <td>${this.#_lista[index]["nome"]}</td> <td>${Number(this.#_lista[index]["valor"]).toFixed(2)}</td> <td><button onclick="produto.deletar(${index})">X</button></td>`
+            table.innerHTML += `<td>${this.#_lista[index]["id"]}</td> <td>${this.#_lista[index]["nome"]}</td> <td>${Number(this.#_lista[index]["valor"]).toFixed(2)}</td> <td><button onclick="produto.deletar(${index})">X</button><button id="editar" onclick="produto.preencheCampos('${index}, ${this.#_lista[index]['id']}, ${this.#_lista[index]['nome']}, ${this.#_lista[index]["valor"]}')">Editar</button></td>`
         }
+    }
+
+    preencheCampos(indice){
+        var campoNome = document.getElementById("produto")
+        var campoValor = document.getElementById("valor")
+
+        var stringue = indice.split(",")
+
+        var produto = {
+            "indice": stringue[0],
+            "id": stringue[1],
+            "nome": stringue[2],
+            "valor": stringue[3]
+        }
+
+        campoNome.value = produto.nome
+        campoValor.value = produto.valor
+
+        return produto.id
+
     }
 
     salvaDB(){

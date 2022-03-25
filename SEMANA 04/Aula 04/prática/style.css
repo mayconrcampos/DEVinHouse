@@ -146,6 +146,12 @@ main {
 
 }
 
+#editar:hover {
+    color: black;
+    background-color: skyblue;
+    box-shadow: 2px 2px 10px black;
+}
+
 footer {
     padding: 20px;
     background: rgb(245,245,220);
