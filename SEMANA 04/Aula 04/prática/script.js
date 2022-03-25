@@ -38,11 +38,22 @@ class Produto {
         this.#id++
     }
 
+    limpaCampos(){
+        let nome = document.getElementById("produto")
+        let valor = document.getElementById("valor")
+
+        nome.value = ""
+        valor.value = ""
+        nome.focus()
+    }
+
     salvar(){
         if(this.lerDados()){
+            this.incrementaID()
             this.#_lista.push(this.lerDados())
+            this.limpaCampos()
+            
         }
-        
         this.listaProdutos()
     }
 
@@ -54,7 +65,6 @@ class Produto {
         
 
         if(this.validaDados(produto.nome, produto.valor) == 2){
-            this.incrementaID()
             produto.id = this.#id
             
             return produto
@@ -71,16 +81,22 @@ class Produto {
 
     validaDados(produto, valor){
         if(produto.length > 0 && valor.length > 0){
-            if(!isNaN(valor)) return 2
-            if(isNaN(valor)) return 3
+            if(!isNaN(valor)) return 2  //Se for numérico, continua
+            if(isNaN(valor)) return 3   // Se não for numérico, erro
       
         }else{
-            return 4
+            return 4 // Se algum campo estiver vazio, erro
         } 
     }
 
+    deletar(indice){
+        this.#_lista.splice(indice, 1)
+        this.listaProdutos()
+    }
+
     cancelar(){
-        // para implementar
+        this.#_lista = []
+        this.listaProdutos()
     }
 
     listaProdutos(){
@@ -89,7 +105,7 @@ class Produto {
 
         for (let index = 0; index < this.#_lista.length; index++) {
             
-            table.innerHTML += `<td>${this.#_lista[index]["id"]}</td> <td>${this.#_lista[index]["nome"]}</td> <td>${Number(this.#_lista[index]["valor"]).toFixed(2)}</td> <td>X</td>`
+            table.innerHTML += `<td>${this.#_lista[index]["id"]}</td> <td>${this.#_lista[index]["nome"]}</td> <td>${Number(this.#_lista[index]["valor"]).toFixed(2)}</td> <td><button onclick="produto.deletar(${index})">X</button></td>`
         }
     }
 
