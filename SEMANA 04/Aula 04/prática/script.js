@@ -3,13 +3,25 @@ class Produto {
     #_produto 
     #_valor 
     #_lista
+    #_editar
     #_indice
+    #_editaID
     constructor(produto, valor){
         this.#id = 0
         this.#produto = produto
         this.#valor = valor
         this.#_lista = []
+        this.#_editar
         this.#indice
+        this.#_editaID
+
+    }
+    set #editaID(id){
+        this.#_editaID = id
+    }
+
+    get #editaID(){
+        return this.#_editaID
     }
 
     set #indice(indice){
@@ -51,19 +63,33 @@ class Produto {
     limpaCampos(){
         let nome = document.getElementById("produto")
         let valor = document.getElementById("valor")
+        let btn = document.getElementById("btn")
 
         nome.value = ""
         valor.value = ""
+        this.#_editar = false
+        this.#_indice = null
+        this.#editaID = false
+        console.log(this.#_indice)
+        this.salvarOuEditar(this.#_editar)
         nome.focus()
     }
 
     salvar(){
-        if(this.lerDados()){
-            this.incrementaID()
-            this.#_lista.push(this.lerDados())
-            this.limpaCampos()
-            
+        if(this.#_editar == false){
+            if(this.lerDados()){
+                this.incrementaID()
+                this.#_lista.push(this.lerDados())
+                this.limpaCampos()
+                
+            }
+        }else{
+            if(this.lerDados()){
+                console.log(this.lerDados())
+                this.#_lista.splice(this.#_indice, 1, this.lerDados())
+            }
         }
+        
         this.listaProdutos()
     }
 
@@ -73,20 +99,36 @@ class Produto {
         produto.nome = document.getElementById("produto").value
         produto.valor = document.getElementById("valor").value
         
-
-        if(this.validaDados(produto.nome, produto.valor) == 2){
-            produto.id = this.#id
-            
-            return produto
-
-        }else if(this.validaDados(produto.nome, produto.valor) == 3){
-
-            alert("ERRO! É preciso digitar um valor numérico válido.")
-            
+        if(this.#_editar == false){
+            if(this.validaDados(produto.nome, produto.valor) == 2){
+                produto.id = this.#id
+                
+                return produto
+    
+            }else if(this.validaDados(produto.nome, produto.valor) == 3){
+    
+                alert("ERRO! É preciso digitar um valor numérico válido.")
+                
+            }else{
+    
+                alert("ERRO! É preciso preencher ambos os campos.")
+            }
         }else{
-
-            alert("ERRO! É preciso preencher ambos os campos.")
+            if(this.validaDados(produto.nome, produto.valor) == 2){
+                produto.id = this.#editaID
+                return produto
+    
+            }else if(this.validaDados(produto.nome, produto.valor) == 3){
+    
+                alert("ERRO! É preciso digitar um valor numérico válido.")
+                
+            }else{
+    
+                alert("ERRO! É preciso preencher ambos os campos.")
+            }
         }
+
+        
     }
 
     validaDados(produto, valor){
@@ -135,9 +177,26 @@ class Produto {
         campoNome.value = produto.nome
         campoValor.value = produto.valor
 
-        return produto.id
+        this.#_editar = true
+        this.#_indice = produto.indice
+        this.#editaID = produto.id
 
+        console.log(this.#_indice)
+        this.salvarOuEditar(this.#_editar)
     }
+
+    salvarOuEditar(editar){
+        var btn = document.getElementById("btn")
+        if(editar === true){
+            btn.innerHTML = `Editar`
+        }else{
+            btn.innerHTML = "Salvar"
+        }
+        
+        
+    }
+
+    
 
     salvaDB(){
         if(this.#_lista.length > 0){
