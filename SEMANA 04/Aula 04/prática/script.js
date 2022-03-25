@@ -81,7 +81,6 @@ class Produto {
         }else{
             return 4
         } 
-        
     }
 
     cancelar(){
