@@ -167,11 +167,13 @@ class Produto {
     }
 
     preencheCampos(indice){
+        console.log(indice)
         var campoNome = document.getElementById("produto")
         var campoValor = document.getElementById("valor")
 
         var stringue = indice.split(",")
 
+        
         var produto = {
             "indice": stringue[0],
             "id": stringue[1],
