@@ -75,10 +75,10 @@ class Produto {
     }
 
     salvar(){
-        //console.log(this.#id)
+        
         if(this.#_editar == false){
             if(this.lerDados()){
-                //this.incrementaID()
+                console.log(this.#id)
                 this.#_lista.push(this.lerDados())
                 this.limpaCampos()
                 
@@ -103,6 +103,7 @@ class Produto {
         if(this.#_editar == false){
             if(this.validaDados(produto.nome, produto.valor) == 2){
                 this.incrementaID()
+
                 console.log(this.#id)
                 produto.id = this.#id
                 
@@ -214,6 +215,7 @@ class Produto {
     }
 
     carregaDB(){
+        this.#_editar = false
         this.#_lista = []
         var dados = localStorage.getItem("produtos")
         dados = JSON.parse(dados)
