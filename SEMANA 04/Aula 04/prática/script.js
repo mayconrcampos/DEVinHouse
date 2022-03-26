@@ -63,22 +63,22 @@ class Produto {
     limpaCampos(){
         let nome = document.getElementById("produto")
         let valor = document.getElementById("valor")
-        let btn = document.getElementById("btn")
 
         nome.value = ""
         valor.value = ""
         this.#_editar = false
         this.#_indice = null
         this.#editaID = false
-        console.log(this.#_indice)
+        //console.log(this.#_indice)
         this.salvarOuEditar(this.#_editar)
         nome.focus()
     }
 
     salvar(){
+        //console.log(this.#id)
         if(this.#_editar == false){
             if(this.lerDados()){
-                this.incrementaID()
+                //this.incrementaID()
                 this.#_lista.push(this.lerDados())
                 this.limpaCampos()
                 
@@ -102,6 +102,8 @@ class Produto {
         
         if(this.#_editar == false){
             if(this.validaDados(produto.nome, produto.valor) == 2){
+                this.incrementaID()
+                console.log(this.#id)
                 produto.id = this.#id
                 
                 return produto
@@ -114,6 +116,7 @@ class Produto {
     
                 alert("ERRO! É preciso preencher ambos os campos.")
             }
+
         }else{
             if(this.validaDados(produto.nome, produto.valor) == 2){
                 produto.id = this.#editaID
@@ -220,6 +223,7 @@ class Produto {
                 this.#_lista.push(dados[index])
                 this.#id = dados[index]["id"]
             }
+            console.log(this.#id)
             this.listaProdutos()
         }else{
             alert("ERRO! Não há itens salvos no DB")
