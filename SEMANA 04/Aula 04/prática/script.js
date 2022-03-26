@@ -215,7 +215,7 @@ class Produto {
     }
 
     carregaDB(){
-        this.#_editar = false
+        this.#_editar = false //Precisa setar ao carregar pra funcionar a primeira inserção nova
         this.#_lista = []
         var dados = localStorage.getItem("produtos")
         dados = JSON.parse(dados)
@@ -225,7 +225,7 @@ class Produto {
                 this.#_lista.push(dados[index])
                 this.#id = dados[index]["id"]
             }
-            console.log(this.#id)
+            //console.log(this.#id)
             this.listaProdutos()
         }else{
             alert("ERRO! Não há itens salvos no DB")
