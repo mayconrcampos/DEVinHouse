@@ -11,6 +11,11 @@ class Item {
     get id() {
     return this.#id
     }
+
+    static incrementa(){
+        Item.#nextId++
+        console.log(Item.#nextId)
+    }
     
     montaItem() {
         const li = document.createElement('li')
@@ -19,3 +24,6 @@ class Item {
     }
 
 }
+
+Item.incrementa()
+Item.incrementa()
