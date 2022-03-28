@@ -32,3 +32,12 @@ vetor.forEach((num, index, vet) => {
 const numeroAoQuadrado = n => console.log(n**2)
 
 numeroAoQuadrado(5)
+
+// Podemos omitir o return
+
+const cubo = n => n**3
+
+console.log(cubo(9))
+
+const res = cubo 
+console.log(res(5))
