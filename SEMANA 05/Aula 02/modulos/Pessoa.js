@@ -10,3 +10,6 @@ export class Pessoa{
         )
     }
 }
+
+// Export default faz com que o item padrão de exportação é este.
+// Quando exportar com default, podemos importar no outro arquivo sem uso das chaves e podemos também nomear o arquivo do jeito que quiser.
