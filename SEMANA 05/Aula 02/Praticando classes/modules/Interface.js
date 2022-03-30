@@ -113,7 +113,15 @@ export class Interface{
         this.formulario.appendChild(this.labelValor)
 
         this.btnCadastrar.innerHTML = "Cadastrar"
-        
+        this.btnCadastrar.style.padding = "5px"
+        this.btnCadastrar.style.width = "50%"
+        this.btnCadastrar.style.margin = "auto"
+        this.btnCadastrar.style.fontFamily = "'Courier New', Courier, monospace"
+        this.btnCadastrar.style.fontWeight = "bold"
+        this.btnCadastrar.style.fontSize = "20px"
+        this.btnCadastrar.style.backgroundColor = "white"
+        this.btnCadastrar.style.marginTop = "10px"
+        this.btnCadastrar.style.marginBottom = "10px"
 
         this.formulario.appendChild(this.btnCadastrar)
 
@@ -123,7 +131,7 @@ export class Interface{
 
     eventosBotao(){
         this.btnCadastrar.addEventListener("click", () => {
-            console.log("Botão Cadastrar Clicado")
+            console.log(this.inputNome.value, this.inputQuantidade.value, this.inputValor.value)
         })
     }
 }
