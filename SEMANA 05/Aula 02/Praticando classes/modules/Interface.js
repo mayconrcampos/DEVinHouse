@@ -1,5 +1,13 @@
+import { BaseDedados } from "./BaseDeDados.js"
+import { Produto } from "./Produto.js"
+
+
+
 export class Interface{
     constructor(){
+        this.produto = new Produto()
+        this.DB = new BaseDedados()
+
         this.body = document.body
         this.header = document.createElement("div")
         this.formulario = document.createElement("div")
@@ -16,10 +24,17 @@ export class Interface{
 
         this.btnCadastrar = document.createElement("button")
 
+        this.containerTable = document.createElement("div")
+        this.table = document.createElement("table")
+        this.tableHead = document.createElement("thead")
+        this.tableBody = document.createElement("tbody")
+        this.tableTitulo = document.createElement("h2")
+
         this.insereHeader()
         this.containerFormulario()
         this.mostraFormulario()
-        
+
+        this.mostraTabela()
     }
     
     insereHeader(){
@@ -131,7 +146,41 @@ export class Interface{
 
     eventosBotao(){
         this.btnCadastrar.addEventListener("click", () => {
-            console.log(this.inputNome.value, this.inputQuantidade.value, this.inputValor.value)
+            if(this.inputNome.value.length > 0 && this.inputQuantidade.value.length > 0 && this.inputValor.value.length > 0){
+
+                console.log("debug: "+this.inputNome.value, this.inputQuantidade.value, this.inputValor.value)
+
+                this.produto.nome = this.inputNome.value
+                this.produto.qtde = this.inputQuantidade.value
+                this.produto.valor = this.inputValor.value
+
+                this.DB.adicionar(this.produto)
+
+                this.inputNome.value = ""
+                this.inputQuantidade.value = ""
+                this.inputValor.value = ""
+                this.DB.listar()
+            }else{
+                console.log("Campos vazios")
+            }
+            
         })
+    }
+
+    mostraTabela(){
+        this.containerTable.style.width = "70%"
+        this.containerTable.style.margin = "auto"
+        this.containerTable.style.backgroundColor = "beige"
+        this.containerTable.style.marginTop = "20px"
+        this.containerTable.style.border = "1px solid black"
+        this.containerTable.style.textAlign = "center"
+        this.containerTable.style.borderRadius = "5px"
+        this.containerTable.style.boxShadow = "5px 5px 10px black"
+        
+
+        this.tableTitulo.textContent = "Tabela"
+        this.containerTable.appendChild(this.tableTitulo)
+
+        this.body.appendChild(this.containerTable)
     }
 }
