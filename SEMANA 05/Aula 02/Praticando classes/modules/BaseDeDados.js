@@ -9,6 +9,7 @@ export class BaseDedados{
         this.lista.forEach((item, index) => {
             console.log(item.nome, item.qtde, item.valor)
         })
+        return this.lista
     }
 
     adicionar(Produto){

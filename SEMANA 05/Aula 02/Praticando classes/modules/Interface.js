@@ -27,6 +27,15 @@ export class Interface{
         this.containerTable = document.createElement("div")
         this.table = document.createElement("table")
         this.tableHead = document.createElement("thead")
+        this.thNome = document.createElement("th")
+        this.thQtde = document.createElement("th")
+        this.thValor = document.createElement("th")
+
+        this.tdNome = document.createElement("td")
+        this.tdQtde = document.createElement("td")
+        this.tdValor = document.createElement("td")
+        this.tr = document.createElement("tr")
+
         this.tableBody = document.createElement("tbody")
         this.tableTitulo = document.createElement("h2")
 
@@ -35,6 +44,7 @@ export class Interface{
         this.mostraFormulario()
 
         this.mostraTabela()
+        
     }
     
     insereHeader(){
@@ -146,6 +156,7 @@ export class Interface{
 
     eventosBotao(){
         this.btnCadastrar.addEventListener("click", () => {
+            this.tableBody = ""
             if(this.inputNome.value.length > 0 && this.inputQuantidade.value.length > 0 && this.inputValor.value.length > 0){
 
                 console.log("debug: "+this.inputNome.value, this.inputQuantidade.value, this.inputValor.value)
@@ -159,6 +170,7 @@ export class Interface{
                 this.inputNome.value = ""
                 this.inputQuantidade.value = ""
                 this.inputValor.value = ""
+                this.mostraCorpoTabela()
                 this.DB.listar()
             }else{
                 console.log("Campos vazios")
@@ -181,6 +193,43 @@ export class Interface{
         this.tableTitulo.textContent = "Tabela"
         this.containerTable.appendChild(this.tableTitulo)
 
+        this.thNome.textContent = "produto"
+        this.thQtde.textContent = "Qtde"
+        this.thValor.textContent = "Valor (R$)"
+
+        this.thNome.style.border = "1px solid black"
+        this.thQtde.style.border = "1px solid black"
+        this.thValor.style.border = "1px solid black"
+
+        this.tableHead.appendChild(this.thNome)
+        this.tableHead.appendChild(this.thQtde)
+        this.tableHead.appendChild(this.thValor)
+
+        this.table.style.border = "1px solid black"
+        this.table.style.width = "100%"
+
+        this.table.appendChild(this.tableHead)
+        this.containerTable.appendChild(this.table)
+
         this.body.appendChild(this.containerTable)
+        this.mostraCorpoTabela()
+        this.table.appendChild(this.tableBody)
+    }
+
+    mostraCorpoTabela(){
+        
+        this.DB.lista.forEach(({nome, qtde, valor}) => {
+            
+            this.tdNome.textContent = nome
+            this.tdQtde.textContent = qtde 
+            this.tdValor.textContent = valor
+            //this.tr.innerHTML += `<td>${this.tdNome.textContent}</td><td>${this.tdQtde.textContent}</td> <td>${this.tdValor.textContent}</td>`
+            this.tr.appendChild(this.tdNome)
+            this.tr.appendChild(this.tdQtde)
+            this.tr.appendChild(this.tdValor)
+            console.log("DEBUGAR AQUI: linha 230 de Interface")
+            this.tableBody.innerHTML += this.tr.outerHTML
+        })
+        
     }
 }
