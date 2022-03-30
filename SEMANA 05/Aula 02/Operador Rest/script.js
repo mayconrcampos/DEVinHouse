@@ -39,7 +39,16 @@ console.log(num3)
 var maycon = ["Maycon", 39, "Programador"]
 
 function apresenta(nome, idade, prof){
-    console.log(nome, idade, prof)
+    console.log(`${nome}, ${idade}, ${prof}`)
 }
 
 apresenta(...maycon)
+
+// Podemos também fazer isso em objetos
+
+const obj1 = {nome: "Maycon", idade: 39}
+const obj2 = {profissao: "Programador", est_civil: "Casado"}
+
+const obj3 = {...obj1, ...obj2}
+
+console.log(obj3)
