@@ -15,3 +15,10 @@ var {nome, idade} = obj
 nome = "Maycon R Campos"
 
 console.log(nome, idade)
+
+// outro exemplo
+function apresenTAR({nome, idade}){
+    console.log(`Nome: ${nome} - Idade: ${idade}`)
+}
+
+apresenTAR(obj)
