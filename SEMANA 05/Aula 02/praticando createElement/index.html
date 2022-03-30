@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreateElement</title>
+</head>
+<body>
+    <h1>CreateElement</h1>
+    
+    
+
+    <script>
+        var div = document.createElement("div")
+        div.id = "dive"
+
+        document.body.appendChild(div)
+
+        var pe = document.createElement("p")
+        pe.innerHTML = "Olá amigos tudo bem? Estou treinando a inserção de elementos de forma dinâmica utilizando o document.createElement()."
+        
+        div.appendChild(pe)
+
+        var pe2 = document.createElement("pe2")
+        pe2.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod blanditiis reprehenderit sed expedita iusto maxime vitae culpa architecto a in perferendis, exercitationem minus deserunt soluta maiores vel distinctio itaque? Tempore!"
+
+        div.appendChild(pe2)
+
+        div.style.border = "1px solid black"
+        div.style.padding = "10px"
+    </script>
+</body>
+</html>
