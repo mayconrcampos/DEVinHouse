@@ -37,4 +37,25 @@ console.log(buscaCEPpromise("88080400")
 })
 .catch(erro => {
     console.log(erro)
+})
+.finally(() => {
+    console.log("Finaleira executada.")
 }))
+
+function buscaCEP(cep){
+    return fetch(`https://viacep.com.br/ws/${cep}/json`).then(response => {
+        return response.json()
+    })
+}
+
+var cep1 = buscaCEP("88010200")
+var cep2 = buscaCEP("88080400")
+
+console.log(cep1)
+console.log(cep2)
+
+
+
+
+
+
