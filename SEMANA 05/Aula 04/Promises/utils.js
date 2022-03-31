@@ -34,6 +34,7 @@ function buscaCEPpromise(cep){
 console.log(buscaCEPpromise("88080400")
 .then((resolve) => { 
   console.log("Olha isso! "+resolve.logradouro)  
-}
-))
-console.log(buscaCEPpromise("88010200"))
+})
+.catch(erro => {
+    console.log(erro)
+}))
