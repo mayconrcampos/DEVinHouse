@@ -12,4 +12,5 @@ async function getImagem(){
     .then(json => {
         img.src = `${json[0].url}`
     })
+    .catch(erro => console.log(erro))
 }
