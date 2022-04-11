@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiro Exemplo</title>
+    <style>
+        body {
+            background-color: beige;
+            text-align: center;
+        }
+        #container {
+            margin: auto;
+            width: 50%;
+            background-color: lightblue;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 10px black;
+        }
+        #container label {
+            margin-bottom: 5px;
+        }
+        #container input {
+            margin: auto;
+            width: 50%;
+            margin-bottom: 10px;
+            padding: 4px;
+            border-radius: 5px;
+            
+        }
+        p {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: xx-large;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="app">
+        <h1>Primeiro contato com VueJS</h1>
+
+        <div id="container">
+            <label for="">Digite seu nome</label>
+            <input v-model="nome" type="text">
+    
+            <label for="">Digite sua idade</label>
+            <input v-model="idade" type="text">
+        </div>
+        
+
+        <p v-show="nome && idade">Olá, meu nome é {{ nome }}, e tenho {{ idade }} anos! Vamos aprender VueJS!</p>
+
+    </div>
+
+   
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        Vue.createApp({
+          data() {
+            return {
+              nome: '',
+              idade: null
+            }
+          }
+        }).mount('#app')
+      </script>
+    
+</body>
+</html>
