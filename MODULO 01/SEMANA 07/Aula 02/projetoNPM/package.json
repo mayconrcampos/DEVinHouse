@@ -1,0 +1,15 @@
+{
+  "name": "exemplonpm",
+  "version": "1.0.0",
+  "description": "primeiro exemplo usando npm",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "Maycon Campos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}
