@@ -35,7 +35,7 @@
         <div v-show="lista.length > 0">
             <div  v-for="(item, key) in lista" :key="key" id="lista">
                 
-                <p><strong>Cadastro</strong>: {{ key + 1 }}</p>
+                <p><strong>Cadastro</strong>: {{ item.id }}</p>
                 <p><strong>Nome</strong>: {{ item.nome }}</p>
                 <p><strong>Cidade</strong>: {{ item.cidade }}</p>
                 <p><strong>Idade</strong>: {{ item.idade }}</p>
@@ -61,7 +61,8 @@
                     maioridade: null,
                     data: null
                 },             
-                lista: []
+                lista: [],
+                id: 1
             }
           },
           mounted(){
@@ -92,6 +93,7 @@
                         }
 
                         this.lista.push({
+                        "id": this.id++,
                         "nome": this.pessoa.nome,
                         "cidade": this.pessoa.cidade,
                         "idade": this.pessoa.idade,
