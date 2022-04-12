@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="header">
+            <h1>Desafio do Formulário</h1>
+            <div id="data">{{ pessoa.data }}</div>
+        </div>
+       
+
+        <div id="container">
+            <h2>Formulário</h2>
+
+
+            <label for="">Digite o Nome</label>
+            <input v-model="pessoa.nome" type="text" placeholder="Digite seu primeiro nome">
+
+            <label for="">Digite a Cidade</label>
+            <input v-model="pessoa.cidade" type="text" placeholder="Digite a Cidade">
+
+            <label for="">Idade</label>
+            <input v-model="pessoa.idade" type="text" placeholder="Digite a idade">
+
+            <button @click.prevent="cadastrar()">Cadastrar</button>
+
+        </div>
+
+        <div v-show="lista.length > 0">
+            <div  v-for="(item, key) in lista" :key="key" id="lista">
+                
+                <p><strong>Cadastro</strong>: {{ key + 1 }}</p>
+                <p><strong>Nome</strong>: {{ item.nome }}</p>
+                <p><strong>Cidade</strong>: {{ item.cidade }}</p>
+                <p><strong>Idade</strong>: {{ item.idade }}</p>
+                <p><strong>Maioridade</strong>: {{item.maioridade }}</p>
+                <hr>
+                <button @click.prevent="deletaCadastro(key)">Deletar</button>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+
+        Vue.createApp({
+          data() {
+            return {
+                pessoa: {
+                    nome: null,
+                    cidade: null,
+                    idade: null,
+                    maioridade: null,
+                    data: null
+                },             
+                lista: []
+            }
+          },
+          mounted(){
+            this.getData()
+          },
+          methods: {
+            deletaCadastro(index){
+                  this.lista.splice(index, 1)
+              },
+            getData(){
+                var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+                var data = new Date()
+                var dia = data.getDate() 
+                var mes = data.getMonth()
+                var ano = data.getFullYear()
+
+                this.pessoa.data = `${dia} de ${meses[mes]} de ${ano}`
+                
+            },
+            cadastrar(){
+                if(this.pessoa.nome.length > 0 && this.pessoa.cidade.length > 0){
+                    if(!isNaN(this.pessoa.idade)){
+
+                        if(this.pessoa.idade < 18){
+                            this.pessoa.maioridade = "É de menor."
+                        }else if(this.pessoa.idade >= 18){
+                            this.pessoa.maioridade = "É de maior."
+                        }
+
+                        this.lista.push({
+                        "nome": this.pessoa.nome,
+                        "cidade": this.pessoa.cidade,
+                        "idade": this.pessoa.idade,
+                        "maioridade": this.pessoa.maioridade
+                        })
+
+                        this.pessoa.nome = ""
+                        this.pessoa.cidade = ""
+                        this.pessoa.idade = ""
+
+                    }else{
+                        alert("É preciso digitar uma idade válida.")
+                    }
+                    
+                }else{
+                    alert("ERRO! É preciso preencher os campos.")
+                }
+            }
+          }
+
+        }).mount('#app')
+
+      </script>
+</body>
+</html>

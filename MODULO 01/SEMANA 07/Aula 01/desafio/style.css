@@ -1,0 +1,70 @@
+body {
+    text-align: center;
+    background-color: whitesmoke;
+    color: black;
+}
+#container {
+    background-color: #282c34;
+    columns: whitesmoke;
+    padding: 50px;
+    text-align: center;
+    border-radius: 8px;
+    width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+#container h2 {
+    color: whitesmoke;
+    font-family: serif;
+    font-size: xx-large;
+}
+#container label {
+    color: whitesmoke;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+#container input {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#container button:hover {
+    background-color: #282c34;
+    color: white;
+}
+
+#container button {
+    margin-top: 10px;
+    padding: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+#lista {
+    width: 600px;
+    margin: auto;
+    background-color: #282c34;
+    color: whitesmoke;
+    padding: 50px;
+    margin-top: 5px;
+    border-radius: 8px;
+    height: 250px;
+    
+}
+#lista p {
+    font-size: larger;
+}
+
+#data {
+    background-color: aliceblue;
+    color: #282c34;
+    width: 450px;
+    margin: auto;
+
+}
