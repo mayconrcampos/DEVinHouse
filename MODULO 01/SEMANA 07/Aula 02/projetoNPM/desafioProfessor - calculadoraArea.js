@@ -38,11 +38,7 @@ function triangulo(base, altura){
     
 }
 
-
-
-
 do {
-
     console.log("1. Circulo")
     console.log("2. Quadrado")
     console.log("3. Retangulo")
@@ -80,7 +76,5 @@ do {
             console.log("Opção inválida")
             break;
     }
-
-
 
 } while (opcao != 5);
