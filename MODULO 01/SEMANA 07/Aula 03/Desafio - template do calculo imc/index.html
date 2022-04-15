@@ -15,11 +15,11 @@
             <h1>Calculadora IMC</h1>
         </div>
 
-        <div id="imgContainer" class="w-75 m-auto text-center p-1  shadow-sm">
+        <div id="imgContainer" class="w-75 m-auto text-center p-1  shadow-lg">
             <img class="img-fluid w-50 rounded-3"  src="./calculoIMC.png" alt="">
         </div>
 
-        <div id="form" class="form-check m-auto w-75 shadow-lg p-3 text-light rounded-bottom">
+        <div id="form" class="form-check m-auto w-75 shadow-lg p-3 text-light">
 
             <div class="w-50 m-auto rounded-3">
                 <div class="mb-3">
@@ -36,7 +36,7 @@
 
         </div>
 
-        <div :class="cor" v-show="resultado" id="result" class="w-75 m-auto text-center p-3 rounded-bottom shadow-sm">
+        <div :class="cor" v-show="resultado" id="result" class="w-75 m-auto text-center p-3 rounded-bottom shadow shadow-lg">
             <h3>{{resultado}}</h3>
         </div>
     </div>
