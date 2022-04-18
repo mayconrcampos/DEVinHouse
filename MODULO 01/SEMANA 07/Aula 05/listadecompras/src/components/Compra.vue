@@ -18,32 +18,62 @@
           </div>
          
           
-          <button type="submit" @click.prevent="!edita ? adicionar() : editar()" class="btn btn-primary w-25">{{edita ? "Editar" : "Adicionar"}}</button>
+          <button type="submit" @click.prevent="!edita ? adicionar() : editar(status)" class="btn btn-primary w-25">{{edita ? "Editar" : "Adicionar"}}</button>
           <button type="submit" @click.prevent="cancelar()" class="btn btn-danger w-25 ms-2">Cancelar</button>
           <button @click.prevent="limparCampos()" class="btn btn-dark ms-2">Limpar</button>
 
         </form>
+        <div id="tabelaCompras">
+          <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor (R$)</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, chave) in listaProdutos" :key="chave">
+                <th scope="row"><input @click="checkUncheck(chave, item.nome, item.valor, item.status)" :checked="item.status ? true: false" type="checkbox"> {{chave + 1}}</th>
+                <td>{{item.nome}}</td>
+                <td>{{Number(item.valor).toFixed(2)}}</td>
+                <td><button @click.prevent="preencheCampos(chave, item.nome, item.valor, item.status)" class="btn btn-primary">Editar</button> <button @click.prevent="deleta(chave)" class="btn btn-danger">Delete</button></td>
+              </tr>
+              <tr class="alert alert-primary">
+                <th>Total (R$)</th>
+                <th>{{ total.toFixed(2) }}</th>
+                <th></th>
+                <th v-show="listaComprados.length > 0"><button class="btn btn-primary">Deletar Comprados</button></th>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
 
-        <table class="table mt-4">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Valor (R$)</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, chave) in listaProdutos" :key="chave">
-              <th scope="row"><input type="checkbox"> {{chave + 1}}</th>
-              <td>{{item.nome}}</td>
-              <td>{{item.valor}}</td>
-              <td><button @click.prevent="preencheCampos(chave, item.nome, item.valor)" class="btn btn-primary">Editar</button> <button @click.prevent="deleta(chave)" class="btn btn-danger">Delete</button></td>
-            </tr>
-            <th>Total (R$)</th>
-            <th>{{ total.toFixed(2) }}</th>
-          </tbody>
-        </table>
+        <div v-show="listaComprados.length > 0" id="tabelaComprados">
+          <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor (R$)</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, chave) in listaComprados" :key="chave">
+                <th scope="row"><input type="checkbox"> {{chave + 1}}</th>
+                <td>{{item.nome}}</td>
+                <td>{{item.valor}}</td>
+  
+              </tr>
+              <th>Total (R$)</th>
+              <th>{{ totalComprados.toFixed(2) }}</th>
+            </tbody>
+          </table>
+        </div>
+        
     </div>
 
 </template>
@@ -59,32 +89,70 @@ export default {
           valor: null
         },
         total: 0,
+        listaComprados: [],
+        totalComprados: 0,
         listaProdutos: [],
         mensagemErro: "",
         erroNome: false,
         erroValor: false,
         edita: false,
         addOuEdita: "",
-        indice: ""
+        indice: "",
+        status: false
 
       }
     },
+    mounted() {
+      this.carregarDB()
+    },
+
     methods:{
+      salvaDB(){
+        var lista = JSON.stringify(this.listaProdutos)
+        localStorage.setItem("compras", lista)
+      },
+
+      carregarDB(){
+        var dados = localStorage.getItem("compras")
+        dados = JSON.parse(dados)
+        if(dados.length > 0){
+            for (let index = 0; index < dados.length; index++) {
+                this.listaProdutos.push(dados[index])
+            }
+            this.somarTudo()
+            
+        }else{
+            alert("ERRO! Não há itens salvos no DB")
+        }
+      },
+
+      checkUncheck(chave, nome, valor, status){
+        this.listaProdutos.splice(chave, 1,{
+          "nome": nome,
+          "valor": valor,
+          "status": status ? false : true
+        })
+        this.salvaDB()
+      },
+  
       limparCampos(){
         this.produto.nome = ""
         this.produto.valor = ""
         this.edita = false
         this.indice = ""
       },
-      preencheCampos(index, nome, valor){
+      
+      preencheCampos(index, nome, valor, status){
         this.produto.nome = nome
         this.produto.valor = valor
+        this.status = status
         this.indice = index
         this.edita = true
       },
 
       deleta(key){
         this.listaProdutos.splice(key, 1)
+        this.salvaDB()
         this.somarTudo()
       },
 
@@ -101,14 +169,16 @@ export default {
         }
       },
 
-      editar(){
+      editar(status){
         this.validaCampos()
         if(this.produto.nome != "" && !isNaN(this.produto.valor) && this.produto.valor > 0){
           this.listaProdutos.splice(this.indice, 1, {
             "nome": this.produto.nome,
-            "valor": this.produto.valor
+            "valor": this.produto.valor,
+            "status": status
           })
-        }
+        } 
+          this.salvaDB()
           this.somarTudo()
           this.produto.nome = ""
           this.produto.valor = ""
@@ -121,9 +191,11 @@ export default {
         if(this.produto.nome != "" && !isNaN(this.produto.valor) && this.produto.valor > 0){
           this.listaProdutos.push({
             "nome": this.produto.nome,
-            "valor": this.produto.valor
+            "valor": this.produto.valor,
+            "status": false
           })
-        }
+        } 
+          this.salvaDB()
           this.somarTudo()
           this.produto.nome = ""
           this.produto.valor = ""  
