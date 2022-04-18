@@ -44,32 +44,9 @@
                 <th>Total (R$)</th>
                 <th>{{ total.toFixed(2) }}</th>
                 <th></th>
-                <th v-show="listaComprados.length > 0"><button class="btn btn-primary">Deletar Comprados</button></th>
+                <th v-show="totalComprados > 0"><button @click.prevent="deletaComprados()" class="btn btn-primary">Deletar Comprados</button></th>
               </tr>
               
-            </tbody>
-          </table>
-        </div>
-
-        <div v-show="listaComprados.length > 0" id="tabelaComprados">
-          <table class="table mt-4">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Valor (R$)</th>
-                <th scope="col">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(item, chave) in listaComprados" :key="chave">
-                <th scope="row"><input type="checkbox"> {{chave + 1}}</th>
-                <td>{{item.nome}}</td>
-                <td>{{item.valor}}</td>
-  
-              </tr>
-              <th>Total (R$)</th>
-              <th>{{ totalComprados.toFixed(2) }}</th>
             </tbody>
           </table>
         </div>
@@ -89,8 +66,8 @@ export default {
           valor: null
         },
         total: 0,
-        listaComprados: [],
         totalComprados: 0,
+
         listaProdutos: [],
         mensagemErro: "",
         erroNome: false,
@@ -132,7 +109,9 @@ export default {
           "valor": valor,
           "status": status ? false : true
         })
+
         this.salvaDB()
+        this.somarTudo()
       },
   
       limparCampos(){
@@ -141,7 +120,7 @@ export default {
         this.edita = false
         this.indice = ""
       },
-      
+
       preencheCampos(index, nome, valor, status){
         this.produto.nome = nome
         this.produto.valor = valor
@@ -154,6 +133,14 @@ export default {
         this.listaProdutos.splice(key, 1)
         this.salvaDB()
         this.somarTudo()
+      },
+
+      deletaComprados(){
+        for(let i = this.listaProdutos.length; i >= 0; i--){
+          if(this.listaProdutos[i].status == true){
+            this.deleta(i)
+          }
+        }
       },
 
       validaCampos(){
@@ -209,8 +196,16 @@ export default {
         this.total = 0
         for (const item of this.listaProdutos) {
           this.total += Number(item.valor)
+          
+          if(item.status == true){
+            this.totalComprados++
+          }
+
+          console.log(this.totalComprados)
         }
-      }
+      },
+
+    
     }
 }
 </script>
