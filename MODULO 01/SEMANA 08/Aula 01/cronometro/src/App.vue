@@ -13,7 +13,7 @@
 
     <Cronometro @parar="parar" @limpatempo="limpatempo" @addlista="marcarVolta" :listaVoltas="listadeVoltas" :hora="addZero(hora)" :minuto="addZero(minuto)" :segundos="addZero(segundos)" :milisegundos="addZero(milisegundos)"/>
 
-    {{tamanho}}
+   
 </div>
 </template>
 
@@ -32,18 +32,11 @@ export default {
       milisegundos: 0,
       contador: 0,
       listadeVoltas: [],
-      tamanho: ""
+    
     }
   },
-  mounted() {
-    window.addEventListener('resize', () => {
-      this.tamanho = window.innerWidth
-      console.log(this.tamanho)
-    })
-  },
+ 
   methods: {
-    
-
     limpatempo(){
       this.listadeVoltas = []
     },
@@ -91,8 +84,6 @@ export default {
           this.segundos = 0
         }
       }, 10)
-
-      
     }
   }
 }

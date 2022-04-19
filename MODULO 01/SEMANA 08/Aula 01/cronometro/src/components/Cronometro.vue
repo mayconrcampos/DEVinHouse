@@ -2,15 +2,21 @@
     <div id="cronometro">
         <h1 @dblclick="$emit('parar')">{{ hora }}:{{ minuto }}:{{ segundos }}:{{ milisegundos }}</h1>
 
-        <div v-show="listaVoltas.length > 0" id="listaVoltas">
-            <ul v-for="(item, key) in listaVoltas" :key="key">
-              <li> {{key + 1}} - {{item}}</li>
-            </ul>
-        </div>
-        <button @click="$emit('addlista', [hora, minuto, segundos, milisegundos])">Marcar Tempo</button>
-        <button @click="$emit('limpatempo')">Limpar</button>
-    
+        <Transition name="bounce">
+            <div v-if="listaVoltas.length > 0" id="listaVoltas">
+                <ul v-for="(item, key) in listaVoltas" :key="key">
+                  <li> {{key + 1}} - {{item}}</li>
+                </ul>
+            
+            </div>
+        </Transition>
+            <div>
+                <button @click="$emit('addlista', [hora, minuto, segundos, milisegundos])">Marcar Tempo</button>
+                <button @click="$emit('limpatempo')">Limpar</button>
+            </div>
+        
     </div>
+        
 </template>
 
 <script>
@@ -93,6 +99,24 @@ ul li {
     #cronometro button {
         font-size: 1em;
     }
+}
+
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 </style>
