@@ -8,7 +8,8 @@ import Alunos from './components/Alunos.vue'
 export default {
   name: 'App',
   components: {
-    Alunos
+    Alunos,
+    
   }
 }
 </script>
