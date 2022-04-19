@@ -6,7 +6,9 @@
       <button @click.prevent="zerar()">Zerar</button>
     </div>
 
-    <Cronometro :hora="hora < 10 ? '0'+hora : hora" :minuto="minuto < 10 ? '0'+minuto : minuto" :segundos="segundos < 10 ? '0'+segundos : segundos"/>
+    <Cronometro @addlista="marcarVolta" :listaVoltas="listadeVoltas" :hora="hora < 10 ? '0'+hora : hora" :minuto="minuto < 10 ? '0'+minuto : minuto" :segundos="segundos < 10 ? '0'+segundos : segundos"/>
+
+    
 </div>
 </template>
 
@@ -21,23 +23,33 @@ export default {
     return{
       hora: 0,
       minuto: 0,
-      segundos: 55
+      segundos: 0,
+      contador: 0,
+      listadeVoltas: []
     }
   },
   methods: {
+    addZero(tempo){
+      return tempo < 10 ? "0"+tempo : tempo
+    },
+    marcarVolta(tempo){
+      
+      var volta = `${this.addZero(tempo[0])}:${this.addZero(tempo[1])}:${this.addZero(tempo[2])}`
+      this.listadeVoltas.push(volta)
+      console.log(this.listadeVoltas)
+    },
     zerar(){
       this.hora = 0
       this.minuto = 0
       this.segundos = 0
+
     },
     parar(){
-      setTimeout(() => {
-        this.relogio()
-      }, 0);
+      clearInterval(this.contador)
     },
     relogio(){
       
-      setInterval(() => {
+      this.contador = setInterval(() => {
         this.segundos++
         if(this.segundos == 60){
           this.minuto++
