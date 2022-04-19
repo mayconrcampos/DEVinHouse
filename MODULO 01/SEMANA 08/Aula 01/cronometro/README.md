@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+<h1>Interface do projeto</h1>
+
+<img src="./cronometro.png">
