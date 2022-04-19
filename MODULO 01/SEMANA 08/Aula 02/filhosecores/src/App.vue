@@ -5,6 +5,9 @@
       <Azul @corAzul="mudacor"/>
       <Amarelo @corAmarelo="mudacor" />
       <Vermelho @corVermelho="mudacor"/>
+
+      {{verificaCorAzul}}
+    
     </div>
 </template>
 
@@ -23,7 +26,7 @@ export default {
   data() {
     return {
       cor: "",
-      frase: ""
+      frase: "",
     }
   },
   methods: {
@@ -32,6 +35,19 @@ export default {
       this.frase = frase
     }
   },
+  watch: {
+    // Monitora estado da variável
+    cor(novoValor, valorAntigo){
+      console.log("Novo valor: "+novoValor)
+      console.log("Valor antigo: "+valorAntigo)
+    }
+  },
+  computed: {
+    // verifica se cor é azul
+    verificaCorAzul(){
+      return this.frase == "Sou a cor Azul" ? "Melhor cor" : "Feinha que dói"
+    }
+  }
 }
 </script>
 
