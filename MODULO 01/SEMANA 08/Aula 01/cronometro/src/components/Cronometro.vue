@@ -1,13 +1,13 @@
 <template>
     <div id="cronometro">
-        <h1 @dblclick="$emit('parar')">{{ hora }}:{{ minuto }}:{{ segundos }}</h1>
+        <h1 @dblclick="$emit('parar')">{{ hora }}:{{ minuto }}:{{ segundos }}:{{ milisegundos }}</h1>
 
         <div v-show="listaVoltas.length > 0" id="listaVoltas">
             <ul v-for="(item, key) in listaVoltas" :key="key">
               <li> {{key + 1}} - {{item}}</li>
             </ul>
         </div>
-        <button @click="$emit('addlista', [hora, minuto, segundos])">Marcar Tempo</button>
+        <button @click="$emit('addlista', [hora, minuto, segundos, milisegundos])">Marcar Tempo</button>
         <button @click="$emit('limpatempo')">Limpar</button>
     
     </div>
@@ -20,6 +20,7 @@ export default {
         hora: String,
         minuto: String,
         segundos: String,
+        milisegundos: String,
         listaVoltas: {
             type: Array
         }
@@ -73,7 +74,7 @@ ul li {
     color: dimgray;
 }
 
-@media (max-width: 1076px){
+@media (max-width: 1475px){
   #cronometro h1{
     font-size: 2em;
    }
@@ -82,7 +83,7 @@ ul li {
    }
 }
 
-@media (max-width: 570px){
+@media (max-width: 740px){
     #cronometro h1{
     font-size: 1em;
     }

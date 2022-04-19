@@ -11,7 +11,7 @@
       <button id="btn3" @click.prevent="zerar()">Zerar</button>
     </div>
 
-    <Cronometro @parar="parar" @limpatempo="limpatempo" @addlista="marcarVolta" :listaVoltas="listadeVoltas" :hora="addZero(hora)" :minuto="addZero(minuto)" :segundos="addZero(segundos)"/>
+    <Cronometro @parar="parar" @limpatempo="limpatempo" @addlista="marcarVolta" :listaVoltas="listadeVoltas" :hora="addZero(hora)" :minuto="addZero(minuto)" :segundos="addZero(segundos)" :milisegundos="addZero(milisegundos)"/>
 
     {{tamanho}}
 </div>
@@ -29,6 +29,7 @@ export default {
       hora: 0,
       minuto: 0,
       segundos: 0,
+      milisegundos: 0,
       contador: 0,
       listadeVoltas: [],
       tamanho: ""
@@ -51,7 +52,7 @@ export default {
     },
 
     marcarVolta(tempo){
-      var volta = `${this.addZero(tempo[0])}:${this.addZero(tempo[1])}:${this.addZero(tempo[2])}`
+      var volta = `${this.addZero(tempo[0])}:${this.addZero(tempo[1])}:${this.addZero(tempo[2])}:${this.addZero(tempo[3])}`
       this.listadeVoltas.push(volta)
     },
 
@@ -59,6 +60,7 @@ export default {
       this.hora = 0
       this.minuto = 0
       this.segundos = 0
+      this.milisegundos = 0
 
     },
 
@@ -68,21 +70,27 @@ export default {
 
     relogio(){
       this.contador = setInterval(() => {
-        this.segundos++
+        this.milisegundos++
+        if(this.milisegundos == 100){
+          this.segundos++
+          this.milisegundos = 0
+        }
+        
         if(this.segundos == 60){
           this.minuto++
           this.segundos = 0
         }
+        
         if(this.minuto == 60){
           this.hora++
-          this.minuto
+          this.minuto = 0
         }
         if(this.hora == 60){
           this.minuto = 0
           this.hora = 0
           this.segundos = 0
         }
-      }, 1000)
+      }, 10)
 
       
     }
