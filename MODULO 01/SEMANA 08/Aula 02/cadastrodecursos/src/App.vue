@@ -1,16 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Cadastro de curso</h1>
+
+    <label for="">Entre com a quantidade de vagas</label>
+    <input v-model="numVagas" type="number">
+    
+    <!----
+    <p v-show="numVagas > 0 && numEstudantes > 0">{{calculaPorcentagem}}%</p>---->
+
+    <Preenchidas :numEstudantes="numEstudantes" @descadastra="descadastra" @cadastra="cadastra(n)" :numVagas="numVagas"/>
+    
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Preenchidas from "./components/Preenchidas.vue"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Preenchidas
+    
+  },
+  data() {
+    return {
+      numVagas:0,
+      numEstudantes:0,
+      calculado:0
+
+    }
+  },
+  methods: {
+    cadastra(){
+      if(this.numEstudantes < this.numVagas){
+        this.numEstudantes++
+      }
+    },
+    descadastra(){
+      if(this.numEstudantes > 0){
+        this.numEstudantes--
+      }
+      
+    }
+  },
+  
 }
 </script>
 
