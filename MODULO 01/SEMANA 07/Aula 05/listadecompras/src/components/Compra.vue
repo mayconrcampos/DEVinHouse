@@ -1,8 +1,8 @@
 <template>
 
     <div class="card p-3 w-75 m-auto rounded rounded-3 shadow">
-        <h2>Lista de Compras</h2>
-        <form>
+        <h2 class="fs-1">Lista de Compras</h2>
+        <form class="w-75 m-auto">
        
 
           <div class="mb-3">
@@ -23,9 +23,9 @@
           <button @click.prevent="limparCampos()" class="btn btn-dark ms-2">Limpar</button>
 
         </form>
-        <div id="tabelaCompras">
-          <table class="table mt-4">
-            <thead>
+        <div id="tabelaCompras" class="mt-5 mb-5">
+          <table class="table table-hover table-striped mt-4">
+            <thead class="table-dark">
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
@@ -33,18 +33,18 @@
                 <th scope="col">Ações</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="fs-5">
               <tr v-for="(item, chave) in listaProdutos" :key="chave">
-                <th scope="row"><input @click="checkUncheck(chave, item.nome, item.valor, item.status)" :checked="item.status ? true: false" type="checkbox"> {{chave + 1}}</th>
-                <td>{{item.nome}}</td>
+                <th class="text-start" scope="row"> <input class="form-check-input me-3" @click="checkUncheck(chave, item.nome, item.valor, item.status)" :checked="item.status ? true: false" type="checkbox"> {{chave + 1}}</th>
+                <td :class="item.status == true ? 'text-decoration-line-through':''">{{item.nome}}</td>
                 <td>{{Number(item.valor).toFixed(2)}}</td>
                 <td><button @click.prevent="preencheCampos(chave, item.nome, item.valor, item.status)" class="btn btn-primary">Editar</button> <button @click.prevent="deleta(chave)" class="btn btn-danger">Delete</button></td>
               </tr>
-              <tr class="alert alert-primary">
-                <th>Total (R$)</th>
-                <th>{{ total.toFixed(2) }}</th>
+              <tr class="alert alert-light">
                 <th></th>
-                <th v-show="totalComprados > 0"><button @click.prevent="deletaComprados()" class="btn btn-primary">Deletar Comprados</button></th>
+                <th>Total</th>
+                <th>{{ grana }}</th>
+                <th v-show="totalComprados == true"><button @click.prevent="deletaComprados()" class="btn btn-primary p-1">Deletar Comprados</button></th>
               </tr>
               
             </tbody>
@@ -66,7 +66,8 @@ export default {
           valor: null
         },
         total: 0,
-        totalComprados: 0,
+        totalComprados: false,
+        grana: 0,
 
         listaProdutos: [],
         mensagemErro: "",
@@ -136,11 +137,13 @@ export default {
       },
 
       deletaComprados(){
-        for(let i = this.listaProdutos.length; i >= 0; i--){
+        var tamanho = this.listaProdutos.length - 1
+        for(let i = tamanho; i >= 0; i--){
           if(this.listaProdutos[i].status == true){
             this.deleta(i)
           }
         }
+        this.salvaDB()
       },
 
       validaCampos(){
@@ -190,19 +193,29 @@ export default {
 
       cancelar(){
         this.listaProdutos = []
+        this.somarTudo()
+        this.salvaDB()
       },
 
       somarTudo(){
         this.total = 0
+        var flag = 0
         for (const item of this.listaProdutos) {
           this.total += Number(item.valor)
           
           if(item.status == true){
-            this.totalComprados++
+            flag++
           }
-
-          console.log(this.totalComprados)
         }
+
+        this.grana = this.total.toLocaleString("pt-br", {style: "currency", currency: "BRL"})
+ 
+
+        if(flag > 0){
+            this.totalComprados = true
+          }else{
+            this.totalComprados = false
+          }
       },
 
     
