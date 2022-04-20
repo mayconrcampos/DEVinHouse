@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validando CEP</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #form {
+            width: 60%;
+            border: 1px solid black;
+            margin: auto;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Validando CEP</h1>
+
+        <div id="form">
+            <h2>Digite o CEP</h2>
+
+            <input v-model="cep" type="text" maxlength="8">
+            <button @click.prevent="validaCEP()">Validar</button>
+        </div>
+        <div > 
+       
+                <h3>CEP: {{endereco.cep}}</h3>
+
+                <p>Logradouro: {{endereco.logradouro}}</p>
+        </div>
+        <h2>{{mensagem}}</h2>
+    </div>
+    
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        Vue.createApp({
+          data() {
+            return {
+              cep: "",
+              endereco: "",
+              mensagem: ""
+            }
+          },
+     
+          methods: {
+              async validaCEP(){
+                    if(this.cep.length == 8){
+                        await fetch(`http://viacep.com.br/ws/${this.cep}/json`)
+                        .then(response => response.json())
+                        .then(resposta => {
+                            if(resposta.erro == true){
+                                this.erro = true
+                            }else{
+                                this.erro = false
+                                console.log(resposta)
+                                this.endereco = resposta
+                            }
+                            
+                        })
+                      
+                    }else{
+                        alert("ERRO! O CEP deve ter 8 dígitos, somente números.")
+                    }  
+              }
+          }
+        }).mount('#app')
+      </script>
+</body>
+</html>
