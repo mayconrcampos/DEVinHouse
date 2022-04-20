@@ -4,9 +4,6 @@
 
     <label for="">Entre com a quantidade de vagas</label>
     <input v-model="numVagas" type="number">
-    
-    <!----
-    <p v-show="numVagas > 0 && numEstudantes > 0">{{calculaPorcentagem}}%</p>---->
 
     <Preenchidas :numEstudantes="numEstudantes" @descadastra="descadastra" @cadastra="cadastra(n)" :numVagas="numVagas"/>
     

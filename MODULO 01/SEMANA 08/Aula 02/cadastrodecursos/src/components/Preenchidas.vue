@@ -9,7 +9,6 @@
 
         <p>Nº Estudantes: {{numEstudantes}}</p>
       
-
   </div>
 </template>
 
