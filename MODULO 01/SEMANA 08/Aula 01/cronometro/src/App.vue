@@ -176,7 +176,7 @@ div h1 {
 }
 
 
-@media (max-width: 570px){
+@media (max-width: 670px){
   #btn1 {
     font-size: 1em;
   }

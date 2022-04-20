@@ -70,6 +70,7 @@ export default {
     font-family: 'Courier New', Courier, monospace;
     font-size: 2em;
     font-weight: bold;
+    margin-right: 5px;
     color: whitesmoke;
     padding: 10px;
 }
@@ -81,17 +82,20 @@ ul li {
 }
 
 @media (max-width: 1475px){
-  #cronometro h1{
-    font-size: 2em;
+    #cronometro h1{
+        font-size: 2em;
    }
    ul li {
-       font-size: 2em;
+        font-size: 2em;
+   }
+   #cronometro button {
+       font-size: 1.5em;
    }
 }
 
 @media (max-width: 740px){
     #cronometro h1{
-    font-size: 1em;
+        font-size: 1em;
     }
     ul li {
         font-size: 1em;
