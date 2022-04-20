@@ -28,13 +28,18 @@
             <input v-model="cep" type="text" maxlength="8">
             <button @click.prevent="validaCEP()">Validar</button>
         </div>
-        <div > 
+        <div v-show="!mensagem"> 
        
-                <h3>CEP: {{endereco.cep}}</h3>
+            <h3>Resultado para o CEP: {{endereco.cep}}</h3>
 
                 <p>Logradouro: {{endereco.logradouro}}</p>
+                <p>Complemento: {{endereco.complemento}}</p>
+                <p>Bairro: {{endereco.bairro}}</p>
+                <p>Localidade: {{endereco.localidade}}</p>
+                <p>DDD: {{endereco.ddd}}</p>
+
         </div>
-        <h2>{{mensagem}}</h2>
+        <h2 v-show="mensagem">{{mensagem}}</h2>
     </div>
     
     <script src="https://unpkg.com/vue@3"></script>
@@ -44,7 +49,13 @@
             return {
               cep: "",
               endereco: "",
-              mensagem: ""
+              bairro: "",
+              complemento: "",
+              ddd: "",
+              localidade: "",
+              logradouro: "",
+              uf: "",
+              mensagem: false
             }
           },
      
@@ -54,10 +65,11 @@
                         await fetch(`http://viacep.com.br/ws/${this.cep}/json`)
                         .then(response => response.json())
                         .then(resposta => {
-                            if(resposta.erro == true){
-                                this.erro = true
+                            if(resposta.erro == "true"){
+                                this.mensagem = "CEP inválido!"
+                                
                             }else{
-                                this.erro = false
+                                this.mensagem = false
                                 console.log(resposta)
                                 this.endereco = resposta
                             }
