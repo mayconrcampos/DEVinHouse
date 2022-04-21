@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hooks</title>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <p>{{nome}}</p>
+    <p>{{beforeCreate}}</p>
+    <p>{{created}}</p>
+    <p>{{beforeMount}}</p>
+    <p>{{mounted}}</p>
+    <p>{{beforeUpdate}}</p>
+    <p>{{updated}}</p>
+    <p>{{beforeUnmount}}</p>
+    <p>{{unmount}}</p>
+
+    <form action="">
+    <button @click="">destruir</button>
+    </form>
+
+</div>
+
+
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        Vue.createApp({
+            data() {
+              return {
+                nome: "Maycon",
+                beforeCreate: "",
+                created: "",
+                beforeMount: "",
+                mounted: "",
+                beforeUpdated:"",
+                updated:"",
+                beforeUnmount:"",
+                unmount:""
+              }
+            },
+            methods: {
+        
+            },
+            beforeCreate() {
+                console.log("Before Created")
+                this.beforeCreate = "Before Create"
+            },
+            created() {
+                console.log("Created")
+                this.created = "created"
+            },
+            beforeMount() {
+                console.log("Before Mount")
+                this.beforeMount = "beforeMount"
+            },
+            mounted() {
+                console.log("Mounted")
+                this.mounted = "mounted"
+            },
+            beforeUpdate() {
+                console.log("Before Update")
+                this.beforeUpdate = "Before Update"
+            },
+            updated() {
+                console.log("Updated")
+                this.updated = "updated"
+            },
+            beforeUnmount() {
+                console.log("Before Unmount")
+                this.beforeUnmount = "Before unMount"
+            },
+            unmounted() {
+                console.log("Unmounted")
+                this.unmount = "Unmount"
+            }
+
+    
+        }).mount('#app')
+      </script>
+    
+</body>
+</html>
