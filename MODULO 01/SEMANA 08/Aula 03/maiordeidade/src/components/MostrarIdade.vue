@@ -21,7 +21,9 @@ export default {
         barramento.$on('idadeEnviado', idade => {
             this.idade = idade
 
-            if(idade < 5){
+            if(idade < 0){
+                this.maioroumenor = "Nem nasceu ainda."
+            }else if(idade >= 0 && idade < 5){
                 this.maioroumenor = "É um bebezinho"
             }else if(idade >= 5 && idade < 18){
                 this.maioroumenor = "É de menor"
