@@ -15,7 +15,7 @@
         name="idade"
         placeholder="Digite sua idade"
         >
-        <div v-if="v$.idade.$error">Name field has an error.</div>
+        <div v-if="v$.idade.$error">Idade field has an error.</div>
 
         <input type="submit" value="Inserir">
     </form>
@@ -42,6 +42,12 @@ export default {
   },
   methods: {
     add(){
+      if(!this.nome) return false
+      if(isNaN(this.idade)) return false
+      if(this.idade == 0) return false
+      if(this.nome.length < 2) return false
+      if(this.idade <= 17 || this.idade >= 80) return false 
+
       this.pessoas.push({
         "nome": this.nome,
         "idade": this.idade
