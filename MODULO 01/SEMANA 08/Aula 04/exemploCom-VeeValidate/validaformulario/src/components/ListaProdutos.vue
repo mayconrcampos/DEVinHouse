@@ -17,7 +17,10 @@
             <th scope="row">{{key}}</th>
             <td>{{ item.nome}}</td>
             <td>{{ item.valor}}</td>
-            <td><button class="btn btn-primary me-2">Editar</button><button class="btn btn-danger" @click="$emit('del', key)">Deletar</button></td>
+            <td>
+              <button class="btn btn-primary me-2" @click="$emit('preencheCampos', key, item.nome, item.valor)">Editar</button>
+              
+              <button class="btn btn-danger" @click="$emit('del', key)">Deletar</button></td>
           </tr>
         </tbody>
         <td></td>

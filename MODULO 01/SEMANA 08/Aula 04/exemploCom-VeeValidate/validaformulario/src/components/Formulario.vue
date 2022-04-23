@@ -24,7 +24,7 @@
            
         </div>
 
-          <button @click.prevent="add()" type="submit" class="btn btn-primary w-50 m-auto" :disabled="habilitabtn">Cadastrar</button>
+          <button @click.prevent="add()" type="submit" class="btn btn-primary w-50 m-auto" :disabled="habilitabtn">{{ edita ? 'Editar' : 'Cadastrar' }}</button>
       
       <div class="modal-footer">
         <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Fecha formulário</button>
@@ -37,7 +37,7 @@
     
 
 
-      <ListaProdutos :produtos="produtos" :total="total" @del="del" />
+    <ListaProdutos :produtos="produtos" :total="total" @del="del" @preencheCampos="preenche" />
 
       
 </div>
@@ -62,22 +62,48 @@ export default {
             produtos: [],
             habilitabtn: false,
             msgErro: "",
-            total: null
+            total: null,
+            edita: false,
+            indice: null
         }
     },
     methods: {
+        preenche(index, nome, valor){
+            this.indice = index
+            this.produto.nome = nome,
+            this.produto.valor = valor
+            this.edita = true
+        },
         add(){
-            this.total = 0
-            if(this.produto.nome.length > 0 && this.produto.valor > 0 && !isNaN(this.produto.valor)){
-                this.produtos.push({
-                "nome": this.produto.nome,
-                "valor": this.produto.valor
-                })
-                this.somaTudo()
-                this.msgErro = ""
+            if(this.edita == false){
+                this.total = 0
+                if(this.produto.nome.length > 0 && this.produto.valor > 0 && !isNaN(this.produto.valor)){
+
+                    this.produtos.push({
+                        "nome": this.produto.nome,
+                        "valor": this.produto.valor
+                    })
+                    this.somaTudo()
+                    this.msgErro = ""
+                }else{
+                    this.msgErro = "Campos Vazios não são permitidos."
+                }
             }else{
-                this.msgErro = "Campos Vazios não são permitidos."
+                this.total = 0
+                if(this.produto.nome.length > 0 && this.produto.valor > 0 && !isNaN(this.produto.valor)){
+
+                    this.produtos.splice(this.indice, 1, {
+                        "nome": this.produto.nome,
+                        "valor": this.produto.valor
+                    })
+                    this.somaTudo()
+                    this.msgErro = ""
+                    this.edita = false
+                }else{
+                    this.msgErro = "Campos Vazios não são permitidos."
+                }
             }
+            
             
 
             this.produto.nome = ""
