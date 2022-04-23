@@ -1,15 +1,68 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <form action="" @submit.prevent="add()">
+      <input 
+        v-model.trim="v$.nome.$model"
+        type="text" 
+        name="nome" 
+        placeholder="Digite seu nome"
+        >
+        <div v-if="v$.nome.$error">Name field has an error.</div>
+
+      <input 
+        v-model.trim="v$.idade.$model"
+        type="text"
+        name="idade"
+        placeholder="Digite sua idade"
+        >
+        <div v-if="v$.idade.$error">Name field has an error.</div>
+
+        <input type="submit" value="Inserir">
+    </form>
+    <div>
+      <ul v-for="(pessoa, key) in pessoas" :key="key">
+        <li>Nome: {{pessoa.nome}} Idade: {{pessoa.idade}}</li>
+      </ul>
+    </div>
+  </div>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import useVuelidate from '@vuelidate/core'
+import {required, minLength, between} from "@vuelidate/validators"
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      nome: "",
+      idade: 0,
+      pessoas: [  ]
+    }
+  },
+  methods: {
+    add(){
+      this.pessoas.push({
+        "nome": this.nome,
+        "idade": this.idade
+      })
+    }
+  },
+  setup() {
+    return { v$: useVuelidate() }
+  },
+  validations(){
+    return {
+      nome: {
+      required,
+      minLength: minLength(2)
+      },
+      idade: {
+      required,
+      between: between(17, 80)
+      }
+    }
+    
   }
 }
 </script>
