@@ -18,7 +18,7 @@
             <td>{{ item.nome}}</td>
             <td>{{ item.valor}}</td>
             <td>
-              <button class="btn btn-primary me-2" @click="$emit('preencheCampos', key, item.nome, item.valor)">Editar</button>
+              <a data-bs-toggle="modal" href="#exampleModalToggle" role="button" class="btn btn-primary me-2" @click="$emit('preencheCampos', key, item.nome, item.valor)">Editar</a>
 
               <button class="btn btn-danger" @click="$emit('del', key)">Deletar</button></td>
           </tr>
