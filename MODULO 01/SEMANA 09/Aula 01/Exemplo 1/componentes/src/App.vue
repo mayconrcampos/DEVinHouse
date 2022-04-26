@@ -1,33 +1,41 @@
 <template>
-  <div>
-    
+  <div class="">
+    <MeuHeader/>
+    <meu-formulario/>
+    <meu-botao :nome="nomebtn" :classbtn="classebtn"/>
+    <minha-tabela/>
 
-    
   </div>
 </template>
 
 <script>
+import MeuHeader from "./components/Header.vue"
+import meuFormulario from "./components/Formulario.vue"
+import meuBotao from "./components/Button.vue"
+import minhaTabela from "./components/Tabela.vue"
 
 export default {
   name: 'App',
   data() {
     return {
-      nome: ""
+      nome: "",
+      classebtn: "btn btn-primary d-flex flex-end",
+      nomebtn: "Reservar",
     }
   },
   components: {
-    
+    MeuHeader,
+    meuFormulario,
+    meuBotao,
+    minhaTabela
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+body {
+  top: 0;
+  margin: 0;
 }
+
 </style>
