@@ -82,13 +82,4 @@ export default {
 
 <style>
 
-@media (max-width: 600px)
-{
-  .container
-   {
-    display: flex;
-    flex-direction: column;
-   }
-}
-
 </style>
