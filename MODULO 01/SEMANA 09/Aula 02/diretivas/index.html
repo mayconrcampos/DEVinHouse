@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diretivas</title>
+</head>
+<body>
+    <div id="app">
+
+        <h1 v-text="message"></h1>
+
+        <p>v-model</p>
+        <input type="text" v-model="message">
+
+        <p>v-model.lazy</p>
+
+        <input type="text" v-model.lazy="message">
+
+        <p>v-model.number</p>
+        <input type="text" v-model.number="message">
+        {{typeof message}} {{!isNaN(message)}}
+
+
+        <p>v-model.trim</p>
+        <input type="text" v-model.trim="message">
+
+        <p>v-bind</p>
+        <input type="text" v-bind:value="message">
+
+        <br>
+
+        <p>v-html</p>
+        {{html}}
+
+        <p v-html="html"></p>
+
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        message: 'Hello Vue!',
+        html: "<h1>Heelllloowww</h1>"
+      }
+    }
+  }).mount('#app')
+</script>
+    
+</body>
+</html>
