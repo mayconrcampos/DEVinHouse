@@ -1,15 +1,24 @@
 <template>
   <div class="">
     <MeuHeader/>
+
     <meu-formulario/>
-    <div class="d-flex flex-row-reverse w-75 m-auto p-3">
-      <meu-botao :nome="nomebtn" :classbtn="switchButton"/>
-      <meu-botao :nome="limpabtn" :classbtn="switchButton"/>
+
+    <div class="d-flex flex-row-reverse w-75 mt-3 m-auto p-2 pe-5">
+
+      <meu-botao 
+        :nomeBtn="botaoReservar.nome" 
+        :primary="true"
+        />
+
+      <meu-botao 
+        :nomeBtn="botaoLimpar.nome" 
+        :dark="true"
+        />
     </div>
     
     <minha-tabela/>
     
-
   </div>
 </template>
 
@@ -23,12 +32,13 @@ export default {
   name: 'App',
   data() {
     return {
-      nome: "",
-      classebtn: "",
-      nomebtn: "Reservar",
-
-      limpabtn: "Limpar",
-
+      botaoReservar: {
+        nome: "Reservar",
+      },
+      botaoLimpar: {
+        nome: "Limpar",
+      }
+      
     }
   },
   components: {
@@ -37,12 +47,7 @@ export default {
     meuBotao,
     minhaTabela
   },
-  methods: {
-    switchButton(){
-        return this.nomebtn == "Reservar" ? "btn btn-primary" : "btn btn-light"
-      }
-    
-  }
+  
 }
 </script>
 

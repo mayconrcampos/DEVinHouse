@@ -1,6 +1,11 @@
 <template>
 
-      <button :class="classbtn" :click="$emit('click')">{{nome}}
+      <button :class="[
+            primary ? 'btn btn-primary' : '', 
+            danger ? 'btn btn-danger' : '', 
+            dark ? 'btn btn-dark' : ''
+            ]" 
+            :click="$emit('click')">{{nomeBtn}}
       </button>
 
 </template>
@@ -9,15 +14,25 @@
 export default {
     name: "meuBotao",
     props: {
-        nome: {
+        nomeBtn: {
             type: String,
             default: () => "Botão"
         },
-        class: {
-            type: String,
+        primary: {
+            type: Boolean,
+            default: () => false
+            
+            
         },
-        classbtn: {
-            type: String
+        danger: {
+            type: Boolean,
+            default: () => false
+            
+        },
+        dark: {
+            type: Boolean,
+            default: () => false
+            
         }
 
     },
