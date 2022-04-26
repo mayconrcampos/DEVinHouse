@@ -41,7 +41,7 @@
               <label class="form-label" for="">Ano</label>
               <input class="form-control" type="number">
           </div>
-          
+
       </div>
   </div>
 </template>
@@ -52,40 +52,18 @@ export default {
     data() {
         return {
             titulo: "Reserva de vaga de estacionamento",
+            formulario: {
+                nome: "",
+                dataReserva: "",
+                horaEntrada: "",
+                horasDeReserva: "",
+                placa: "",
+                modelo: "",
+                ano: ""
+            }
         }
     },
-    props: {
-        nome: {
-            type: String,
-            default: () => ""
-        },
-        dataReserva: {
-            type: String,
-            default: () => ""
-        },
-        horaEntrada: {
-            type: String,
-            default: () => ""
-        },
-        horasDeReserva: {
-            type: String,
-            default: () => ""
-        },
-        placa: {
-            type: String,
-            default: () => ""
-        },
-        modelo: {
-            type: String,
-            default: () => ""
-        },
-        ano: {
-            type: Number,
-            default: () => 2000
-        }
-
-
-    }
+    
 }
 </script>
 
