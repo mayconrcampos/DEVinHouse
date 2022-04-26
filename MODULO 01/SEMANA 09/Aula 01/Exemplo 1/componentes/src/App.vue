@@ -3,8 +3,8 @@
     <MeuHeader/>
     <meu-formulario/>
     <div class="d-flex flex-row-reverse w-75 m-auto p-3">
-      <meu-botao :nome="nomebtn" :classbtn="classebtn"/>
-      <meu-botao/>
+      <meu-botao :nome="nomebtn" :classbtn="switchButton"/>
+      <meu-botao :nome="limpabtn" :classbtn="switchButton"/>
     </div>
     
     <minha-tabela/>
@@ -24,8 +24,11 @@ export default {
   data() {
     return {
       nome: "",
-      classebtn: "btn btn-primary d-flex flex-end",
+      classebtn: "",
       nomebtn: "Reservar",
+
+      limpabtn: "Limpar",
+
     }
   },
   components: {
@@ -33,6 +36,12 @@ export default {
     meuFormulario,
     meuBotao,
     minhaTabela
+  },
+  computed: {
+    switchButton(){
+        return this.nomebtn == "Reservar" ? "btn btn-primary" : "btn btn-danger"
+      }
+    
   }
 }
 </script>

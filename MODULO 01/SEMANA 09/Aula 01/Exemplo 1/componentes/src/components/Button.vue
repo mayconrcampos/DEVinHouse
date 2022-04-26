@@ -15,7 +15,6 @@ export default {
         },
         class: {
             type: String,
-            default: () => "btn btn-dark"
         },
         classbtn: {
             type: String
