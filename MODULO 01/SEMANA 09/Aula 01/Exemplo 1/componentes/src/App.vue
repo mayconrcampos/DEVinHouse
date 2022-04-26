@@ -37,9 +37,9 @@ export default {
     meuBotao,
     minhaTabela
   },
-  computed: {
+  methods: {
     switchButton(){
-        return this.nomebtn == "Reservar" ? "btn btn-primary" : "btn btn-danger"
+        return this.nomebtn == "Reservar" ? "btn btn-primary" : "btn btn-light"
       }
     
   }
