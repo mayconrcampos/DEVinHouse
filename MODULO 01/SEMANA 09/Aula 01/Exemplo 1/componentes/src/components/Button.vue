@@ -1,9 +1,8 @@
 <template>
-  <div class="container mt-2 w-75 m-auto d-flex flex-row-reverse">
-      <button :class="classbtn" :click="$emit('click')">
-          {{nome}}
+
+      <button :class="classbtn" :click="$emit('click')">{{nome}}
       </button>
-  </div>
+
 </template>
 
 <script>
@@ -11,10 +10,12 @@ export default {
     name: "meuBotao",
     props: {
         nome: {
-            type: String
+            type: String,
+            default: () => "Botão"
         },
         class: {
             type: String,
+            default: () => "btn btn-dark"
         },
         classbtn: {
             type: String
@@ -25,6 +26,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .container {
+        width: 20px;
+    }
+    button {
+        margin-right: 10px;
+    }
 </style>

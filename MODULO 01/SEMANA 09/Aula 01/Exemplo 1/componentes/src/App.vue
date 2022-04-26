@@ -2,8 +2,13 @@
   <div class="">
     <MeuHeader/>
     <meu-formulario/>
-    <meu-botao :nome="nomebtn" :classbtn="classebtn"/>
+    <div class="d-flex flex-row-reverse w-75 m-auto p-3">
+      <meu-botao :nome="nomebtn" :classbtn="classebtn"/>
+      <meu-botao/>
+    </div>
+    
     <minha-tabela/>
+    
 
   </div>
 </template>
