@@ -1,11 +1,18 @@
 <template>
 
       <button :class="[
-            primary ? 'btn btn-primary' : '', 
-            danger ? 'btn btn-danger' : '', 
-            dark ? 'btn btn-dark' : ''
+                primary ? 'btn btn-primary' : '', 
+                danger ? 'btn btn-danger' : '', 
+                dark ? 'btn btn-dark' : ''
             ]" 
-            :click="$emit('click')">{{nomeBtn}}
+            :click="$emit('click')">
+            
+            <i :class="[
+                lixeira ? 'fa-solid fa-trash-can' : '',
+                salvar ? 'fa-solid fa-floppy-disk': ''
+            ]"></i> 
+
+            {{nomeBtn}}
       </button>
 
 </template>
@@ -33,6 +40,14 @@ export default {
             type: Boolean,
             default: () => false
             
+        },
+        lixeira: {
+            type: Boolean,
+            default: () => false
+        },
+        salvar: {
+            type: Boolean,
+            default: () => false
         }
 
     },

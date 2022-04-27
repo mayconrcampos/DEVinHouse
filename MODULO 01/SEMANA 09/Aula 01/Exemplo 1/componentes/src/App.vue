@@ -1,21 +1,23 @@
 <template>
-  <div class="">
+  <div class="container">
     <MeuHeader/>
 
-    <meu-formulario/>
+    <meu-formulario
+      :titulo="titulo"
+    />
 
-    <div class="d-flex flex-row-reverse w-75 mt-3 m-auto p-2 pe-5">
-
-      <meu-botao 
-        :nomeBtn="botaoReservar.nome" 
+    <meu-botao 
+        @click="reservar"
+        :nomeBtn="botaoReservar.nome"  
         :primary="true"
+        :salvar="true"
         />
 
-      <meu-botao 
+    <meu-botao 
         :nomeBtn="botaoLimpar.nome" 
         :dark="true"
+        :lixeira="true"
         />
-    </div>
     
     <minha-tabela/>
     
@@ -25,13 +27,15 @@
 <script>
 import MeuHeader from "./components/Header.vue"
 import meuFormulario from "./components/Formulario.vue"
-import meuBotao from "./components/Button.vue"
 import minhaTabela from "./components/Tabela.vue"
+import meuBotao from "./components/Button.vue";
+
 
 export default {
   name: 'App',
   data() {
     return {
+      titulo: "Sistema para Reserva de Vagas",
       botaoReservar: {
         nome: "Reservar",
       },
@@ -44,8 +48,8 @@ export default {
   components: {
     MeuHeader,
     meuFormulario,
-    meuBotao,
-    minhaTabela
+    minhaTabela,
+    meuBotao
   },
   
 }

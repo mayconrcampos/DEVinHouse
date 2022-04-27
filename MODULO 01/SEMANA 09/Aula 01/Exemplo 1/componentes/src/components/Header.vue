@@ -1,6 +1,6 @@
 <template>
   <div>
-      <header>
+      <header class="container d-block">
           <img src="../assets/Banner.png" alt="Logo">
       </header>
 
@@ -10,7 +10,10 @@
 
 <script>
 export default {
-    name: "MeuHeader"
+    name: "MeuHeader",
+    props: {
+       
+    }
 }
 </script>
 
