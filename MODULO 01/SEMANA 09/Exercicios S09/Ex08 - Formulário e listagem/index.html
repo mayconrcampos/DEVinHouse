@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diretivas</title>
+
+</head>
+<body>
+    <div id="app">
+
+        <input type="text" v-model="nome" placeholder="Digite o nome">
+        <input type="text" v-model="idade">
+        <button @click.prevent="add()">Adicionar</button>
+        <button @click.prevent="esvaziar()">Esvaziar lista</button>
+        <br>
+        
+        <div v-show="pessoas.length > 0">
+              <p>Lista de Pessoas</p>
+            <ul v-for="(pessoa, key) in pessoas" ::key="key">
+                <li>Nome: {{ pessoa.nome }} Idade: {{pessoa.idade}}</li>
+            </ul>
+        </div>
+
+        <h4 v-show="pessoas.length == 0">Lista Vazia</h4>
+        
+        
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        pessoas: [],
+        nome: "",
+        idade: ""
+ 
+      }
+    },
+    methods: {
+      add(){
+        this.pessoas.push({
+          "nome": this.nome,
+          "idade": this.idade
+        })
+
+        this.nome = ""
+        this.idade = ""
+      },
+      esvaziar(){
+        this.pessoas = ""
+      }
+    }
+  }).mount('#app')
+</script>
+    
+</body>
+</html>
