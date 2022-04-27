@@ -46,8 +46,19 @@
           </div>
 
             <div class="d-flex flex-row w-100 mt-3 m-auto p-2">
-              <button @click.prevent="limpar()" class="btn btn-danger me-2" >Limpar</button>
-              <button @click.prevent="reservar()" class="btn btn-primary">{{!indice ? "Reservar" : "Editar"}}</button>
+              <button 
+                @click.prevent="limpar()" 
+                class="btn btn-danger me-2"
+                >
+                <i class="fa-solid fa-trash-can"></i>
+                Limpar
+                </button>
+              <button 
+                @click.prevent="reservar()" 
+                class="btn btn-primary">
+                <i class="fa-solid fa-floppy-disk"></i>
+                {{!indice ? "Reservar" : "Editar"}}
+                </button>
             </div>
 
             <minha-tabela :reservas="reservas" @editar="editar" @deletar="deletar"/>
@@ -89,7 +100,7 @@ export default {
   },
   methods: {
     deletar(indice){
-      this.reservas.splice(indice, 1)
+      this.reservas.splice(indice - 1, 1)
       this.salvarDB()
     },
     editar(key,
@@ -151,7 +162,7 @@ export default {
         })
 
       }else{
-        this.reservas.splice(this.indice, 1, {
+        this.reservas.splice(this.indice - 1, 1, {
           "nome": this.formulario.nome,
           "dataReserva": this.formulario.dataReserva,
           "horaEntrada": this.formulario.horaEntrada,
@@ -175,6 +186,7 @@ export default {
       this.formulario.placa = ""
       this.formulario.modelo = ""
       this.formulario.ano = ""
+      this.indice = false
     }
   }
 

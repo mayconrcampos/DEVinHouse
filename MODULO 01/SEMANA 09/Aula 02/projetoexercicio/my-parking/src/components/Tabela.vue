@@ -1,7 +1,7 @@
 <template>
     <div class="container w-100 mt-2 g-3 text-center">
         <hr>
-        <table class="table">
+        <table class="table table-responsive">
           <thead>
             <tr>
               <th scope="col">Solicitante</th>
@@ -24,11 +24,13 @@
               <td>{{item.modelo}}</td>
               <td>{{item.ano}}</td>
               <td>
-                <a @click="$emit('deletar', key)" class="btn btn-danger">Deletar</a>
+                <a title="Deletar" @click="$emit('deletar', key)" class="btn btn-danger me-1">
+                  <i class="fa-solid fa-trash-can"></i>
+                </a>
 
                 <a 
                   @click="$emit('editar',
-                      key,
+                      key + 1,
                       item.nome,
                       item.dataReserva,
                       item.horaEntrada,
@@ -37,7 +39,11 @@
                       item.modelo,
                       item.ano
                   )" 
-                  class="btn btn-primary">Editar</a>
+                  class="btn btn-primary"
+                  title="Editar"
+                  >
+                  <i class="fa-solid fa-pen-to-square"></i>
+                  </a>
               </td>
             </tr>
 
