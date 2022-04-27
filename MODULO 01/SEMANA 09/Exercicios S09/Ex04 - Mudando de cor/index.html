@@ -8,18 +8,23 @@
     <style>
         .azul {
             color: blue;
+            border: 1px solid blue;
         }
         .vermelho {
             color: red;
+            border: 1px solid red;
         }
         .amarelo {
             color: yellow;
+            border: 1px solid yellow;
         }
         .verde {
             color: green;
+            border: 1px solid green;
         }
         .roxo {
             color: blueviolet;
+            border: 1px solid blueviolet;
         }
     </style>
 </head>
@@ -28,7 +33,7 @@
 
         <label :class="cor">Cor</label>
         <br>
-        <input v-model="cor" type="text">
+        <input :class="cor" v-model="cor" type="text">
 
         <p>Cores: Azul, vermelho, amarelo, verde, roxo</p>
         
