@@ -25,6 +25,7 @@
           </div>
 
       </div>
+
       <div class="row g-3 mt-2">
 
           <div class="col-lg">
@@ -44,9 +45,7 @@
 
               <div class="d-flex flex-row-reverse w-100 mt-3 m-auto p-2">
 
-
-      
-    </div>
+            </div>
 
     </div>
 
