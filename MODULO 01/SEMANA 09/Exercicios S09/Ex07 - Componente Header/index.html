@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diretivas</title>
+    <style>
+        header {
+            width: 30%;
+            background-color: bisque;
+            border: 1px solid black;
+            color: brown;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: xx-large;
+
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+
+        <header v-show="frase">
+            {{frase}}
+        </header>
+
+        <input type="text" v-model="frase">
+        
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        frase: "",
+ 
+      }
+    }
+  }).mount('#app')
+</script>
+    
+</body>
+</html>
