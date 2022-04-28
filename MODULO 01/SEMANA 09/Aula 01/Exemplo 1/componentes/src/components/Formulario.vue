@@ -11,7 +11,7 @@
 
           <div class="col-lg-3">
                 <label class="form-label" for="">Data de Reserva</label>
-                <input v-model="formulario.dataReserva" class="form-control" type="text">
+                <input v-model="formulario.dataReserva" class="form-control" type="date">
           </div>
 
           <div class="col-lg-2">
