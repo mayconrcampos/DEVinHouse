@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diretivas</title>
+    <style>
+        header {
+            width: 30%;
+            background-color: bisque;
+            border: 1px solid black;
+            color: brown;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: xx-large;
+
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+
+        v-show
+        <header v-show="frase">
+            {{frase}}
+        </header>
+
+        <input type="text" v-model="frase">
+
+        <hr>
+
+        <p>v-if</p>
+
+        <div v-if="mostrar">
+            <h1>Apareceu a margarida</h1>
+        </div>
+        <button @click="mostraesconde()">{{show ? 'Esconder':'Mostrar'}}</button>
+
+        <hr>
+
+        <p>v-if v-else-if v-else</p>
+
+        <div v-if="numero == 1">
+            <h2>div 1</h2>            
+        </div>
+
+        <div v-else-if="numero == 2">
+            <h2>div 2</h2>
+        </div>
+
+        <div v-else>
+            <h2>div 3</h2>
+        </div>
+
+        <button @click="mostra(1)">div 1</button>
+        <button @click="mostra(2)">div 2</button>
+        <button @click="mostra(3)">div 3</button>
+        
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        frase: "",
+        mostrar: false,
+        numero: ""
+ 
+      }
+    },
+    methods: {
+        mostraesconde(){
+            this.mostrar ? this.mostrar = false : this.mostrar = true
+        },
+        mostra(n){
+            this.numero = n
+        }
+
+    },
+  }).mount('#app')
+</script>
+    
+</body>
+</html>
