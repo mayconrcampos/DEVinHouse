@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diretivas</title>
+
+</head>
+<body>
+    <div id="app">
+
+      <div v-if="count === 0">
+        <h2>Count 0</h2>
+      </div>
+
+      <div v-else-if="count > 0 && count < 10">
+          <h2>Count maior que zero e menor que dez {{count}} </h2>
+      </div>
+
+      <div v-else>
+        <h2>Count acima de 10 {{count}}</h2>
+      </div>
+      <button @click="mostrar()">{{mostra ? 'Esconder':'Mostrar'}}</button>
+      <button @click="count++">Aumenta count</button>
+      <button @click="count = 0">Zera Count</button>
+        
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    data() {
+      return {
+          mostra: false,
+          count: 0
+    
+ 
+      }
+    },
+    methods: {
+        mostrar(){
+            this.mostra ? this.mostra = false : this.mostra = true
+        }
+
+    },
+  }).mount('#app')
+</script>
+    
+</body>
+</html>
