@@ -49,35 +49,34 @@
 
     </div>
 
-
-      
   </div>
 </template>
 
 <script>
+import { useReservaStore } from "../store/storeReservas.js"
+import { storeToRefs } from "pinia"
 
 export default {
     name: "meuFormulario",
     components: {
         
     },
+
+    setup() {
+        const { formulario } = storeToRefs(useReservaStore())
+
+        return {
+            formulario
+        }
+    },
     
     data() {
         return {
-            formulario: {
-                nome: "",
-                dataReserva: "",
-                horaEntrada: "",
-                horasDeReserva: "",
-                placa: "",
-                modelo: "",
-                ano: "",
-                reservas: []
-
-            },
             
         }
     },
+
+
     props: {
         titulo: {
             type: String,

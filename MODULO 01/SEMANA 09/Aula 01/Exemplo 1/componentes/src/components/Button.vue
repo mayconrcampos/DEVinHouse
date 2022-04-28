@@ -5,7 +5,7 @@
                 danger ? 'btn btn-danger' : '', 
                 dark ? 'btn btn-dark' : ''
             ]" 
-            :click="$emit('click')">
+            @click="$emit('efetuar')">
             
             <i :class="[
                 lixeira ? 'fa-solid fa-trash-can' : '',
