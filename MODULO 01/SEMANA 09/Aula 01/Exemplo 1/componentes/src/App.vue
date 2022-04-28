@@ -21,7 +21,7 @@
         :lixeira="true"
         />
     
-    <minha-tabela :tabela="lista.reservas"/>
+    <minha-tabela :tabela="lista.reservas" @preenche="campos" @deleta="deletaItem()"/>
 
     
   </div>
@@ -41,14 +41,15 @@ export default {
   name: 'App',
   data() {
     return {
-      
+      indice: null,
+      edita: false
     }
   },
   setup() {
     // Mapeando variáveis da Store
     const {formulario, botaoReservar, botaoLimpar, lista} = storeToRefs(useReservaStore())
     // Mapeando Actions
-    const { reservar, limparCampos } = mapActions(useReservaStore, ["reservar", "limparCampos"])
+    const { reservar, limparCampos, dataParaArray, preencheFormulario, dataParaTabela, deletaItem } = mapActions(useReservaStore, ["reservar", "limparCampos", "dataParaArray", "preencheFormulario", "dataParaTabela", "deletaItem"])
 
     return {
       formulario,
@@ -57,14 +58,19 @@ export default {
       lista,
 
       reservar,
-      limparCampos
+      limparCampos,
+      dataParaArray,
+      preencheFormulario,
+      dataParaTabela,
+      deletaItem
+      
     }
 
   },
   methods: {
     reserva(){
       if(this.formulario.nome.length == 0) return false
-      if(!this.formulario.dataReserva) return false
+      if(this.formulario.dataReserva == "NaN/NaN/NaN") return false
       if(!this.formulario.horaEntrada) return false
       if(this.formulario.horasDeReserva <= 0) return false
       if(this.formulario.placa.length == 0) return false
@@ -81,19 +87,22 @@ export default {
       })
       this.limparCampos()
     },
-    dataParaArray(data){
-      let d = new Date(data)
-      let dia = d.getDate() + 1 < 10 ? `0${d.getDate() + 1}` : d.getDate() + 1
-      let mes = d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1
-      let ano = d.getFullYear()
+    campos(key, nome, dataReserva, horaEntrada, horasDeReserva, placa, modelo, ano){
+      this.preencheFormulario(
+          nome,
+          this.dataParaTabela(dataReserva),
+          horaEntrada,
+          horasDeReserva,
+          placa,
+          modelo,
+          ano 
+      )
 
-      return `${dia}/${mes}/${ano}`
+      this.indice = key 
+      this.edita = true
+
+
     },
-    dataParaTabela(data){
-      let d = new Date(data)
-      let dataFormatada = (d.getFullYear() + "-" + ((d.getMonth() + 1)) + "-" + (d.getDate() )) ;                 
-      return dataFormatada
-    }
   },
   components: {
     MeuHeader,

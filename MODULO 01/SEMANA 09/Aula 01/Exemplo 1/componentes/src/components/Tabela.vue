@@ -24,8 +24,8 @@
       <td>{{r.modelo}}</td>
       <td>{{r.ano}}</td>
       <td>
-        <a class="btn btn-sm btn-primary me-2">Editar</a>
-        <a class="btn btn-sm btn-danger">Deletar</a>
+        <a @click="$emit('preenche', key, r.nome, r.dataReserva, r.horaEntrada, r.horasDeReserva, r.placa, r.modelo, r.ano)" class="btn btn-sm btn-primary me-2">Editar</a>
+        <a @click="$emit('deleta', key)" class="btn btn-sm btn-danger">Deletar</a>
       </td>
     </tr>
     

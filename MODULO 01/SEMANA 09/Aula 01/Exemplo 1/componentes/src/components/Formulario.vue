@@ -47,8 +47,6 @@
 
             </div>
 
-            {{formulario.dataReserva}}
-
     </div>
 
   </div>
