@@ -8,7 +8,7 @@
             @click="$emit('efetuar')">
             
             <i :class="[
-                lixeira ? 'fa-solid fa-trash-can' : '',
+                lixeira ? 'fa-solid fa-trash-can' : '', 
                 salvar ? 'fa-solid fa-floppy-disk': ''
             ]"></i> 
 

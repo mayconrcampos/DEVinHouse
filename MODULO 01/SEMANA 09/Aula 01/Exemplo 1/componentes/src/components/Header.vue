@@ -1,7 +1,7 @@
 <template>
   <div>
       <header class="container d-block">
-          <img src="../assets/Banner.png" alt="Logo">
+          <img src="../assets/Banner.png" alt="Logo"> 
       </header>
 
       <hr class="">

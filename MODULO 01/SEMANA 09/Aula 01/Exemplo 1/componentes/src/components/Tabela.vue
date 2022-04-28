@@ -1,5 +1,5 @@
 <template>
-    <div class="container w-100 mt-2 g-3 text-center">
+    <div class="container w-100 mt-2 g-3 text-center"> 
         <hr>
         <table class="table table-sm">
   <thead>
