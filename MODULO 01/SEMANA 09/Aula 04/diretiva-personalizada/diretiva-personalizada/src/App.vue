@@ -1,17 +1,28 @@
 <template>
   <div>
+
+    <h1>Olar</h1>
+
     <ul>
       <li v-for="(item, key) in lista" :key="key">{{ item }}</li>
     </ul>
+
+    <input type="text" v-model="nome">
+    <input type="text" v-model="idade">
+    <button @click="add()">Add</button>
 
     <table>
       <th>
         <td>Nome</td>
         <td>Idade</td>
+        <td>edita</td>
+        <td>Excluir</td>
       </th>
       <tr v-for="(p, key) in pessoas" :key="key">
-        <td>{{ p.nome }} </td>
-        <td>{{ p.Idade }}</td>
+        <td v-lindro>{{ p.nome }} </td>
+        <td v-idade>{{ p.Idade }}</td>
+        <td><button href="">Edit</button></td>
+        <td><button href="">Del</button></td>
       </tr>
     </table>
   </div>
@@ -24,6 +35,14 @@ export default {
   components: {
     
   },
+  methods: {
+    add(){
+      this.pessoas.push({
+        "nome": this.nome,
+        "Idade": this.idade
+      })
+    }
+  },
   data() {
     return {
       lista: [
@@ -35,7 +54,9 @@ export default {
         {"nome": "Izair", "Idade": 73},
         {"nome": "Terezinha", "Idade": 63},
         {"nome": "Benjamin", "Idade": 10}
-      ]
+      ],
+      nome: "",
+      idade: ""
     }
   },
 }
