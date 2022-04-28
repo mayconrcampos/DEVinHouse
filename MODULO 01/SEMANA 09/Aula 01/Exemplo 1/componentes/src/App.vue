@@ -64,13 +64,14 @@ export default {
   methods: {
     reserva(){
       this.reservar({
-        "titulo": this.formulario.nome,
+        "nome": this.formulario.nome,
         "dataReserva": this.formulario.dataReserva,
         "horaEntrada": this.formulario.horaEntrada,
         "horasDeReserva": this.formulario.horasDeReserva,
         "placa": this.formulario.placa,
         "ano": this.formulario.ano
       })
+      this.limparCampos()
     }
   },
   components: {
