@@ -63,7 +63,6 @@ export default {
       preencheFormulario,
       dataParaTabela,
       deletaItem
-      
     }
 
   },
