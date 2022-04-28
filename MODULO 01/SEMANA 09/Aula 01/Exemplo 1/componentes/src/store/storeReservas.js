@@ -43,11 +43,7 @@ export const useReservaStore = defineStore("reservas", {
                 ano: "", 
             }
         },
-        data(data) {
-            let data = data.split("/")
-            let diaMesAno = `${data[2]}/${data[1]}/${data[0]}}`
-            return diaMesAno
-        }
+   
     },
 
     // Getters
