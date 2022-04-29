@@ -76,9 +76,6 @@ export const useReservaStore = defineStore("reservas", {
                 "ano": ano 
             }
         },
-        
-        
-
 
         // Funções para salvar localStorage
 
@@ -98,8 +95,6 @@ export const useReservaStore = defineStore("reservas", {
                 } 
             }
         }
-        
-   
     },
 
     // Getters

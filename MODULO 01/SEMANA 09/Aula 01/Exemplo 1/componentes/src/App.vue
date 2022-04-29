@@ -75,7 +75,7 @@ export default {
   methods: {
     reserva(){
       if(this.formulario.nome.length == 0) return false
-      if(this.formulario.dataReserva == "NaN/NaN/NaN") return false
+      if(this.formulario.dataReserva.length < 10) return false
       if(!this.formulario.horaEntrada) return false
       if(this.formulario.horasDeReserva <= 0) return false
       if(this.formulario.placa.length == 0) return false
@@ -114,8 +114,12 @@ export default {
       
     },
     del(id){
-      this.deletaItem(id)
-      this.salvaDB()
+      const confirma = confirm("Deseja realmente excluir este item?")
+      if(confirma){
+        this.deletaItem(id)
+        this.salvaDB()
+      }
+      
     },
     campos(key, nome, dataReserva, horaEntrada, horasDeReserva, placa, modelo, ano){
       this.preencheFormulario(
