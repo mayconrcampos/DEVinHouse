@@ -16,7 +16,7 @@
 
           <div class="col-lg-2">
                 <label class="form-label" for="">Hora de Entrada</label>
-                <input v-model="formulario.horaEntrada" class="form-control" type="text" >
+                <input v-model="formulario.horaEntrada" v-mask="'##:##:##'" class="form-control" type="text" >
           </div>
 
           <div class="col-lg-2">
@@ -30,7 +30,7 @@
 
           <div class="col-lg">
               <label class="form-label" for="">Placa</label>
-              <input v-model="formulario.placa" class="form-control" type="text" >
+              <input v-model="formulario.placa" v-mask="['AAA#A##',  'AAA-####' ]" class="form-control" type="text" >
           </div>
 
           <div class="col-lg">
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { mask } from "vue-the-mask"
 import { useReservaStore } from "../store/storeReservas.js" 
 import { storeToRefs } from "pinia"
 
@@ -61,7 +62,9 @@ export default {
     components: {
         
     },
-
+    directives: {
+        mask
+    },
     setup() {
         const { formulario } = storeToRefs(useReservaStore())
 
