@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <h2>{{ titulo }}</h2>
+      <h2 v-text="titulo"></h2>
       
       <div class="row g-3 mt-2">
 
