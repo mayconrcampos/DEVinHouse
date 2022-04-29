@@ -63,9 +63,7 @@ export const useReservaStore = defineStore("reservas", {
   
         dataParaTabela(data){
           let d = data.split("/")
-          console.log(d)
           let dataFormatada = `${d[2]}-${d[1]}-${d[0]}`
-          console.log(dataFormatada)
           return dataFormatada
         },
         preencheFormulario(nome, dataReserva, horaEntrada, horasDeReserva, placa, modelo, ano){
@@ -74,7 +72,7 @@ export const useReservaStore = defineStore("reservas", {
                 "dataReserva": dataReserva,
                 "horaEntrada": horaEntrada,
                 "horasDeReserva": horasDeReserva,
-                "placa": placa,
+                "placa": placa.toUpperCase(),
                 "modelo": modelo,
                 "ano": ano 
             }
@@ -102,6 +100,7 @@ export const useReservaStore = defineStore("reservas", {
 
     // Getters
     getters: {
+    
         
     }
 })

@@ -112,7 +112,7 @@ export default {
                   "horaEntrada": this.formulario.horaEntrada,
                   "horasDeReserva": this.formulario.horasDeReserva,
                   "modelo": this.formulario.modelo,
-                  "placa": this.formulario.placa,
+                  "placa": this.formulario.placa.toUpperCase(),
                   "ano": this.formulario.ano
                 })
 
@@ -126,7 +126,7 @@ export default {
           "horaEntrada": this.formulario.horaEntrada,
           "horasDeReserva": this.formulario.horasDeReserva,
           "modelo": this.formulario.modelo,
-          "placa": this.formulario.placa,
+          "placa": this.formulario.placa.toUpperCase(),
           "ano": this.formulario.ano
         })
         
