@@ -30,7 +30,7 @@
 
           <div class="col-lg">
               <label class="form-label" for="">Placa</label>
-              <input v-model="formulario.placa" v-mask="['AAA#A##',  'AAA-####' ]" class="form-control" type="text" >
+              <input v-model="formulario.placa" v-mask="['AAA#X##']" class="form-control" type="text" >
           </div>
 
           <div class="col-lg">
