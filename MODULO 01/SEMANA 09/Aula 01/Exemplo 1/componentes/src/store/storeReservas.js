@@ -6,8 +6,8 @@ export const useReservaStore = defineStore("reservas", {
             lista: {
                 reservas: []
             },
+            titulo: "Sistema para Reserva de Vagas",
             formulario: {
-                titulo: "Sistema para Reserva de Vagas",
                 nome: "",
                 dataReserva: "",
                 horaEntrada: "",
@@ -37,6 +37,9 @@ export const useReservaStore = defineStore("reservas", {
         },
         deletaItem(indice){
             this.lista.reservas.splice(indice, 1)
+        },
+        esvaziaLista(){
+            this.lista.reservas = []
         },
         limparCampos(){
             this.formulario = {
