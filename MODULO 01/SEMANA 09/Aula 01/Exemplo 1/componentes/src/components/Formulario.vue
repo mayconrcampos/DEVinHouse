@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { useReservaStore } from "../store/storeReservas.js"
+import { useReservaStore } from "../store/storeReservas.js" 
 import { storeToRefs } from "pinia"
 
 export default {

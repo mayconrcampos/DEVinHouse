@@ -8,13 +8,13 @@ export const useReservaStore = defineStore("reservas", {
             },
             formulario: {
                 titulo: "Sistema para Reserva de Vagas",
-                nome: "Maycon R Campos",
-                dataReserva: "25/04/2022",
-                horaEntrada: "05:37",
-                horasDeReserva: "4",
-                placa: "MBO-9974",
-                modelo: "Ford Ka mp3",
-                ano: "2007",
+                nome: "",
+                dataReserva: "",
+                horaEntrada: "",
+                horasDeReserva: "",
+                placa: "",
+                modelo: "",
+                ano: "",
                 
             },
             botaoReservar: {
@@ -31,6 +31,12 @@ export const useReservaStore = defineStore("reservas", {
     actions: {
         reservar(obj){
             this.lista.reservas.push(obj)
+        },
+        editaItem(indice, obj){
+            this.lista.reservas.splice(indice, 1, obj)
+        },
+        deletaItem(indice){
+            this.lista.reservas.splice(indice, 1)
         },
         limparCampos(){
             this.formulario = {
@@ -70,8 +76,27 @@ export const useReservaStore = defineStore("reservas", {
                 "ano": ano 
             }
         },
-        deletaItem(indice){
-            this.lista.reservas.splice(indice, 1)
+        
+        
+
+
+        // Funções para salvar localStorage
+
+        salvaDB(){
+            if(this.lista.reservas.length >= 0){
+                var dados = JSON.stringify(this.lista.reservas)
+                localStorage.setItem("reservas", dados)
+            }
+        },
+
+        carregaDB(){
+            var dados = localStorage.getItem("reservas")
+            dados = JSON.parse(dados)
+            if(dados.length > 0){
+                for (let index = 0; index < dados.length; index++) {
+                    this.lista.reservas.push(dados[index])
+                } 
+            }
         }
         
    

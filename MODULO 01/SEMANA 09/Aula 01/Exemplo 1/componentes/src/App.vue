@@ -21,7 +21,7 @@
         :lixeira="true"
         />
     
-    <minha-tabela :tabela="lista.reservas" @preenche="campos" @deleta="deletaItem()"/>
+    <minha-tabela :tabela="lista.reservas" @preenche="campos" @deleta="del"/>
 
     
   </div>
@@ -49,11 +49,11 @@ export default {
     // Mapeando variáveis da Store
     const {formulario, botaoReservar, botaoLimpar, lista} = storeToRefs(useReservaStore())
     // Mapeando Actions
-    const { reservar, limparCampos, dataParaArray, preencheFormulario, dataParaTabela, deletaItem } = mapActions(useReservaStore, ["reservar", "limparCampos", "dataParaArray", "preencheFormulario", "dataParaTabela", "deletaItem"])
+    const { reservar, limparCampos, dataParaArray, preencheFormulario, dataParaTabela, deletaItem, salvaDB, carregaDB, editaItem } = mapActions(useReservaStore, ["reservar", "limparCampos", "dataParaArray", "preencheFormulario", "dataParaTabela", "deletaItem", "salvaDB", "carregaDB", "editaItem"])
 
     return {
       formulario,
-      botaoReservar,
+      botaoReservar, 
       botaoLimpar,
       lista,
 
@@ -62,9 +62,15 @@ export default {
       dataParaArray,
       preencheFormulario,
       dataParaTabela,
-      deletaItem
+      deletaItem,
+      salvaDB,
+      carregaDB,
+      editaItem
     }
 
+  },
+  mounted() {
+    this.carregaDB()
   },
   methods: {
     reserva(){
@@ -75,16 +81,41 @@ export default {
       if(this.formulario.placa.length == 0) return false
       if(this.formulario.ano < 1900) return false
 
-      this.reservar({
-        "nome": this.formulario.nome,
-        "dataReserva": this.dataParaArray(this.formulario.dataReserva),
-        "horaEntrada": this.formulario.horaEntrada,
-        "horasDeReserva": this.formulario.horasDeReserva,
-        "modelo": this.formulario.modelo,
-        "placa": this.formulario.placa,
-        "ano": this.formulario.ano
-      })
+      if(this.edita){
+        this.editaItem(this.indice, {
+                  "nome": this.formulario.nome,
+                  "dataReserva": this.dataParaArray(this.formulario.dataReserva),
+                  "horaEntrada": this.formulario.horaEntrada,
+                  "horasDeReserva": this.formulario.horasDeReserva,
+                  "modelo": this.formulario.modelo,
+                  "placa": this.formulario.placa,
+                  "ano": this.formulario.ano
+                })
+
+        this.edita = false
+        this.indice = null
+        
+      }else{
+        this.reservar({
+          "nome": this.formulario.nome,
+          "dataReserva": this.dataParaArray(this.formulario.dataReserva),
+          "horaEntrada": this.formulario.horaEntrada,
+          "horasDeReserva": this.formulario.horasDeReserva,
+          "modelo": this.formulario.modelo,
+          "placa": this.formulario.placa,
+          "ano": this.formulario.ano
+        })
+        
+      }
+
       this.limparCampos()
+      this.salvaDB()
+
+      
+    },
+    del(id){
+      this.deletaItem(id)
+      this.salvaDB()
     },
     campos(key, nome, dataReserva, horaEntrada, horasDeReserva, placa, modelo, ano){
       this.preencheFormulario(

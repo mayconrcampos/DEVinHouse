@@ -38,7 +38,7 @@
 
 <script>
 export default {
-    name: "minhaTabela",
+    name: "minhaTabela", 
     props: {
       tabela: Array
     }

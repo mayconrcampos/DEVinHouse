@@ -9,7 +9,7 @@
             
             <i :class="[
                 lixeira ? 'fa-solid fa-trash-can' : '', 
-                salvar ? 'fa-solid fa-floppy-disk': ''
+                salvar ? 'fa-solid fa-floppy-disk': '' 
             ]"></i> 
 
             {{nomeBtn}}
