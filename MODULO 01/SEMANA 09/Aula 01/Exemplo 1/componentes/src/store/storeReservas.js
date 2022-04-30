@@ -26,7 +26,12 @@ export const useReservaStore = defineStore("reservas", {
             anos: [],
             valida: {
                 nome: false,
-                dataReserva: false
+                dataReserva: false,
+                horaEntrada: false,
+                horasDeReserva: false,
+                placa: false,
+                modelo: false,
+                ano: false
             }
             
         }
@@ -34,6 +39,88 @@ export const useReservaStore = defineStore("reservas", {
 
     // Actions
     actions: {
+        validaInputNome(nome){
+            if(nome.length == 0) {
+                this.valida.nome = true
+                
+            }else{
+                this.valida.nome = false
+                
+            }
+        },
+        validaInputDataReserva(dataReserva){
+            if(isNaN(new Date(dataReserva)) || new Date(dataReserva) < new Date()) {
+                this.valida.dataReserva = true
+                
+            }else{
+                this.valida.dataReserva = false
+                
+            }
+        },
+        validaInputHoraEntrada(horaEntrada){
+            let tempo = horaEntrada.split(":")
+            let hora = Number(tempo[0]) >= 0 && Number(tempo[0]) < 24 ? true : false
+            let minuto = Number(tempo[1]) >= 0 && Number(tempo[1]) < 60
+           
+            if(horaEntrada.length < 5 || !hora || !minuto) {
+                this.valida.horaEntrada = true
+                
+            }else{
+                this.valida.horaEntrada = false
+                
+            }
+        },
+        validaInputHorasDeReserva(horasDeReserva){
+            if(horasDeReserva <= 0) {
+                this.valida.horasDeReserva = true
+                
+            }else{
+                this.valida.horasDeReserva = false 
+                
+            }
+        },
+        validaInputPlaca(placa){
+            if(placa.length < 7) {
+                this.valida.placa = true
+                
+            }else{
+                this.valida.placa = false
+                
+            }
+        },
+        validaInputModelo(modelo){
+            if(modelo.length == 0) {
+                this.valida.modelo = true
+                
+            }else{
+                this.valida.modelo = false
+                
+            }
+        },
+        validaInputAno(ano){
+            //this.valida.ano = true
+            if(ano === "") {
+                this.valida.ano = true
+
+            }else{
+                this.valida.ano = false
+                
+            }
+        },
+        /*
+        validaCampos({
+            "nome": nome,
+            "dataReserva": dataReserva,
+            "horaEntrada": horaEntrada,
+            "horasDeReserva": horasDeReserva,
+            "placa": placa,
+            "modelo": modelo,
+            "ano": ano
+
+        } = null){
+            
+        
+        },*/
         preencheAnos(){
             let data = new Date()
             let ano = data.getFullYear()

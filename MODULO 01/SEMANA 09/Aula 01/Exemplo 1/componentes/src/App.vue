@@ -5,6 +5,7 @@
     <meu-formulario
       :titulo="titulo"
      
+     
     />
 
     <meu-botao 
@@ -53,13 +54,13 @@ export default {
   },
   setup() {
     // Mapeando variáveis da Store
-    const {titulo, formulario, botaoReservar, botaoLimpar, lista} = storeToRefs(useReservaStore())
+    const {titulo, formulario, botaoReservar, botaoLimpar, lista, valida} = storeToRefs(useReservaStore())
     // Mapeando Actions
     const { reservar, limparCampos, dataParaArray, preencheFormulario, dataParaTabela, deletaItem, salvaDB, carregaDB, editaItem, esvaziaLista } = mapActions(useReservaStore, ["reservar", "limparCampos", "dataParaArray", "preencheFormulario", "dataParaTabela", "deletaItem", "salvaDB", "carregaDB", "editaItem", "esvaziaLista"])
 
     return {
       // Variáveis da Store
-      titulo, formulario, botaoReservar, botaoLimpar, lista,
+      titulo, formulario, botaoReservar, botaoLimpar, lista, valida,
 
       // Actions da Store
       reservar, limparCampos, dataParaArray, preencheFormulario, dataParaTabela, 
@@ -72,6 +73,7 @@ export default {
     this.carregaDB()
   },
   methods: {
+  
 
     /**********
      * Método limpar - ligada ao botão Limpar
@@ -98,23 +100,25 @@ export default {
      */
 
     reserva(){
-      if(this.formulario.nome.length == 0) return false
-      if(this.formulario.dataReserva.length < 10) return false
-      if(!this.formulario.horaEntrada) return false
-      if(this.formulario.horasDeReserva <= 0) return false
-      if(this.formulario.placa.length == 0) return false
-      if(this.formulario.ano < 1900) return false
+
+      if(this.valida.nome) return false
+      if(this.valida.dataReserva) return false
+      if(this.valida.horaEntrada) return false
+      if(this.valida.horasDeReserva) return false
+      if(this.valida.placa) return false
+      if(this.valida.ano) return false
+      
 
       if(this.edita){
         this.editaItem(this.indice, {
-                  "nome": this.formulario.nome,
-                  "dataReserva": this.dataParaArray(this.formulario.dataReserva),
-                  "horaEntrada": this.formulario.horaEntrada,
-                  "horasDeReserva": this.formulario.horasDeReserva,
-                  "modelo": this.formulario.modelo,
-                  "placa": this.formulario.placa.toUpperCase(),
-                  "ano": this.formulario.ano
-                })
+          "nome": this.formulario.nome,
+          "dataReserva": this.dataParaArray(this.formulario.dataReserva),
+          "horaEntrada": this.formulario.horaEntrada,
+          "horasDeReserva": this.formulario.horasDeReserva,
+          "modelo": this.formulario.modelo,
+          "placa": this.formulario.placa.toUpperCase(),
+          "ano": this.formulario.ano
+        })
 
         this.edita = false
         this.indice = null
