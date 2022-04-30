@@ -129,13 +129,10 @@ export default {
           "placa": this.formulario.placa.toUpperCase(),
           "ano": this.formulario.ano
         })
-        
       }
 
       this.limparCampos()
       this.salvaDB()
-
-      
     },
     /****
      * Método del que abre um confirm antes de excluir

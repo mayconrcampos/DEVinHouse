@@ -1,7 +1,7 @@
 <template>
     <div class="container w-100 mt-2 g-3 text-center table-responsive-md"> 
         <hr>
-        <table class="table table-sm table-hover table-bordered border-secondary table-align-middle">
+        <table v-if="tabela.length > 0" class="table table-sm table-hover table-bordered border-secondary table-align-middle">
           <thead class="table-dark">
             <tr>
               <th scope="col">Solicitante</th>
@@ -28,11 +28,11 @@
                 <a  @click="$emit('deleta', key)" class="btn btn-sm btn-danger">Deletar</a>
               </td>
             </tr>
-
           </tbody>
         </table>
-
-
+        <div v-else class="alert alert-danger text-center">
+          <h1>Lista Vazia</h1>
+        </div>
     </div>
 </template>
 

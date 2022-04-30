@@ -23,12 +23,25 @@ export const useReservaStore = defineStore("reservas", {
             botaoLimpar: {
                 nome: "Limpar",
             },
+            anos: [],
+            valida: {
+                nome: false,
+                dataReserva: false
+            }
             
         }
     },
 
     // Actions
     actions: {
+        preencheAnos(){
+            let data = new Date()
+            let ano = data.getFullYear()
+
+            for(let i = ano; i >= 1900; i--){
+                this.anos.push(i)
+            }
+        },
         reservar(obj){
             this.lista.reservas.push(obj)
         },
@@ -100,7 +113,7 @@ export const useReservaStore = defineStore("reservas", {
 
     // Getters
     getters: {
-    
+        
         
     }
 })
