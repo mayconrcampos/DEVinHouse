@@ -49,9 +49,9 @@
               <label class="form-label" for="">Ano</label>
               <!-----<input v-model="formulario.ano" class="form-control" type="number" >----->
               <select @click="validaInputAno(formulario.ano)" v-model="formulario.ano" class="form-select" aria-label="Default select example">
-                <option v-for="(ano, key) in  anos" :key="key" :value="ano">{{ ano }}</option>
+                <option v-for="(ano, key) in  anos" :key="key" :value="ano" selected>{{ ano }}</option>
             </select>
-            <small v-if="valida.ano" class="text-danger">Escolha o ano do veículo</small>
+            <small v-if="valida.ano" class="text-primary">Escolha o ano do veículo</small>
           </div>
 
               <div class="d-flex flex-row-reverse w-100 mt-3 m-auto p-2">

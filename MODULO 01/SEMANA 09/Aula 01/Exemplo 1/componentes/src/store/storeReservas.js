@@ -31,7 +31,7 @@ export const useReservaStore = defineStore("reservas", {
                 horasDeReserva: false,
                 placa: false,
                 modelo: false,
-                ano: false
+                ano: true
             }
             
         }
@@ -107,20 +107,7 @@ export const useReservaStore = defineStore("reservas", {
                 
             }
         },
-        /*
-        validaCampos({
-            "nome": nome,
-            "dataReserva": dataReserva,
-            "horaEntrada": horaEntrada,
-            "horasDeReserva": horasDeReserva,
-            "placa": placa,
-            "modelo": modelo,
-            "ano": ano
-
-        } = null){
-            
-        
-        },*/
+      
         preencheAnos(){
             let data = new Date()
             let ano = data.getFullYear()

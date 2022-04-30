@@ -135,6 +135,7 @@ export default {
         })
       }
 
+      this.valida.ano = true
       this.limparCampos()
       this.salvaDB()
     },
