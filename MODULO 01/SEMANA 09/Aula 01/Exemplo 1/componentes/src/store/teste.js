@@ -1,4 +1,4 @@
-var data = new Date("2022-12-122")
+var data = new Date("2022-12-12").toLocaleString("pt-BR")
 
-console.log(typeof data)
+console.log(data)
 console.log(!isNaN(data))

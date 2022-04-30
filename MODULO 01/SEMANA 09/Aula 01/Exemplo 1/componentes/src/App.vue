@@ -101,12 +101,13 @@ export default {
 
     reserva(){
 
-      if(this.valida.nome) return false
-      if(this.valida.dataReserva) return false
-      if(this.valida.horaEntrada) return false
-      if(this.valida.horasDeReserva) return false
-      if(this.valida.placa) return false
-      if(this.valida.ano) return false
+      if(!this.formulario.nome || this.valida.nome) return false
+      if(!this.formulario.dataReserva || this.valida.dataReserva) return false
+      if(!this.formulario.horaEntrada || this.valida.horaEntrada) return false
+      if(!this.formulario.horasDeReserva || this.valida.horasDeReserva) return false
+      if(!this.formulario.placa || this.valida.placa) return false
+      if(!this.formulario.modelo || this.valida.modelo) return false
+      if(!this.formulario.ano || this.valida.ano) return false
       
 
       if(this.edita){
@@ -135,7 +136,6 @@ export default {
         })
       }
 
-      this.valida.ano = true
       this.limparCampos()
       this.salvaDB()
     },

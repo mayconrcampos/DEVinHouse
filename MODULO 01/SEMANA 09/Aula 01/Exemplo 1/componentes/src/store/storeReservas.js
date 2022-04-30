@@ -31,7 +31,7 @@ export const useReservaStore = defineStore("reservas", {
                 horasDeReserva: false,
                 placa: false,
                 modelo: false,
-                ano: true
+                ano: false
             }
             
         }
@@ -99,7 +99,7 @@ export const useReservaStore = defineStore("reservas", {
         },
         validaInputAno(ano){
             //this.valida.ano = true
-            if(ano === "") {
+            if(ano < 1900 || ano > new Date().getFullYear().toLocaleString("pt-br")) {
                 this.valida.ano = true
 
             }else{

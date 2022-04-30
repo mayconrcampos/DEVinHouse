@@ -1,6 +1,7 @@
 <template>
     <div class="container w-100 mt-2 g-3 text-center table-responsive-md"> 
         <hr>
+      <transition name="slide-fade">
         <table v-if="tabela.length > 0" class="table table-sm table-hover table-bordered border-secondary table-align-middle">
           <thead class="table-dark">
             <tr>
@@ -30,9 +31,11 @@
             </tr>
           </tbody>
         </table>
+      
         <div v-else class="alert alert-danger text-center">
           <h1>Lista Vazia</h1>
         </div>
+      </transition>
     </div>
 </template>
 
@@ -45,6 +48,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
 
 </style>>
