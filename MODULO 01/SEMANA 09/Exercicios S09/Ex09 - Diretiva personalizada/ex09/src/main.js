@@ -4,13 +4,12 @@ import App from './App.vue'
 const app = createApp(App)
 
 app.directive("aumenta", (el) => {
-    el.addEventListener("mouseover", () => {
-        if(el.style.fontSize !== "30px"){
-            el.style.fontSize = "30px"
-        }else{
-            el.style.fontSize = "14px"
-        }
-        
+    el.addEventListener("mouseenter", () => {
+        el.style.fontSize = "30px"
+    })
+
+    el.addEventListener("mouseleave", () => {
+        el.style.fontSize = "14px"
     })
 })
 
