@@ -5,11 +5,11 @@ const app = createApp(App)
 
 app.directive("aumenta", (el) => {
     el.addEventListener("mouseenter", () => {
-        el.style.fontSize = "30px"
+        el.style.fontSize = "20px"
     })
 
     el.addEventListener("mouseleave", () => {
-        el.style.fontSize = "14px"
+        el.style.fontSize = "15px"
     })
 })
 
