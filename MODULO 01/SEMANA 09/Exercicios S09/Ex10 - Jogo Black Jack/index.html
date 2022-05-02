@@ -78,9 +78,7 @@
                         this.total += this.jogador
 
                         this.venceu = "1"
-                        this.status = "Você está Jogando!"
 
-                        
                         if(this.total > 21){
                             this.venceu = "3"
                             this.status = "Você Perdeu!"
@@ -102,7 +100,7 @@
                 },
                 novoJogo(){
                     this.venceu = "1"
-                    this.status = null
+                    this.status = "Você está Jogando!"
                     this.jogadas = 5
                     this.jogador = 0
                     this.total = 0
