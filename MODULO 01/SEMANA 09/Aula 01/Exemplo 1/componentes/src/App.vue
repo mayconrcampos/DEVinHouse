@@ -136,9 +136,6 @@ export default {
         })
       }
 
-      console.log(this.dataParaArray(this.formulario.dataReserva))
-      console.log(this.formulario.dataReserva)
-
       this.limparCampos()
       this.salvaDB()
     },
@@ -170,9 +167,6 @@ export default {
           modelo,
           ano 
       )
-
-      console.log(this.dataParaTabela(dataReserva))
-      console.log(dataReserva)
 
       this.indice = key 
       this.edita = true

@@ -39,6 +39,10 @@ export const useReservaStore = defineStore("reservas", {
 
     // Actions
     actions: {
+
+        /******************
+         * Validadores
+         */
         validaInputNome(nome){
             if(nome.length == 0) {
                 this.valida.nome = true
@@ -49,61 +53,8 @@ export const useReservaStore = defineStore("reservas", {
             }
         },
         validaInputDataReserva(dataReserva){
-            console.log(dataReserva)
-            let data = dataReserva.split("-")
-            let y = data[0]
-            let m = data[1]
-            let d = data[2]
-
-            // Javascript program to check if
-            // given date is valid or not.
-            const MAX_VALID_YR = 9999;
-            const MIN_VALID_YR = 1800;
-
-            // Returns true if
-            // given year is valid.
-            function isLeap(year)
-            {
-
-                // Return true if year
-                // is a multiple of 4 and
-                // not multiple of 100.
-                // OR year is multiple of 400.
-                return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
-            }
-
-            // Returns true if given
-            // year is valid or not.
-            function isValidDate(d, m, y)
-            {
-
-                // If year, month and day
-                // are not in given range
-                if (y > MAX_VALID_YR || y < MIN_VALID_YR) return false;
-                if (m < 1 || m > 12) return false;
-                if (d < 1 || d > 31) return false;
-                
-                // Handle February month
-                // with leap year
-                if (m == 2)
-                {
-                    if (isLeap(y))
-                        return (d <= 29);
-                    else
-                        return (d <= 28);
-                }
-            
-                // Months of April, June,
-                // Sept and Nov must have
-                // number of days less than
-                // or equal to 30.
-                if (m == 4 || m == 6 || m == 9 || m == 11) return (d <= 30);
-                
-                return true;
-            }
- 
-         
-            if(isNaN(new Date(dataReserva)) || new Date(dataReserva) < new Date() || !isValidDate(d, m, y)) {
+      
+            if(isNaN(new Date(dataReserva)) || new Date(dataReserva) < new Date()) {
                 this.valida.dataReserva = true
                 
             }else{
@@ -152,8 +103,7 @@ export const useReservaStore = defineStore("reservas", {
             }
         },
         validaInputAno(ano){
-            //this.valida.ano = true
-            if(ano < 1900 || ano > new Date().getFullYear().getUTCDate("pt-br") ) {
+            if(ano < 1900 || ano > new Date() ) {
                 this.valida.ano = true
 
             }else{
@@ -161,6 +111,10 @@ export const useReservaStore = defineStore("reservas", {
                 
             }
         },
+
+        /*****************************
+         * Métodos do Formulário
+         */
       
         preencheAnos(){
             let data = new Date()
@@ -194,11 +148,10 @@ export const useReservaStore = defineStore("reservas", {
             }
         },
         dataParaArray(data){
-            let d = new Date(data)
-            let dia = d.getDate() + 1 < 10 ? `0${d.getDate() + 1}` : d.getDate() + 1
-            let mes = d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1
-            let ano = d.getFullYear()
-            console.log("data para array =>",dia, mes, ano)
+            let d = data.split("-")
+            let dia = d[2]
+            let mes = d[1]
+            let ano = d[0]
             return (`${dia}/${mes}/${ano}`)
         },
   
@@ -230,13 +183,18 @@ export const useReservaStore = defineStore("reservas", {
         },
 
         carregaDB(){
-            var dados = localStorage.getItem("reservas")
-            dados = JSON.parse(dados)
-            if(dados.length > 0){
-                for (let index = 0; index < dados.length; index++) {
-                    this.lista.reservas.push(dados[index])
-                } 
+            try{
+                var dados = localStorage.getItem("reservas")
+                if(dados.length > 0 || dados !== null){
+                    dados = JSON.parse(dados)
+                    for (let index = 0; index < dados.length; index++) {
+                        this.lista.reservas.push(dados[index])
+                    } 
+                }
+            }catch(error){
+                console.log(error)
             }
+            
         }
     },
 

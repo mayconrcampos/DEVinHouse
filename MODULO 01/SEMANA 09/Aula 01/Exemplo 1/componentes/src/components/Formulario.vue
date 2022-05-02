@@ -21,7 +21,6 @@
                 <transition name="slide-fade">
                     <small v-if="valida.dataReserva" class="text-danger">Campo data reserva obrigatório</small>
                 </transition>
-                {{formulario.dataReserva}}
           </div>
 
           <div class="col-lg-2">
