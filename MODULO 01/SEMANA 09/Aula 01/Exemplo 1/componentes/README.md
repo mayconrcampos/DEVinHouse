@@ -5,7 +5,7 @@
     <li>Componentização</li>
     <li>Comunicação entre componentes com Props e Emit</li>
     <li>Centralizando Store com Pinia</li>
-    <li>Validação de Formulário</li>
+    <li>Validação de Formulário.</li>
 </ul>
 
 <h2>Projeto proposto pelo prof Gilmar Bennert, cujo nome original é My-Parking.</h2>
@@ -23,6 +23,7 @@
 <h2>Prints</h2>
 
 <h3>Campos são validados conforme usuário prossegue no preenchimento do formulário.</h3>
+<small>A princípio era para ser utilizado o Vee-validate, porém eu me fiz um desafio de escrever uma validação que fosse tão eficiente quanto vee-validate ou vuelidate, acredito ter conseguido chegar ao resultado.</small>
 <img src="./public/vuepark01.png">
 
 <h3>Botão de função dinâmica, Reservar ou Editar.</h3>
