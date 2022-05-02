@@ -1,3 +1,31 @@
+<h1>Projeto Vue Park</h1>
+
+<h3>Exercitando os seguintes conceitos com VueJS</h3>
+<ul>
+    <li>Componentização</li>
+    <li>Comunicação entre componentes com Props e Emit</li>
+    <li>Centralizando Store com Pinia</li>
+    <li>Validação de Formulário</li>
+</ul>
+
+<h2>Projeto proposto pelo prof Gilmar Bennert, cujo nome original é My-Parking.</h2>
+
+<h3>Características do Aplicativo: Componentes </h3>
+
+<ul>
+    <li>Header - Componente estático</li>
+    <li>Button - Componente reutilizável que emite um comando ao arquivo App.vue.</li>
+    <li>Formulário - Cujos campos alteram o estado da store.</li>
+    <li>Tabela - Recebe dados da store via props para renderizar a tabela.</li>
+</ul>
+
+
+<h2>Prints</h2>
+
+<h3>01</h3>
+<img src="./public/vuepark01.png">
+<img src="./public/vuepark02.png">
+<img src="./public/vuepark03.png">
 # componentes
 
 ## Project setup
