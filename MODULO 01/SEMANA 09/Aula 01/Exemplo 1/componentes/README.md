@@ -22,11 +22,15 @@
 
 <h2>Prints</h2>
 
-<h3>01</h3>
+<h3>Campos são validados conforme usuário prossegue no preenchimento do formulário.</h3>
 <img src="./public/vuepark01.png">
+
+<h3>Botão de função dinâmica, Reservar ou Editar.</h3>
 <img src="./public/vuepark02.png">
+
+<h3>Todos os campos required</h3>
 <img src="./public/vuepark03.png">
-# componentes
+
 
 
 <h1>Instruções para clonar este projeto.</h1>
