@@ -18,7 +18,7 @@
        <div class="container w-75 rounded border border-dark text-dark bg-light">
             <h1 class="text-center">Black Jack</h1>
 
-            <div class="container w-100 border d-flex flex-column">
+            <div class="container w-100 border d-flex flex-column p-2">
                 <button @click.prevent="novoJogo()" class="btn btn-primary w-25">Novo Jogo</button>
 
                 <small v-show="venceu == '1'" class="btn btn-primary text-center w-25 mt-2" v-text="status"></small>
@@ -57,8 +57,8 @@
           Vue.createApp({
             data() {
               return {
-                venceu: "1",
-                status: "",
+                venceu: "",
+                status: "Você está jogando!",
                 jogador: 0,
                 adversario: 17,
                 cartas: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -76,6 +76,8 @@
                         this.jogador = this.cartas[index]
                         this.jogadas--
                         this.total += this.jogador
+
+                        this.venceu = "1"
                         this.status = "Você está Jogando!"
 
                         
