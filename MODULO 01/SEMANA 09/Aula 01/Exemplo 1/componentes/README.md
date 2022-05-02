@@ -28,6 +28,8 @@
 <img src="./public/vuepark03.png">
 # componentes
 
+
+<h1>Instruções para clonar este projeto.</h1>
 ## Project setup
 ```
 npm install
