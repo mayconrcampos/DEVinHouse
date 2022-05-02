@@ -1,11 +1,26 @@
 <template>
-  <div class="container">
+  <div class="container d-flex flex-column">
     <transition name="header">
       <h1 v-show="show">Header</h1>
     </transition>
     
+    <button class="btn btn-dark mt-5" @click="show1 = !show1">Alterar estado</button>
+  
+    <h4>mode="in-out" - Insere segundo elemento pra depois remover o primeiro</h4>
+   <transition name="header-bounce" mode="in-out">
+      <h1 v-if="show1">Header</h1>
+       <h1 v-else>Header</h1>
+    </transition>
+<hr>
+  <h4>mode="out-in" - Remove o primeiro pra inserir o segundo</h4>
+    <transition name="header-bounce" mode="out-in">
+      
+      <h1 v-if="show">Header</h1>
+       <h1 v-else>Header</h1>
+    </transition>
+    
     <button class="btn btn-dark mt-5" @click="show = !show">Alterar estado</button>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -17,7 +32,8 @@ export default {
   },
   data() {
     return {
-      show: false
+      show: false,
+      show1: false
     }
   },
 }
@@ -48,6 +64,28 @@ leave-to - valor final - 0 invisível
 .header-enter-active,
 .header-leave-active {
   transition: opacity 0.6s;
+}
+
+/************************
+  Transition bounce
+*/
+
+.header-bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.header-bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 
