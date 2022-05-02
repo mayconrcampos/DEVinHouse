@@ -1,6 +1,6 @@
 <template>
   <div>
-    <meu-form :mouseentra="aumenta" @mouseover="mousemove1" @mouseleaver="mousesai1"/>
+    <meu-form />
   </div>
 </template>
 
@@ -14,25 +14,12 @@ export default {
   },
   data() {
     return {
-      tamanho: "",
-      aumenta: false,
-      aumenta2: false
+
     
     }
   },
   methods: {
-    mousemove(){
-      this.aumenta = true
-    },
-    mousesai(){
-      this.aumenta = false
-    },
-    mousemove1(){
-      this.aumenta = true
-    },
-    mousesai1(){
-      this.aumenta = false
-    }
+
   }
 }
 </script>
