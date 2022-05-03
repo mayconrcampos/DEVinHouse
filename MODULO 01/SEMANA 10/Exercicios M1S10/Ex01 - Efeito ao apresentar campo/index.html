@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 01</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+        header {
+            width: 70%;
+            margin: auto;
+        }
+        button {
+            margin: auto;
+        }
+        .header-enter-from,
+        .header-leave-to {
+            opacity: 0;
+        }
+        .header-enter-active,
+        .header-leave-active {
+            transition: 4s;
+        }
+        .header-leave-from,
+        .header-enter-to {
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        
+        
+        <transition name="header">
+            <header v-if="show">
+                <h1>Meu Header</h1>
+            </header>
+        </transition>
+
+        <button @click="show = !show">{{ show ? 'Unshow' : 'Show' }}</button>
+    
+    
+    
+    
+    </div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        show: true
+      }
+    }
+  }).mount('#app')
+</script>
+
+    
+</body>
+</html>
