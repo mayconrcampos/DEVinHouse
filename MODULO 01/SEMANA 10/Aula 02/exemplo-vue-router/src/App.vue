@@ -1,6 +1,10 @@
 <template>
-  <div>
+  <div id="app">
     <h1>Estudando Vue Router</h1>
+
+    <router-view></router-view>
+
+    <h3>Muito bom brother</h3>
   </div>
 </template>
 
