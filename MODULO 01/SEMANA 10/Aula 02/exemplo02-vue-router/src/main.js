@@ -37,7 +37,7 @@ const routes = [
         name: "equipe",
         children: [
             { 
-                path: ":nome([a-z]+)?",
+                path: ":nome",
                 name: "membro", 
                 component: Membro 
             }

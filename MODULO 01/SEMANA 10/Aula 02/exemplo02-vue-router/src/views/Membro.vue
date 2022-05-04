@@ -1,10 +1,14 @@
 <template>
   <div>
-      <h1>Nome: Maycon</h1>
 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae assumenda repellendus velit eveniet odit voluptatem deserunt! Quas sunt cumque quos provident? Ratione quidem distinctio maxime nostrum temporibus veritatis sed vel.</p>
+      <h3>Bio: {{membro}}</h3>
 
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam id eum similique consectetur cum maxime nostrum excepturi sit nisi, assumenda impedit alias facere ullam fugiat, non aliquid voluptates debitis ipsa.</p>
+
+      <h4>Bio</h4>
+      
+      <p>{{bio}}</p>
+
+      
 
       <router-link to="/equipe">Retornar</router-link>
   </div>
@@ -13,9 +17,20 @@
 <script>
 export default {
     name: "umMembro",
-    props: {
-    
+    data() {
+      return {
+        
+      }
+    },
+    computed: {
+      membro(){
+        return this.$route.params.nome
+      },
+      bio(){
+        return this.$route.params.bio
+      }
     }
+  
 }
 </script>
 
