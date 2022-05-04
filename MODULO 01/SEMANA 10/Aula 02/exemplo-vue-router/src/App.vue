@@ -4,7 +4,7 @@
 
     <router-view></router-view>
 
-    <h3>Muito bom brother</h3>
+  
   </div>
 </template>
 
