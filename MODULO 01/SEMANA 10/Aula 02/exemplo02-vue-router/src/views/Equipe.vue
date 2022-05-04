@@ -27,6 +27,7 @@ export default {
     name: "minhaEquipe",
     data() {
       return {
+        // Array membros pode muito bem ser preenchido por alguma API com banco de dados.
         membros: [
           {"nome":"Maycon", "bio": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolor incidunt similique mollitia unde omnis quis ea netur adipisicing elit. Quecessitatibus repellendus sint reprehenderit ratione dignissimos a officia eveniet ad, porro asperiores possimus?"},
 
