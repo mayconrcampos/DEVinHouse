@@ -6,6 +6,7 @@ import Contatos from "./views/Contatos.vue"
 import Empresa from "./views/Empresa.vue"
 import Equipe from "./views/Equipe.vue"
 import Membro from "./views/Membro.vue"
+import Error404 from "./views/Error404.vue"
 
 const routes = [
     {
@@ -36,10 +37,15 @@ const routes = [
         name: "equipe",
         children: [
             { 
-                path: ":nome",
+                path: ":nome([a-z]+)?",
                 name: "membro", 
-                component: Membro }
+                component: Membro 
+            }
         ]
+    },
+    {
+        path: "/:pathMatch(.*)",
+        component: Error404
     }
 ]
 
