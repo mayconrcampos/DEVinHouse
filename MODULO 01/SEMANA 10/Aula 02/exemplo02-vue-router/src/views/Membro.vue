@@ -22,6 +22,7 @@ export default {
         
       }
     },
+    
     computed: {
       membro(){
         return this.$route.params.nome
@@ -29,7 +30,16 @@ export default {
       bio(){
         return this.$route.params.bio
       }
-    }
+    },
+    //props: {
+    //  membro: {
+    //    type: String
+    //  },
+    //  bio: {
+    //    type: String
+    //  }
+    //}
+   
   
 }
 </script>

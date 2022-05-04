@@ -39,7 +39,19 @@ const routes = [
             { 
                 path: ":nome",
                 name: "membro", 
-                component: Membro 
+                component: Membro,
+                //props: {
+                //    nome: {
+                //        type: String,
+                //        default: ""
+                //    },
+                //    bio: {
+                //        type: String,
+                //        default: ""
+                //    }
+                //}
+                
+                
             }
         ]
     },
