@@ -11,6 +11,8 @@
       </ul>
     </header>
 
+    <a href="" @click.stop.prevent="voltar()">Voltar</a>
+
     <router-view></router-view>
   </div>
 </template>
@@ -21,7 +23,12 @@ export default {
   name: 'App',
   components: {
     
-  }
+  },
+  methods: {
+    voltar(){
+      this.$router.go(-1)
+    }
+  },
 }
 </script>
 
