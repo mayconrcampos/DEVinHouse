@@ -6,7 +6,8 @@
       <ul>
         <li><router-link to="/empresa">Empresa | </router-link></li>
         <li><router-link to="/contatinhos">Contatos | </router-link></li> <!---- Apelido para rota contatos----> 
-        <li><router-link :to="{name: 'company'}">Home</router-link></li> <!-- rota com nome dinâmico --->
+        <li><router-link to="/">Home |</router-link></li> <!-- rota com nome dinâmico --->
+        <li><router-link to="/equipe">Equipe</router-link></li>
       </ul>
     </header>
 
