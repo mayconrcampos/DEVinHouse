@@ -1,45 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ex 03</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <style>
-        body {
-            text-align: center;
-        }
-        header {
-            width: 70%;
-            margin: auto;
-        }
-        button {
-            margin: auto;
-        }
-        
-        /** Transition Tbody***/
-        .corpo-leave-to,
-        .corpo-enter-from {
-          opacity: 0;
-          transform: translate(30px);
-        }
-        .corpo-leave-from,
-        .corpo-enter-to {
-          opacity: 1;
-        }
-        .corpo-move,
-        .corpo-enter-active,
-        .corpo-leave-active {
-          transition: all 0.8s;
-        }
-        
-    </style>
-</head>
-<body>
-    <div id="app">
-    
+<template>
+  <div>
     <header class="card-header w-100">
         <h1>Formulário</h1>
     </header>
@@ -56,7 +16,8 @@
         </form>
     </div>
 
-   
+      <transition name="tables" mode="out-in">
+      
         <div v-if="pessoas.length > 0" class="container w-75 m-auto mt-3">
             <table class="table">
                 <thead>
@@ -67,42 +28,42 @@
                   </tr>
                 </thead>
                 <transition-group tag="tbody" name="corpo">
-                
                   <tr v-for="(p, indice) in pessoas" :key="p.id">
                     <td>{{p.nome}}</td>
                     <td>{{p.idade}}</td>
                     <td><button @click.prevent="del(indice)" class="btn btn-danger">x</button></td>
                   </tr>
                 </transition-group>
-                
-              </table>
+            </table>
         </div>
         <div v-else class=" d-flex mt-3 w-50 m-auto">
-            <span class="alert alert-danger w-75 m-auto">Lista vazia</span>
+            <span class="alert alert-danger w-75 m-auto">Não há pessoas cadastradas</span>
         </div>
+      </transition>
+  </div>
+</template>
 
-        
-        
-    </div>
-    <script src="https://unpkg.com/vue@3"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script>
-  Vue.createApp({
-    data() {
+
+export default {
+  name: 'App',
+  data() {
       return {
         pessoas: [],
         nome: "",
         nascimento: null
 
       }
-    },
+  },
     methods: {
         addPessoa(){
             this.pessoas.push({
                 "id": new Date().getTime(),
                 "nome": this.nome,
                 "idade": this.getIdade(this.nascimento)
+            })
+            this.pessoas.sort((x, y) => {
+              return Number(x.idade) > Number(y.idade)
             })
             this.nome = ""
             this.idade = ""
@@ -123,9 +84,47 @@
         }
     },
 
-  }).mount('#app')
+}
 </script>
 
-    
-</body>
-</html>
+<style>
+        body {
+            text-align: center;
+        }
+        header {
+            width: 70%;
+            margin: auto;
+        }
+        button {
+            margin: auto;
+        }
+        
+        /** Transition Tbody***/
+        .tables-leave-to,
+        .tables-enter-from {
+          opacity: 0;
+        }
+        .tables-leave-from,
+        .tables-enter-to {
+          opacity: 1;
+        }
+        .tables-enter-active,
+        .tables-leave-active {
+          transition: opacity 0.6s;
+        }
+
+        .corpo-leave-to,
+        .corpo-enter-from {
+          opacity: 0;
+          transform: translate(30px);
+        }
+        .corpo-leave-from,
+        .corpo-enter-to {
+          opacity: 1;
+        }
+        .corpo-move,
+        .corpo-enter-active,
+        .corpo-leave-active {
+          transition: all 0.8s;
+        }
+</style>
