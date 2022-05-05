@@ -7,15 +7,15 @@ const pessoas = {
     state(){
         return {
       
-            pessoas: []
+            lista: []
         }
     },
     mutations: {
         insertPessoa(state, pessoa){
-            state.pessoas.push(pessoa)
+            state.lista.push(pessoa)
         },
         delPessoa(state, indice){
-            state.pessoas.splice(indice, 1)
+            state.lista.splice(indice, 1)
         }
     }
 }
@@ -54,6 +54,9 @@ const segundos = {
             const conta = setInterval(() => {
                 if(context.state.ativa){
                     context.state.value++
+                    if(context.state.value == 60){
+                        context.state.value = 0
+                    }
                 }else{
                     clearInterval(conta)
                 }
@@ -63,7 +66,9 @@ const segundos = {
       
     },
     getters: {
-     
+     formataSegundos(state){
+         return state.value < 10 ? '0'+state.value : state.value
+     }
     }
 }
 

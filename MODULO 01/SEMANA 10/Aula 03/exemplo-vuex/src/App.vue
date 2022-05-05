@@ -16,23 +16,23 @@
         <h2>Actions</h2>
 
         <div class="container">
-          <h1>{{$store.state.segundos.value}}</h1>
+          <h1>{{$store.getters.formataSegundos}}</h1>
 
-          <button @click.prevent="dispara()" class="btn btn-primary">Disparar Segundos</button>
-          <button @click.prevent="zerar()">Zerar contagem</button>
-          <button @click.prevent="parar()">Parar</button>
+          <button @click.prevent="dispara()" class="btn btn-primary ">Disparar Segundos</button>
+          <button @click.prevent="zerar()" class="btn btn-light ">Zerar contagem</button>
+          <button @click.prevent="parar()" class="btn btn-danger">Parar</button>
         </div>
         <hr>
 
         <div class="container">
-          <input type="text" v-model="nome">
-          <input type="text" v-model="idade">
+          <input class="form-input" type="text" v-model="nome">
+          <input class="form-input" type="text" v-model="idade">
 
           <button @click.prevent="add()" class="btn btn-primary">Add</button>
         </div>
 
         <ul>
-          <li v-for="(p, indice) in $store.state.pessoas.pessoas" :key="indice" >Nome: {{p.nome}} Idade: {{p.idade}} <button @click="del(indice)">x</button></li>
+          <li v-for="(p, indice) in $store.state.pessoas.lista" :key="indice" >Nome: {{p.nome}} Idade: {{p.idade}} <button @click="del(indice)">x</button></li>
         </ul>
     
 
