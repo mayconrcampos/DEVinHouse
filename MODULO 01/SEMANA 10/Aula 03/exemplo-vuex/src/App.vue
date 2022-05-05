@@ -76,6 +76,9 @@ export default {
     },
     del(i){
       this.$store.commit("delPessoa", i)
+    },
+    parar(){
+      this.$store.commit("desativa")
     }
   },
   

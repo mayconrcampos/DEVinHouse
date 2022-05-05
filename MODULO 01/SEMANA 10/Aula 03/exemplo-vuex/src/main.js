@@ -36,28 +36,34 @@ const display = {
 const segundos = {
     state(){
         return {
-            value : 0
+            value : 0,
+            ativa: false
         }
     },
     mutations: {
-        
+        desativa(state){
+            state.ativa = false
+        },
         setsegundos(state, valor){
             state.value = valor
         }
     },
     actions: {
         startCron(context) {
-            setInterval(() => {
-                context.state.value++
+            context.state.ativa = true
+            const conta = setInterval(() => {
+                if(context.state.ativa){
+                    context.state.value++
+                }else{
+                    clearInterval(conta)
+                }
 
             }, 1000)
         },
       
     },
     getters: {
-        tempoFormatado(state){
-            state
-        }
+     
     }
 }
 
