@@ -4,8 +4,6 @@
 
     <meu-formulario
       :titulo="titulo"
-     
-     
     />
 
     <meu-botao 
