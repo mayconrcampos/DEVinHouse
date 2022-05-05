@@ -14,22 +14,11 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
+                <tr v-for="(pessoa, indice) in $store.state.cadastroStore.pessoas" :key="pessoa.id">
+                  <th scope="row">{{ pessoa.id }}</th>
+                  <td>{{ pessoa.nome}}</td>
+                  <td>{{ pessoa.idade}}</td>
+                  <td><button @click="del(indice)" class="btn btn-danger">x</button></td>
                 </tr>
               </tbody>
             </table>
@@ -40,7 +29,12 @@
 
 <script>
 export default {
-    name: "lisTagem"
+    name: "lisTagem",
+    methods: {
+        del(indice){
+            this.$store.commit("deletaPessoa", indice)
+        }
+    },
 }
 </script>
 
