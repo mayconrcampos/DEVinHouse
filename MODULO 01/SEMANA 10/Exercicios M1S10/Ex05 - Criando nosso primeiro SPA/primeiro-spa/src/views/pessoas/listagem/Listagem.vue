@@ -11,7 +11,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Idade</th>
-                  <th scope="col">Ação</th>
+                  <th scope="col">Excluir</th>
                 </tr>
               </thead>
               <transition-group tag="tbody" name="body">
@@ -37,8 +37,10 @@ export default {
     methods: {
         del(indice){
             this.$store.commit("deletaPessoa", indice)
+            this.$store.dispatch("salvaDB")
         }
     },
+  
 }
 </script>
 

@@ -66,5 +66,11 @@ export default {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.3em;
     }
+    button {
+        background-color: #42b883 !important;
+    }
+    button span {
+        border-color: black;
+    }
   
 </style>

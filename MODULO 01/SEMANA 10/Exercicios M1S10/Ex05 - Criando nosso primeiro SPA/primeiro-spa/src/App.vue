@@ -11,7 +11,10 @@ export default {
   name: 'App',
   components: {
     Navbar
-  }
+  },
+  mounted() {
+    this.$store.dispatch("carregaDB")
+  },
 }
 </script>
 

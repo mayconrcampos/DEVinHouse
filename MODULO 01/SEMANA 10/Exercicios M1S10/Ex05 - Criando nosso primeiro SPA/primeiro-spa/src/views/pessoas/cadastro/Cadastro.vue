@@ -52,12 +52,17 @@ export default {
             "nome": this.nome,
             "idade": this.calculaIdade(this.idade)
           })
+          this.$store.state.cadastroStore.pessoas.sort((x,y) => {
+            return Number(x.idade) > Number(y.idade)
+          })
+          
           this.valNome = false
           this.valIdade = false
           this.sucesso = true
 
           this.nome = ""
           this.idade = ""
+          this.$store.dispatch("salvaDB")
         }else{
           this.sucesso = false
         }

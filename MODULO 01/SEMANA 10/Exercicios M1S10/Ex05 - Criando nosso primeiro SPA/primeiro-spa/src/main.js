@@ -2,8 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHashHistory } from "vue-router"
 import { createStore } from "vuex"
+
+// Imports dos módulos da Store
 import homeStore from './store/homeStore.js'
 import cadastroStore from './store/cadastroStore.js'
+import userStore from './store/userStore.js'
 
 // Imports das views
 import Home from "./views/home/Home.vue"
@@ -30,7 +33,8 @@ const router = createRouter({
 const store = createStore({
     modules: {
         homeStore,
-        cadastroStore
+        cadastroStore,
+        userStore
     }
 })
 
