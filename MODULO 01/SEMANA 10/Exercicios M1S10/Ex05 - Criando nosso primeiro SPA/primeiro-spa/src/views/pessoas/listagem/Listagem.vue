@@ -3,7 +3,7 @@
       <h1 class="text-center text-white mt-3">Listagem de Pessoas</h1>
       <hr>
 
-      <div class="container table-responsive">
+      <div v-if="$store.state.cadastroStore.pessoas.length > 0" class="container table-responsive">
             <table class="table table-hover table-dark">
               <thead>
                 <tr>
@@ -22,6 +22,9 @@
                 </tr>
               </tbody>
             </table>
+      </div>
+      <div v-else class="alert alert-danger text-center">
+          <h5>Não há pessoas cadastradas</h5> 
       </div>
 
   </div>
