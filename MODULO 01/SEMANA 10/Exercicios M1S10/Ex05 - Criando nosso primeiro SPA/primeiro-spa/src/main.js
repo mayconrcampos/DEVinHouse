@@ -1,10 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHashHistory } from "vue-router"
+import { createStore } from "vuex"
+import homeStore from './store/homeStore.js'
+
+// Imports das views
 import Home from "./views/home/Home.vue"
 import Cadastro from "./views/pessoas/cadastro/Cadastro.vue"
 import Listagem from "./views/pessoas/listagem/Listagem.vue"
 
+// Criação das rotas
 
 const routes = [
     {path: "/", redirect: "/home"},
@@ -14,10 +19,17 @@ const routes = [
     
 ]
 
-
 const router = createRouter({
     routes,
     history: createWebHashHistory()
 })
 
-createApp(App).use(router).mount('#app')
+// Criação da Store
+
+const store = createStore({
+    modules: {
+        homeStore
+    }
+})
+
+createApp(App).use(router).use(store).mount('#app')

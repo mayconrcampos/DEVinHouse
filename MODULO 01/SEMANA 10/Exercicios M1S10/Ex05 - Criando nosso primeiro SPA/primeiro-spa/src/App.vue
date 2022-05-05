@@ -16,5 +16,9 @@ export default {
 </script>
 
 <style>
-
+  body {
+    background: rgb(27,30,43);
+    background: linear-gradient(106deg, rgba(27,30,43,1) 0%, rgba(41,45,62,1) 45%); 
+    
+  }
 </style>
