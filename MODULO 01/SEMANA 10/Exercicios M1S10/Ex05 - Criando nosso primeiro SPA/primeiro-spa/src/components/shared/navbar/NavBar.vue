@@ -4,7 +4,7 @@
           <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+              <span class="navbar-toggler-icon">=</span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -47,14 +47,29 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .navbar {
         background: rgb(41,45,62);
         background: linear-gradient(106deg, rgba(41,45,62,1) 48%, rgba(66,184,131,1) 96%); 
     }
-    .nav-link:active {
+    button:hover {
+        background: #42b883;
+        transition: 1s;
+    }
+
+    button {
+        border: 3px solid #42b883 !important;
+        padding: 0 !important;
+    }
+    button span:hover {
+        color: #292d3e;
+    }
+    button span {
+        font-size: 1.5em;
+        margin-top: 5px;
         color: #42b883;
     }
+
     .nav-link:hover {
         background-color: #42b883;
         color: white;
@@ -66,11 +81,7 @@ export default {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.3em;
     }
-    button {
-        background-color: #42b883 !important;
-    }
-    button span {
-        border-color: black;
-    }
+   
+  
   
 </style>
