@@ -6,7 +6,6 @@ import {createStore} from 'vuex'
 const pessoas = {
     state(){
         return {
-      
             lista: []
         }
     },

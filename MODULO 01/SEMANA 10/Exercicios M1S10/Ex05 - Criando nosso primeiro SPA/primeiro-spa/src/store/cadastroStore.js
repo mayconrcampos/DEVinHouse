@@ -26,8 +26,6 @@ export default {
             try{
                 var dados = localStorage.getItem("cadastroPessoas")
 
-                
-
                 if(dados.length > 0 || dados !== null){
                     dados = JSON.parse(dados)
                     for (let index = 0; index < dados.length; index++) {
