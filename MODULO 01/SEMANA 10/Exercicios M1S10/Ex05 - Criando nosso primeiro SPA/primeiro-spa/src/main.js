@@ -13,7 +13,7 @@ import Home from "./views/home/Home.vue"
 import Cadastro from "./views/pessoas/cadastro/Cadastro.vue"
 import Listagem from "./views/pessoas/listagem/Listagem.vue"
 import CadastroUser from "./views/user/cadastro/Cadastro.vue"
-import loginUser from "./views/user/cadastro/Login.vue"
+import loginUser from "./views/user/cadastro/Auth.vue"
 
 // Criação das rotas
 
