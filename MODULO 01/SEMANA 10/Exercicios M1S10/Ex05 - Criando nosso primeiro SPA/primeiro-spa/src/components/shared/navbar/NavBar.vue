@@ -25,10 +25,10 @@
                     Usuários
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Cadastrar</a></li>
-                    <li><a class="dropdown-item" href="#">Fazer Login</a></li>
+                    <li><router-link class="dropdown-item" to="/user/cadastro">Cadastrar</router-link></li>
+                    <li><router-link class="dropdown-item" to="/user/login">Fazer Login</router-link></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Sair</a></li>
+                    <li><router-link class="dropdown-item" to="/user/sair">Sair</router-link></li>
                   </ul>
                 </li>
                 

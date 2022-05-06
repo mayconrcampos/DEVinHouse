@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <h1 class="text-center mt-3">Cadastro</h1>
+      <h1 class="text-center mt-3">Cadastro de Pessoas</h1>
       <hr>
       <div class="container w-75 m-auto">
 

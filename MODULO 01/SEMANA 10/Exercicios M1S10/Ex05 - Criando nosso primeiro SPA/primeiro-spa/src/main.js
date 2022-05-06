@@ -12,12 +12,16 @@ import userStore from './store/userStore.js'
 import Home from "./views/home/Home.vue"
 import Cadastro from "./views/pessoas/cadastro/Cadastro.vue"
 import Listagem from "./views/pessoas/listagem/Listagem.vue"
+import CadastroUser from "./views/user/cadastro/Cadastro.vue"
+import loginUser from "./views/user/cadastro/Login.vue"
 
 // Criação das rotas
 
 const routes = [
-    {path: "/", redirect: "/home"},
+    {path: "/", redirect: "/user/cadastro"},
     {path: "/home", component: Home},
+    {path: "/user/cadastro", component: CadastroUser},
+    {path: "/user/login", component: loginUser},
     {path: "/pessoas/cadastro", component: Cadastro},
     {path: "/pessoas/listagem", component: Listagem}
     
