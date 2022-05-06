@@ -17,7 +17,6 @@ import loginUser from "./views/user/cadastro/Auth.vue"
 import error404 from "./views/404NotFound.vue"
 
 // Definição das rotas
-
 const routes = [
     {path: "/", redirect: "/user/login"},
     {path: "/user/cadastro", component: CadastroUser},
@@ -34,7 +33,6 @@ const router = createRouter({
 })
 
 // Criação da Store
-
 const store = createStore({
     modules: {
         homeStore,
