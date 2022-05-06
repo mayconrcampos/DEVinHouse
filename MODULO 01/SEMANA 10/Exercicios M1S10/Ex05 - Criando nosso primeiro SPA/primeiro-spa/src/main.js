@@ -15,7 +15,8 @@ import Listagem from "./views/pessoas/listagem/Listagem.vue"
 import CadastroUser from "./views/user/cadastro/Cadastro.vue"
 import loginUser from "./views/user/cadastro/Auth.vue"
 import error404 from "./views/404NotFound.vue"
-// Criação das rotas
+
+// Definição das rotas
 
 const routes = [
     {path: "/", redirect: "/user/login"},
