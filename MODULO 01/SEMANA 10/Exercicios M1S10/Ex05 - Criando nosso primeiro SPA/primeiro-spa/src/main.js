@@ -14,17 +14,17 @@ import Cadastro from "./views/pessoas/cadastro/Cadastro.vue"
 import Listagem from "./views/pessoas/listagem/Listagem.vue"
 import CadastroUser from "./views/user/cadastro/Cadastro.vue"
 import loginUser from "./views/user/cadastro/Auth.vue"
-
+import error404 from "./views/404NotFound.vue"
 // Criação das rotas
 
 const routes = [
-    {path: "/", redirect: "/user/cadastro"},
-    {path: "/home", component: Home},
+    {path: "/", redirect: "/user/login"},
     {path: "/user/cadastro", component: CadastroUser},
     {path: "/user/login", component: loginUser},
+    {path: "/home", component: Home},
     {path: "/pessoas/cadastro", component: Cadastro},
-    {path: "/pessoas/listagem", component: Listagem}
-    
+    {path: "/pessoas/listagem", component: Listagem},
+    {path: "/:pathMatch(.*)", component: error404}
 ]
 
 const router = createRouter({
