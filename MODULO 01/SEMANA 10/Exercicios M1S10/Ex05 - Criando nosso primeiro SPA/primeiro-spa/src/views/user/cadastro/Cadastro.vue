@@ -23,10 +23,10 @@
 
           <div class="mb-3">
             <label for="inputsenha2" class="form-label">Repita a Senha</label>
-            <input type="email" class="form-control" id="inputsenha2">
+            <input type="email" class="form-control" id="inputsenha2"> 
           </div>
           
-          <button type="submit" class="btn">Cadastrar</button>
+          <button type="submit" class="btn">Cadastrar</button> 
         </form>
       </div>
       <div class="alert alert-success w-50 m-auto mt-5 border text-center p-2">

@@ -13,7 +13,7 @@ export default {
     Navbar
   },
   mounted() {
-    this.$store.dispatch("carregaDB")
+    this.$store.dispatch("carregaDB") 
   },
 }
 </script>

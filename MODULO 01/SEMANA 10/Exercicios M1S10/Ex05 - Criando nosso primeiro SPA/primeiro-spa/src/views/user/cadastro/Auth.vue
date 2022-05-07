@@ -23,7 +23,7 @@
 
       <div v-if="$store.state.userStore.token == false && $store.state.userStore.mensagem.lenth == 0" class="container">
           <div  class="alert alert-danger w-50 m-auto mt-5 border text-center p-2">
-            <span>{{ $store.state.userStore.mensagem }}</span>
+            <span>{{ $store.state.userStore.mensagem }}</span> 
           </div>
       </div>
       
@@ -51,6 +51,9 @@ export default {
           "email": this.email,
           "senha": this.senha
         })
+        if(this.$store.state.userStore.token){
+          this.$router.push("/home")
+        }
       }
     },
 }

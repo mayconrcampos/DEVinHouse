@@ -21,9 +21,10 @@ const routes = [
     {path: "/", redirect: "/user/login"},
     {path: "/user/cadastro", component: CadastroUser},
     {path: "/user/login", component: loginUser},
-    {path: "/home", component: Home},
-    {path: "/pessoas/cadastro", component: Cadastro},
-    {path: "/pessoas/listagem", component: Listagem},
+
+    {path: "/home", component: Home, meta: {auth: true}},
+    {path: "/pessoas/cadastro", component: Cadastro, meta: {auth: true}},
+    {path: "/pessoas/listagem", component: Listagem, meta: {auth: true}},
     {path: "/:pathMatch(.*)", component: error404}
 ]
 
@@ -39,6 +40,17 @@ const store = createStore({
         cadastroStore,
         userStore
     }
+})
+
+// Protegendo rotas
+router.beforeEach((to, from, next) => {
+    if(to.meta.auth && store.state.userStore.token === false){
+        next("/user/login")
+    }else{
+        next()
+    }
+   
+    
 })
 
 createApp(App).use(router).use(store).mount('#app')

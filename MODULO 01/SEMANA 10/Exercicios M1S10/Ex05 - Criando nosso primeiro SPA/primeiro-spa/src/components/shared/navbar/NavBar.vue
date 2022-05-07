@@ -28,7 +28,7 @@
                     <li><router-link class="dropdown-item" to="/user/cadastro">Cadastrar</router-link></li>
                     <li><router-link class="dropdown-item" to="/user/login">Fazer Login</router-link></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><router-link class="dropdown-item" to="#"><p @click="$store.dispatch('logoff', false)">Sair</p></router-link></li>
+                    <li><router-link class="dropdown-item" to="#"><p @click="Sair()">Sair</p></router-link></li>
                   </ul>
                 </li>
               </ul>
@@ -43,7 +43,10 @@
 export default {
     name: "navBar",
     methods: {
-  
+      Sair(){
+        this.$store.dispatch('logoff', false)
+        this.$router.push("/")
+      }
     },
 }
 </script>
