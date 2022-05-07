@@ -36,12 +36,12 @@ export default {
     name: "lisTagem",
     methods: {
         del(indice){
-            const confirma = confirm("Deseja realmente excluir este registro?")
-            if(confirma){
-                this.$store.commit("deletaPessoa", indice)
-                this.$store.dispatch("salvaDB")
-            }
-            
+            //const confirma = confirm("Deseja realmente excluir este registro?")
+            //if(confirma){
+            //    this.$store.commit("deletaPessoa", indice)
+            //    this.$store.dispatch("salvaDB")
+            //}
+            this.listaPessoasPorId.splice(indice, 1) 
         }
     },
     computed: {
