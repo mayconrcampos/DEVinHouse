@@ -150,6 +150,7 @@ export default {
             context.state.login.usuarios.forEach(usuario => {
                 if(usuario.email == user.email){
                     context.commit("setExisteEmail", true)
+                    context.commit("setMensagem", "ERRO! Usuário já está cadastrado no sistema.")
                 }
             })
             if(context.state.existeEmail == true){
@@ -178,7 +179,7 @@ export default {
             }
         },
         logoff(context){
-            context.commit("setToken", null)
+            context.commit("setToken", false)
             context.commit("setMensagem", null)
             context.commit("setSenhaCerta", false)
             context.commit("setExisteEmail", false)
@@ -187,18 +188,17 @@ export default {
         },
         salvaUserDB(context){
             if(context.state.login.usuarios.length >= 0){
-                var dados = JSON.stringify(context.state.pessoas)
-                localStorage.setItem("usuarios", dados)
+                var dados = JSON.stringify(context.state.login.usuarios)
+                localStorage.setItem("cadastroUsuarios", dados)
             }
         },
         carregaUserDB(context){
             try{
-                var dados = localStorage.getItem("cadastroPessoas")
+                var dados = localStorage.getItem("cadastroUsuarios")
 
                 if(dados.length > 0 || dados !== null){
                     dados = JSON.parse(dados)
                     for (let index = 0; index < dados.length; index++) {
-
                         context.commit("addUsuario", dados[index])
                     } 
                 }

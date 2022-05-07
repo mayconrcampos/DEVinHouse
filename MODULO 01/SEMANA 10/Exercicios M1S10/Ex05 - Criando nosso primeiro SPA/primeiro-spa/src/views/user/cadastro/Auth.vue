@@ -21,15 +21,9 @@
         </form>
       </div>
 
-      <div v-if="$store.state.userStore.token == false && $store.state.userStore.mensagem.lenth == 0" class="container">
+      <div v-if="$store.state.userStore.mensagem" class="container">
           <div  class="alert alert-danger w-50 m-auto mt-5 border text-center p-2">
             <span>{{ $store.state.userStore.mensagem }}</span> 
-          </div>
-      </div>
-      
-      <div v-else  class="container">
-          <div class="alert alert-success w-50 m-auto mt-5 border text-center p-2">
-            <span>{{ $store.state.userStore.mensagem }}</span>
           </div>
       </div>
       

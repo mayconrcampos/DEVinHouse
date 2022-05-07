@@ -9,6 +9,12 @@
             <li v-for="(c, indice) in $store.state.homeStore.conceitos" :key="indice">{{ c }}</li>
         </ul>
 
+        <div id="spanmsg" title="Clique para fechar esta mensagem" @click="$store.commit('setMensagem', '')" v-if="$store.state.userStore.mensagem" class="container">
+          <div  class="alert alert-success w-50 m-auto mt-5 border text-center p-2">
+            <span>{{ $store.state.userStore.mensagem }}</span> 
+          </div>
+      </div>
+
   </div>
 </template>
 
@@ -23,5 +29,8 @@ export default {
     .container {
         font-family: Arial, Helvetica, sans-serif;
         color: whitesmoke;
+    }
+    #spanmsg {
+        cursor: pointer;
     }
 </style>

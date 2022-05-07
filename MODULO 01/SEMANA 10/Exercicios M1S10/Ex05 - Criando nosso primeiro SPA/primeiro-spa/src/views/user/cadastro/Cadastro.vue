@@ -29,7 +29,7 @@
           <button type="submit" class="btn">Cadastrar</button> 
         </form>
       </div>
-      <div v-if="$store.state.userStore.validaAddUser.mensagemEmailExiste" class="alert alert-success w-50 m-auto mt-5 border text-center p-2">
+      <div v-if="$store.state.userStore.validaAddUser.mensagemEmailExiste" class="alert alert-danger w-50 m-auto mt-5 border text-center p-2">
           <span v-html="$store.state.userStore.validaAddUser.mensagemEmailExiste"></span>
           <router-link class="text-success" to="/user/login">Fazer Login</router-link>
       </div>
@@ -39,11 +39,11 @@
           <router-link class="text-success" to="/user/login">Fazer Login</router-link>
           
       </div>
-      <div v-if="$store.state.userStore.validaAddUser.mensagemSenhasDiferentes !== false" class="text-white">
+      <div v-if="$store.state.userStore.validaAddUser.mensagemSenhasDiferentes" class="alert alert-danger w-50 m-auto mt-5 border text-center p-2">
         <span v-text="$store.state.userStore.validaAddUser.mensagemSenhasDiferentes"></span>
       </div>
 
-      <p class="text-white">{{$store.state.userStore.login.usuarios}}</p>
+     
       
 
   </div>
@@ -74,6 +74,7 @@ export default {
         this.email = ""
         this.senha1 = ""
         this.senha2 = ""
+        this.$store.dispatch("salvaUserDB")
       }
       
       

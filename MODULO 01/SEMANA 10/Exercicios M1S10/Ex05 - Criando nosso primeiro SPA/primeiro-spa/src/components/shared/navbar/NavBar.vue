@@ -45,7 +45,7 @@ export default {
     name: "navBar",
     methods: {
       Sair(){
-        this.$store.dispatch('logoff', false)
+        this.$store.dispatch('logoff')
         this.$router.push("/")
       }
     },
