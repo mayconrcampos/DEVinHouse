@@ -47,10 +47,12 @@ export default {
     },
     methods: {
       autenticar(){
+        // Envia email e senha para action autenticar
         this.$store.dispatch("auth", {
           "email": this.email,
           "senha": this.senha
         })
+        // Se a Action autenticou
         if(this.$store.state.userStore.token){
           this.$router.push("/home")
         }

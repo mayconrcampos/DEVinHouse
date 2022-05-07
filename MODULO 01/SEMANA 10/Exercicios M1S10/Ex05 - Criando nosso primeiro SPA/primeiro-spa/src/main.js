@@ -22,6 +22,7 @@ const routes = [
     {path: "/user/cadastro", component: CadastroUser},
     {path: "/user/login", component: loginUser},
 
+    // Rotas protegidas com autenticação (meta: {auth: true})
     {path: "/home", component: Home, meta: {auth: true}},
     {path: "/pessoas/cadastro", component: Cadastro, meta: {auth: true}},
     {path: "/pessoas/listagem", component: Listagem, meta: {auth: true}},
@@ -42,7 +43,7 @@ const store = createStore({
     }
 })
 
-// Protegendo rotas
+// Regras para proteção de Rotas
 router.beforeEach((to, from, next) => {
     if(to.meta.auth && store.state.userStore.token === false){
         next("/user/login")

@@ -9,7 +9,7 @@ export default {
             token: false,
             existeEmail: false,
             senhaCerta: false,
-            mensagem: "",
+            mensagem: "", 
         
         }
     },
