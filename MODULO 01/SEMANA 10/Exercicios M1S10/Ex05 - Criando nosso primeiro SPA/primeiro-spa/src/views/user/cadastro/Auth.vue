@@ -6,35 +6,48 @@
 
       <div class="container w-75 m-auto">
 
-        <form @submit.prevent="addUser()">
+        <form @submit.prevent="autenticar()">
           <div class="mb-3">
-            <label for="inputnome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="inputnome" aria-describedby="emailHelp">
-            
-        
-          </div>
-          <div class="mb-3">
-            <label for="inputemail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputemail">
+            <label for="inputnome" class="form-label">Email</label>
+            <input v-model="email" type="email" class="form-control" id="inputnome" aria-describedby="emailHelp" required>
           </div>
 
           <div class="mb-3">
             <label for="inputsenha1" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="inputsenha1">
+            <input v-model="senha" type="password" class="form-control" id="inputsenha1">
           </div>
           
           <button type="submit" class="btn">Login no Sistema</button>
         </form>
       </div>
-        <div class="alert alert-danger w-50 m-auto mt-5 border text-center p-2">
-          <span>Mensagem de erro</span>
+
+      <div v-if="$store.state.userStore.token == false" class="alert alert-danger w-50 m-auto mt-5 border text-center p-2">
+          <span>{{ $store.state.userStore.mensagem }}</span>
+      </div>
+      <div v-else class="alert alert-success w-50 m-auto mt-5 border text-center p-2">
+          <span>{{ $store.state.userStore.mensagem }}</span>
+          {{$store.state.userStore.token}}
       </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: "loginUser"
+    name: "loginUser",
+    data() {
+      return {
+        email: "",
+        senha: ""
+      }
+    },
+    methods: {
+      autenticar(){
+        this.$store.dispatch("auth", {
+          "email": this.email,
+          "senha": this.senha
+        })
+      }
+    },
 }
 </script>
 

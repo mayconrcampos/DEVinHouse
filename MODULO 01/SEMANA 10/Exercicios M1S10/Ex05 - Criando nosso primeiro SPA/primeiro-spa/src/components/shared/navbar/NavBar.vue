@@ -28,12 +28,10 @@
                     <li><router-link class="dropdown-item" to="/user/cadastro">Cadastrar</router-link></li>
                     <li><router-link class="dropdown-item" to="/user/login">Fazer Login</router-link></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><router-link class="dropdown-item" to="/user/sair">Sair</router-link></li>
+                    <li><router-link class="dropdown-item" to="#"><p @click="$store.dispatch('logoff', false)">Sair</p></router-link></li>
                   </ul>
                 </li>
-                
               </ul>
-                
             </div>
           </div>
         </nav>
@@ -43,7 +41,10 @@
 
 <script>
 export default {
-    name: "navBar"
+    name: "navBar",
+    methods: {
+  
+    },
 }
 </script>
 
@@ -53,7 +54,7 @@ export default {
         background: linear-gradient(106deg, rgba(41,45,62,1) 48%, rgba(66,184,131,1) 96%); 
     }
     button:hover {
-        background: #42b883;
+        background: #41b681;
         transition: 1s;
     }
 
