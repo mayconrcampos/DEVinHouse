@@ -38,7 +38,12 @@
 
 <script>
 export default {
-    name: "cadastroUser"
+    name: "cadastroUser",
+    methods: {
+      cadastrar(){
+        
+      }
+    },
 }
 </script>
 

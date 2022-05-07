@@ -9,7 +9,8 @@ export default {
             token: false,
             existeEmail: false,
             senhaCerta: false,
-            mensagem: ""
+            mensagem: "",
+        
         }
     },
     mutations: {
@@ -27,7 +28,8 @@ export default {
         },
         setToken(state, token){
             state.token = token
-        }
+        },
+    
     },
     actions: {
         auth(context, user){
@@ -55,6 +57,7 @@ export default {
                 if(context.state.senhaCerta == true){
                     context.commit("setMensagem", "Usuário logado com sucesso!")
                     context.commit("setToken", true)
+        
                 }else{
                     context.commit("setMensagem", "Erro! Senha inválida.")
                     context.commit("setToken", false)
