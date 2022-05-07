@@ -1,10 +1,14 @@
 export default {
     state(){
         return {
-            pessoas: []
+            pessoas: [],
+            pessoasAll: []
         }
     },
     mutations: {
+        addPessoaAll(state, pessoa){
+            state.pessoasAll.push(pessoa)
+        },
         addPessoa(state, pessoa){
             state.pessoas.push(pessoa)
         },
@@ -16,13 +20,13 @@ export default {
         }
     },
     actions: {
-        salvaDB(context){
-            if(context.state.pessoas.length >= 0){
-                var dados = JSON.stringify(context.state.pessoas)
-                localStorage.setItem("cadastroPessoas", dados)
-            }
+        salvaDB(context){            
+            var dados = JSON.stringify(context.state.pessoas)
+            localStorage.setItem("cadastroPessoas", dados)
+            
         },
         carregaDB(context){
+            context.commit("esvaziaPessoas")
             try{
                 var dados = localStorage.getItem("cadastroPessoas")
 
@@ -30,9 +34,9 @@ export default {
                     dados = JSON.parse(dados)
                     for (let index = 0; index < dados.length; index++) {
                         context.commit("addPessoa", dados[index])
+                        
                     } 
                 }
-
                 context.state.pessoas.sort((x, y) => {
                     return Number(x.idade) > Number(y.idade)
                 })

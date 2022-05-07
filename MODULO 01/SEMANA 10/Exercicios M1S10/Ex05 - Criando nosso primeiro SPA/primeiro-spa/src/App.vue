@@ -12,9 +12,7 @@ export default {
   components: {
     Navbar
   },
-  mounted() {
-    this.$store.dispatch("carregaDB") 
-  },
+
 }
 </script>
 

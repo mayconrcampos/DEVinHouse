@@ -7,7 +7,8 @@ export default {
                 "Gerenciamento de Estado com Vuex",
                 "Transitions e TransitionsGroup",
                 "Validação de formulário",
-                "Cadastro e autenticação de usuários"
+                "Cadastro e autenticação de usuários",
+                "Rotas protegidas com Guards"
             ]
         }
     },

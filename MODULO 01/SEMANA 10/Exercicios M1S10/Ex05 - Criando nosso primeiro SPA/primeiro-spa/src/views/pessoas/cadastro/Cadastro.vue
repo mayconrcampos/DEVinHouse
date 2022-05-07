@@ -23,7 +23,7 @@
       <div v-if="sucesso" class="alert alert-success w-50 m-auto mt-5 border text-center p-2">
           <span>{{ mensagem }}</span>
       </div>
-
+ 
     
   </div>
 </template>
@@ -50,8 +50,10 @@ export default {
           this.$store.commit("addPessoa", {
             "id": new Date().getTime(),
             "nome": this.nome,
-            "idade": this.calculaIdade(this.idade)
+            "idade": this.calculaIdade(this.idade),
+            "idUser": this.$store.state.userStore.idUser
           })
+
           this.$store.state.cadastroStore.pessoas.sort((x,y) => {
             return Number(x.idade) > Number(y.idade)
           })
@@ -66,9 +68,6 @@ export default {
         }else{
           this.sucesso = false
         }
-
-        
-        
       },
       
       validaNome(val){
@@ -86,7 +85,6 @@ export default {
           return false
         }
 
-        console.log(nome, sobrenome)
         return true
       },
 

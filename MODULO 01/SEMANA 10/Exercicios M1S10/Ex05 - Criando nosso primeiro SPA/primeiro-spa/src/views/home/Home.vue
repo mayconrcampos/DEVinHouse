@@ -9,8 +9,6 @@
             <li v-for="(c, indice) in $store.state.homeStore.conceitos" :key="indice">{{ c }}</li>
         </ul>
 
-   
-
   </div>
 </template>
 

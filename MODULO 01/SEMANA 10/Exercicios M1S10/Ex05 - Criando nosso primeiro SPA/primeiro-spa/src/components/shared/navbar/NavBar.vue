@@ -34,6 +34,7 @@
               </ul>
             </div>
           </div>
+          <div class="text-white me-4" v-text="$store.state.userStore.token ? `Usuário: ${$store.state.userStore.usuarioLogado}` : ''"></div>
         </nav>
 
   </div>

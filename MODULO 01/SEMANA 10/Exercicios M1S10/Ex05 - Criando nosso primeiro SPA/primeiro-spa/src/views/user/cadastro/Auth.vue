@@ -54,6 +54,7 @@ export default {
         })
         // Se a Action autenticou
         if(this.$store.state.userStore.token){
+          this.$store.dispatch("carregaDB") 
           this.$router.push("/home")
         }
       }

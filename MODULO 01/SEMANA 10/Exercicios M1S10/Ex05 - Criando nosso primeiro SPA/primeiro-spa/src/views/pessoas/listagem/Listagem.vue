@@ -4,7 +4,7 @@
       <hr>
 
     <transition name="tables" mode="out-in">
-      <div v-if="$store.state.cadastroStore.pessoas.length > 0" class="container table-responsive">
+      <div v-if="listaPessoasPorId.length > 0" class="container table-responsive">
             <table class="table table-hover table-dark">
               <thead>
                 <tr>
@@ -15,7 +15,7 @@
                 </tr>
               </thead>
               <transition-group tag="tbody" name="body">
-                <tr v-for="(pessoa, indice) in $store.state.cadastroStore.pessoas" :key="pessoa.id">
+                <tr v-for="(pessoa, indice) in listaPessoasPorId" :key="pessoa.id">
                   <th scope="row">{{ pessoa.id }}</th>
                   <td>{{ pessoa.nome}}</td>
                   <td>{{ pessoa.idade}}</td>
@@ -44,6 +44,11 @@ export default {
             
         }
     },
+    computed: {
+      listaPessoasPorId(){
+        return this.$store.state.cadastroStore.pessoas.filter(pessoa => pessoa.idUser == this.$store.state.userStore.idUser)
+      }
+    }
   
 }
 </script>
