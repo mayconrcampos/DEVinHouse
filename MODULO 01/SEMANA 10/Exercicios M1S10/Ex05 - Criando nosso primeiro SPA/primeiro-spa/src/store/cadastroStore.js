@@ -2,7 +2,6 @@ export default {
     state(){
         return {
             pessoas: [],
-            pessoasAll: []
         }
     },
     mutations: {
@@ -20,6 +19,13 @@ export default {
         }
     },
     actions: {
+        delPessoa(context, idPessoa){
+            context.state.pessoas.forEach((pessoa, indice) => {
+                if(pessoa.id == idPessoa){
+                    context.commit("deletaPessoa", indice)
+                }
+            });
+        },
         salvaDB(context){            
             var dados = JSON.stringify(context.state.pessoas)
             localStorage.setItem("cadastroPessoas", dados)

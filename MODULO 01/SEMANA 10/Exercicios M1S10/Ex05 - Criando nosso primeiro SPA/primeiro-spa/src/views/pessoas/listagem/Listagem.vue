@@ -15,11 +15,11 @@
                 </tr>
               </thead>
               <transition-group tag="tbody" name="body">
-                <tr v-for="(pessoa, indice) in listaPessoasPorId" :key="pessoa.id">
+                <tr v-for="(pessoa) in listaPessoasPorId" :key="pessoa.id">
                   <th scope="row">{{ pessoa.id }}</th>
                   <td>{{ pessoa.nome}}</td>
                   <td>{{ pessoa.idade}}</td>
-                  <td><button @click="del(indice)" class="btn btn-danger">x</button></td>
+                  <td><button @click="del(pessoa.id)" class="btn btn-danger">x</button></td>
                 </tr>
               </transition-group>
             </table>
@@ -35,13 +35,13 @@
 export default {
     name: "lisTagem",
     methods: {
-        del(indice){
-            //const confirma = confirm("Deseja realmente excluir este registro?")
-            //if(confirma){
-            //    this.$store.commit("deletaPessoa", indice)
-            //    this.$store.dispatch("salvaDB")
-            //}
-            this.listaPessoasPorId.splice(indice, 1) 
+        del(idPessoa){
+            const confirma = confirm("Deseja realmente excluir este registro?")
+            if(confirma){
+                this.$store.dispatch("delPessoa", idPessoa)
+                this.$store.dispatch("salvaDB")
+            }
+            
         }
     },
     computed: {
