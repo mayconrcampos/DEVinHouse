@@ -1,6 +1,8 @@
 <template>
   <div class="container w-75 m-auto p-3">
-      <h1 class="text-center">READ</h1>
+      <h1 class="text-center">Ex03 e 04 - READ</h1>
+
+      <hr>
 
     <form @submit.prevent="encontrar()">
         <div class="mb-3">
@@ -83,19 +85,15 @@ export default {
             }
 
             if(this.idUser){
-                console.log("Cai no if")
                 this.mensagem = ""
                 await axios.get(`https://6279974673bad506857ab3ab.mockapi.io/api/pessoas/${this.idUser}`)
                 .then(response => {
-                    console.log(response.data)
                     this.pessoas = response.data
-                    console.log(this.pessoas)
                 })
                 .catch(error => {
                     this.mensagem = error
                 })
             }else{
-                console.log("Cai no else")
                 this.mensagem = ""
                 await axios.get(`https://6279974673bad506857ab3ab.mockapi.io/api/pessoas`)
                 .then(response => {
