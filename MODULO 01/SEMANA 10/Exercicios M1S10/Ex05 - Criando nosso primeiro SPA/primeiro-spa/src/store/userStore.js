@@ -164,6 +164,7 @@ export default {
                     context.commit("setMensagem", "Usuário logado com sucesso!")
                     context.commit("setToken", true)
                     context.commit("setUsuarioLogado", user.email)
+                    
         
         
                 }else{

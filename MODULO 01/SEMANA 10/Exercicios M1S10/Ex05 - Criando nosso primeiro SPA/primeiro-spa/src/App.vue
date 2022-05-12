@@ -13,8 +13,22 @@ export default {
     Navbar
   },
   mounted() {
-    this.$store.dispatch("carregaUserDB")
+    this.$store.dispatch("carregaUserDB"),
+    this.$store.dispatch("carregaDB"),
+    this.carregaUserID()
   },
+  methods: {
+    carregaUserID(){
+      if(this.$cookies.get("logado")){
+        this.$store.commit("setToken", true)
+        this.$store.commit("setIdUser", this.$cookies.get("id"))
+        this.$store.commit("setUsuarioLogado", this.$cookies.get("user"))
+      }
+      
+      
+
+    }
+  }
 }
 </script>
 

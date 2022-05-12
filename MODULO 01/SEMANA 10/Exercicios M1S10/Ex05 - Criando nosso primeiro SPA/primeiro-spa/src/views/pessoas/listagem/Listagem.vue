@@ -34,6 +34,7 @@
 <script>
 export default {
     name: "lisTagem",
+
     methods: {
         del(idPessoa){
             const confirma = confirm("Deseja realmente excluir este registro?")
@@ -47,7 +48,8 @@ export default {
     computed: {
       listaPessoasPorId(){
         return this.$store.state.cadastroStore.pessoas.filter(pessoa => pessoa.idUser == this.$store.state.userStore.idUser)
-      }
+      },
+     
     }
   
 }

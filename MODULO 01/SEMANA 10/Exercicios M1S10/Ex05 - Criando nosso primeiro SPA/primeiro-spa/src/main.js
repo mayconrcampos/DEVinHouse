@@ -15,6 +15,7 @@ import Listagem from "./views/pessoas/listagem/Listagem.vue"
 import CadastroUser from "./views/user/cadastro/Cadastro.vue"
 import loginUser from "./views/user/cadastro/Auth.vue"
 import error404 from "./views/404NotFound.vue"
+import VueCookies from 'vue-cookies'
 
 // Definição das rotas
 const routes = [
@@ -45,7 +46,7 @@ const store = createStore({
 
 // Regras para proteção de Rotas
 router.beforeEach((to, from, next) => {
-    if(to.meta.auth && store.state.userStore.token === false){
+    if(to.meta.auth/* && store.state.userStore.token === false*/ && !VueCookies.get("logado")){
         next("/user/login")
     }else{
         next()
@@ -54,4 +55,4 @@ router.beforeEach((to, from, next) => {
     
 })
 
-createApp(App).use(router).use(store).mount('#app')
+createApp(App).use(router).use(store).use(VueCookies, { expire: '7d'}).mount('#app')

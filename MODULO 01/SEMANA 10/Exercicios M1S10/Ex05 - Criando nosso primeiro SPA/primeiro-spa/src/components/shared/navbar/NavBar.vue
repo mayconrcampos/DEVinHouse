@@ -47,8 +47,14 @@ export default {
       Sair(){
         this.$store.dispatch('logoff')
         this.$router.push("/")
+        this.$cookies.remove("logado")
+        this.$cookies.remove("id")
+        this.$cookies.remove("user")
       }
     },
+    computed: {
+      
+    }
 }
 </script>
 

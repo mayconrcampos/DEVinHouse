@@ -26,6 +26,7 @@
             <span>{{ $store.state.userStore.mensagem }}</span> 
           </div>
       </div>
+
       
   </div>
 </template>
@@ -48,6 +49,9 @@ export default {
         })
         // Se a Action autenticou
         if(this.$store.state.userStore.token){
+          this.$cookies.set("logado", true)
+          this.$cookies.set("id", this.$store.state.userStore.idUser)
+          this.$cookies.set("user", this.$store.state.userStore.usuarioLogado)
           this.$store.dispatch("carregaDB") 
           this.$router.push("/home")
         }
