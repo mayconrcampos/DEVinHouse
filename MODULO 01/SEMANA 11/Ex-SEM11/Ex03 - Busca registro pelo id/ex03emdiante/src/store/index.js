@@ -75,7 +75,6 @@ export default createStore({
           })
     },
     async excluir(context, id){
-      console.log("Cheguei aqui", id)
       await axios.delete(`https://6279974673bad506857ab3ab.mockapi.io/api/pessoas/${id}`)
       .then(() => {
         context.commit("setMensagem", "Registro excluido com sucesso.")

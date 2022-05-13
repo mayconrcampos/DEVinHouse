@@ -14,7 +14,7 @@
         <button type="submit" class="btn btn-primary">Encontrar</button>
     </form>
 
-    <div class="container text-danger text-center mt-3" v-if="$store.state.mensagem" v-text="$store.state.mensagem"></div>
+    <div class="container text-danger text-center mt-3" v-if="mensagem" v-text="mensagem"></div>
     <hr>
     <div class="container" v-if="!idUser">
     
@@ -65,16 +65,17 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from "vuex"
+import { mapActions, mapMutations, mapState } from "vuex"
 
 export default {
     name: "reAd",
     data() {
         return {
             idUser:"",
-            //pessoas: "",
-            //mensagem: ""
         }
+    },
+    computed: {
+        ...mapState(["mensagem"])
     },
     methods: {
         ...mapMutations(["setMensagem", "setPessoas", "setIdUser"]),
@@ -85,7 +86,6 @@ export default {
                 this.setMensagem("ERRO! ID não numérico")
                 return
             }
-
             if(this.idUser){
                 this.getOne(this.idUser)
             }else{

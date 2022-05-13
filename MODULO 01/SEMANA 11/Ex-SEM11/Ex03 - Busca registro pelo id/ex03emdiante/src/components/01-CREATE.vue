@@ -24,7 +24,7 @@
       
         <button type="submit" class="btn btn-primary">Encontrar</button>
       </form>
-      <div class="container text-success" v-if="mensagem">{{mensagem}}</div>
+      <div class="container text-success text-center" v-if="mensagem">{{mensagem}}</div>
 
   </div>
 </template>
