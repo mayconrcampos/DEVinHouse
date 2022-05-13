@@ -24,7 +24,7 @@
           <li>Ex08 - Tratamento de Erros</li>
         </ul>
 
-        <p>Resumind, devemos fazer as operações de CRUD nesta API criada usando para isto o Axios.</p>
+        <p>Resumindo, devemos fazer as operações de CRUD nesta API criada usando para isto o Axios.</p>
   </div>
 </template>
 
