@@ -8,6 +8,7 @@ import READ from "./components/02-READ.vue"
 import UPDATE from "./components/03-UPDATE.vue"
 import DELETE from "./components/04-DELETE.vue"
 import Home from "./components/Home.vue"
+import store from './store'
 
 const routes = [
     {path: "/", redirect: "/home"},
@@ -25,4 +26,4 @@ const router = new createRouter({
 })
 
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(store).use(router).mount('#app')

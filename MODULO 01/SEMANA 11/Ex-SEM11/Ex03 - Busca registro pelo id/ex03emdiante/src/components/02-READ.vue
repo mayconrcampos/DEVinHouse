@@ -14,7 +14,7 @@
         <button type="submit" class="btn btn-primary">Encontrar</button>
     </form>
 
-    <div class="container text-danger text-center mt-3" v-if="mensagem" v-text="mensagem"></div>
+    <div class="container text-danger text-center mt-3" v-if="$store.state.mensagem" v-text="$store.state.mensagem"></div>
     <hr>
     <div class="container" v-if="!idUser">
     
@@ -28,7 +28,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(p, index) in pessoas" :key="index">
+              <tr v-for="(p, index) in $store.state.pessoas" :key="index">
                 <th scope="row">{{p.id}}</th>
                 <td>{{p.nome}}</td>
                 <td>{{p.data_nasc}}</td>
@@ -51,10 +51,10 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">{{pessoas.id}}</th>
-                <td>{{pessoas.nome}}</td>
-                <td>{{pessoas.data_nasc}}</td>
-                <td>{{pessoas.cep}}</td>
+                <th scope="row">{{$store.state.pessoas.id}}</th>
+                <td>{{$store.state.pessoas.nome}}</td>
+                <td>{{$store.state.pessoas.data_nasc}}</td>
+                <td>{{$store.state.pessoas.cep}}</td>
               </tr>
 
             </tbody>
@@ -65,47 +65,32 @@
 </template>
 
 <script>
-import axios from "axios"
+import { mapActions, mapMutations } from "vuex"
 
 export default {
     name: "reAd",
     data() {
         return {
             idUser:"",
-            pessoas: "",
-            umaPessoa: [],
-            mensagem: ""
+            //pessoas: "",
+            //mensagem: ""
         }
     },
     methods: {
-        async encontrar(){
+        ...mapMutations(["setMensagem", "setPessoas", "setIdUser"]),
+        ...mapActions(["getAll", "getOne"]),
+
+        encontrar(){
             if(isNaN(this.idUser)){
-                this.mensagem = "ERRO! ID não numérico"
+                this.setMensagem("ERRO! ID não numérico")
                 return
             }
 
             if(this.idUser){
-                this.mensagem = ""
-                await axios.get(`https://6279974673bad506857ab3ab.mockapi.io/api/pessoas/${this.idUser}`)
-                .then(response => {
-                    this.pessoas = response.data
-                })
-                .catch(error => {
-                    this.mensagem = error
-                })
+                this.getOne(this.idUser)
             }else{
-                this.mensagem = ""
-                await axios.get(`https://6279974673bad506857ab3ab.mockapi.io/api/pessoas`)
-                .then(response => {
-                    this.pessoas = response.data
-                })
-                .catch(error => {
-                    this.mensagem = error
-                })
+                this.getAll()
             }
-            
-
-
         }
     },
 }

@@ -24,13 +24,13 @@
       
         <button type="submit" class="btn btn-primary">Encontrar</button>
       </form>
-      <div class="container text-success">{{mensagem}}</div>
+      <div class="container text-success" v-if="mensagem">{{mensagem}}</div>
 
   </div>
 </template>
 
 <script>
-import axios from "axios"
+import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
     name: "creAte",
@@ -39,32 +39,30 @@ export default {
         nome: "",
         data_nasc: "",
         cep: "",
-        mensagem: ""
       }
     },
+    computed:{
+      ...mapState(["mensagem"])
+    },
     methods: {
-      async inserir(){
-          this.mensagem = ""
+      ...mapActions(["insere"]),
+      ...mapMutations(["setMensagem"]),
+      inserir(){
           if(this.nome.length == 0 || !this.nome) return false
           if(this.data_nasc == "NaN-NaN-NaN" || !this.data_nasc) return false
           if(!this.cep || this.cep.length < 8) return false
           
-          await axios.post(`https://6279974673bad506857ab3ab.mockapi.io/api/pessoas/`, {
-            "id": new Date().getTime(),
+          this.insere({
             "nome": this.nome,
             "data_nasc": this.data_nasc,
             "cep": this.cep
           })
-          .then(response => {
-              this.mensagem = `Pessoa ${response.data.nome} inserida com sucesso.`
-              this.nome = ""
-              this.data_nasc = ""
-              this.cep = ""
-          })
-          .catch(error => {
-              this.mensagem = error
-          })
-        }
+
+          this.nome = ""
+          this.data_nasc = ""
+          this.cep = ""
+          
+      }
     }
 }
 </script>
