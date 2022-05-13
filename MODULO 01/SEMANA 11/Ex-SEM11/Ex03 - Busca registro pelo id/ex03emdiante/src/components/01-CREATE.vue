@@ -3,6 +3,12 @@
       <h1 class="text-center">Ex05 - CREATE</h1>
 
       <hr>
+      <div class="container w-75 m-auto">
+        <span class="badge bg-danger border w-100" v-if="mensagem.erro" v-text="mensagem.msg"></span>
+        <span class="badge bg-primary border w-100" v-else v-text="mensagem.msg"></span>
+      </div>
+      
+
       <form @submit.prevent="inserir()">
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Nome</label>
@@ -22,9 +28,9 @@
           
         </div>
       
-        <button type="submit" class="btn btn-primary">Encontrar</button>
+        <button type="submit" class="btn btn-primary">Inserir</button>
       </form>
-      <div class="container text-success text-center" v-if="mensagem">{{mensagem}}</div>
+
 
   </div>
 </template>
@@ -48,6 +54,7 @@ export default {
       ...mapActions(["insere"]),
       ...mapMutations(["setMensagem"]),
       inserir(){
+          this.setMensagem("")
           if(this.nome.length == 0 || !this.nome) return false
           if(this.data_nasc == "NaN-NaN-NaN" || !this.data_nasc) return false
           if(!this.cep || this.cep.length < 8) return false

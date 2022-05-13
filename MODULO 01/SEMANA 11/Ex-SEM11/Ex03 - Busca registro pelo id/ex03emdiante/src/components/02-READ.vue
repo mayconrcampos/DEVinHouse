@@ -4,6 +4,11 @@
 
       <hr>
 
+      <div class="container w-75 m-auto">
+        <span class="badge bg-danger border w-100" v-if="mensagem.erro" v-text="mensagem.msg"></span>
+        <span class="badge bg-primary border w-100" v-else v-text="mensagem.msg"></span>
+      </div>
+
     <form @submit.prevent="encontrar()">
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Digite um ID</label>
@@ -14,7 +19,6 @@
         <button type="submit" class="btn btn-primary">Encontrar</button>
     </form>
 
-    <div class="container text-danger text-center mt-3" v-if="mensagem" v-text="mensagem"></div>
     <hr>
     <div class="container" v-if="!idUser">
     

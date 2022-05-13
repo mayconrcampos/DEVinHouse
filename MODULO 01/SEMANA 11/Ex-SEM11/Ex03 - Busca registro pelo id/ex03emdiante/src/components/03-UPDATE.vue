@@ -3,6 +3,11 @@
       <h1 class="text-center">Ex06 - UPDATE</h1>
       <hr>
 
+      <div class="container w-75 m-auto">
+        <span class="badge bg-danger border w-100" v-if="mensagem.erro" v-text="mensagem.msg"></span>
+        <span class="badge bg-primary border w-100" v-else v-text="mensagem.msg"></span>
+      </div>
+
       <form @submit.prevent="editar()">
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Nome</label>
@@ -23,7 +28,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Editar</button>
       </form>
-      <div class="container text-success">{{mensagem}}</div>
+      
       <hr>
 
         <table class="table">
@@ -51,7 +56,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 export default {
     name: "upDate",
     data() {
@@ -70,11 +75,13 @@ export default {
     },
     methods: {
         ...mapActions(["getAll", "edita"]),
+        ...mapMutations(["setMensagem"]),
         preencheCampos(id, nome, data_nasc, cep){
             this.idUser = id
             this.nome = nome
             this.data_nasc = data_nasc
             this.cep = cep
+            this.setMensagem("")
         },
         editar(){
             if(!this.idUser) return false
