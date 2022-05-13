@@ -1,6 +1,6 @@
 <template>
   <div class="container w-75 m-auto p-3">
-      <h1 class="text-center">UPDATE</h1>
+      <h1 class="text-center">Ex06 - UPDATE</h1>
       <hr>
 
       <form @submit.prevent="editar()">
@@ -25,7 +25,6 @@
       </form>
       <div class="container text-success">{{mensagem}}</div>
       <hr>
-      {{idUser}}
 
         <table class="table">
             <thead>
