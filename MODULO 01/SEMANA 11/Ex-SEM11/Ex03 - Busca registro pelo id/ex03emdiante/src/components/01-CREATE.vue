@@ -4,8 +4,8 @@
 
       <hr>
       <div class="container w-75 m-auto">
-        <span class="badge bg-danger border w-100" v-if="mensagem.erro" v-text="mensagem.msg"></span>
-        <span class="badge bg-primary border w-100" v-else v-text="mensagem.msg"></span>
+        <span class="badge bg-danger border w-100" v-if="msg_create.erro" v-text="msg_create.msg"></span>
+        <span class="badge bg-primary border w-100" v-else v-text="msg_create.msg"></span>
       </div>
       
 
@@ -48,11 +48,11 @@ export default {
       }
     },
     computed:{
-      ...mapState(["mensagem"])
+      ...mapState(["msg_create"])
     },
     methods: {
       ...mapActions(["insere"]),
-      ...mapMutations(["setMensagem"]),
+      ...mapMutations(["setMsgCreate"]),
       inserir(){
           this.setMensagem("")
           if(this.nome.length == 0 || !this.nome) return false

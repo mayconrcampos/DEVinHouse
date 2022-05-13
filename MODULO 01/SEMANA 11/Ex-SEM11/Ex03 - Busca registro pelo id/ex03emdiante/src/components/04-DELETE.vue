@@ -3,6 +3,11 @@
       <h1 class="text-center">Ex07 - DELETE</h1>
       <hr>
 
+      <div class="container w-75 m-auto">
+        <span class="badge bg-danger border w-100" v-if="msg_delete.erro" v-text="msg_delete.msg"></span>
+        <span class="badge bg-primary border w-100" v-else v-text="msg_delete.msg"></span>
+      </div>
+
       <table class="table">
             <thead>
               <tr>
@@ -28,16 +33,25 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 export default {
     name:"deLete",
+    computed: {
+      ...mapState(["msg_delete"])
+    },
     methods: {
         ...mapActions(["excluir", "getAll"]),
+        ...mapMutations(["setMsgDelete"]),
         deleta(id){
+          const confirma = confirm("Deseja mesmo excluir este registro?")
+
+          if(confirma){
             this.excluir(id)
             .then(() => {
                 this.getAll()
             })
+          }
+            
         }
     },
     mounted() {

@@ -5,8 +5,8 @@
       <hr>
 
       <div class="container w-75 m-auto">
-        <span class="badge bg-danger border w-100" v-if="mensagem.erro" v-text="mensagem.msg"></span>
-        <span class="badge bg-primary border w-100" v-else v-text="mensagem.msg"></span>
+        <span class="badge bg-danger border w-100" v-if="msg_read.erro" v-text="msg_read.msg"></span>
+        <span class="badge bg-primary border w-100" v-else v-text="msg_read.msg"></span>
       </div>
 
     <form @submit.prevent="encontrar()">
@@ -79,15 +79,15 @@ export default {
         }
     },
     computed: {
-        ...mapState(["mensagem"])
+        ...mapState(["msg_read"])
     },
     methods: {
-        ...mapMutations(["setMensagem", "setPessoas", "setIdUser"]),
+        ...mapMutations(["setMsgRead", "setPessoas", "setIdUser"]),
         ...mapActions(["getAll", "getOne"]),
 
         encontrar(){
             if(isNaN(this.idUser)){
-                this.setMensagem("ERRO! ID não numérico")
+                this.setMsgRead("ERRO! ID não numérico")
                 return
             }
             if(this.idUser){

@@ -4,8 +4,8 @@
       <hr>
 
       <div class="container w-75 m-auto">
-        <span class="badge bg-danger border w-100" v-if="mensagem.erro" v-text="mensagem.msg"></span>
-        <span class="badge bg-primary border w-100" v-else v-text="mensagem.msg"></span>
+        <span class="badge bg-danger border w-100" v-if="msg_update.erro" v-text="msg_update.msg"></span>
+        <span class="badge bg-primary border w-100" v-else v-text="msg_update.msg"></span>
       </div>
 
       <form @submit.prevent="editar()">
@@ -71,17 +71,17 @@ export default {
         this.getAll()
     },
     computed: {
-        ...mapState(["mensagem"])
+        ...mapState(["msg_update"])
     },
     methods: {
         ...mapActions(["getAll", "edita"]),
-        ...mapMutations(["setMensagem"]),
+        ...mapMutations(["setMsgUpdate"]),
         preencheCampos(id, nome, data_nasc, cep){
             this.idUser = id
             this.nome = nome
             this.data_nasc = data_nasc
             this.cep = cep
-            this.setMensagem("")
+            this.setMsgUpdate("")
         },
         editar(){
             if(!this.idUser) return false
