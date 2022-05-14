@@ -3,13 +3,6 @@
     <h1 class="text-center">Register</h1>
     <hr />
 
-    <span
-      class="badge bg-danger border w-100"
-      v-if="add_error.erro"
-      v-text="add_error.msg"
-    ></span>
-   
-
     <div class="container w-75 m-auto">
       <Form @submit="register()">
         <div class="mb-3">
@@ -122,14 +115,15 @@ export default {
         this.formSchema.email = "";
         this.formSchema.senha1 = "";
         this.formSchema.senha2 = "";
+        this.$toast.success("Usuário cadastrado com sucesso.")
         this.$router.push("/login");
 
       } else {
-        this.setAddUserSuccess(false);
-        this.setAddUserError({
-          msg: "Usuário já existe",
-          erro: true,
-        });
+        this.formSchema.nome = "";
+        this.formSchema.email = "";
+        this.formSchema.senha1 = "";
+        this.formSchema.senha2 = "";
+        this.$toast.error("Usuário já existe")
       }
     },
 

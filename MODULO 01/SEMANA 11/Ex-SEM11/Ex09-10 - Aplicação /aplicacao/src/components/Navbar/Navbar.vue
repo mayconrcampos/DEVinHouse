@@ -88,6 +88,8 @@ export default {
       ...mapActions(["logoff"]),
       deslogar(){
           this.logoff()
+          this.$cookies.remove("logado")
+          this.$toast.error("Você fez logoff!")
       }
   },
   created() {},

@@ -3,12 +3,6 @@
     <h1 class="text-center">Login</h1>
     <hr />
 
-    <span
-      class="badge bg-primary border w-100"
-      @click="setAddUserSuccess(false)"
-      v-if="addUserSuccess.erro"
-      v-text="addUserSuccess.msg"
-    ></span>
 
     <div class="container w-75 m-auto">
       <Form @submit="autenticar()" class="mb-5">
@@ -66,7 +60,6 @@
         v-text="alertaLogado"
       ></span>
       <span class="mt-5">{{ logado }}</span>
-      
     </div>
   </div>
 </template>
@@ -101,14 +94,26 @@ export default {
     ...mapMutations(["setAddUserSuccess"]),
     ...mapActions(["auth"]),
     autenticar() {
-      this.auth({
-        email: this.email,
-        senha: this.senha,
-      })
-        if(this.logado.status){
-            this.email = ""
-            this.senha = ""
+      if (!this.logado.status) {
+        this.auth({
+          email: this.email,
+          senha: this.senha,
+        });
+
+        if (this.logado.status) {
+          this.$toast.success(`Seja Bem vindo, ${this.email}!`);
+          this.email = "";
+          this.senha = "";
+          this.$cookies.set("logado", this.logado)
+          this.$router.push("/home");
+        } else {
+          this.$toast.error("Erro de autenticação");
         }
+
+      } else {
+        this.$toast.error("Usuário já está logado");
+        this.$router.push("/home")
+      }
     },
     validaEmail(email) {
       if (email && email.trim()) {

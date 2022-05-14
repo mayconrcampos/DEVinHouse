@@ -8,18 +8,32 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 import navbar from "./components/Navbar/Navbar.vue";
 export default {
   name: "App",
   components: {
     navbar,
   },
+  computed: {
+    ...mapState({
+      logado: state => state.userStore.logado
+    })
+  },
   methods: {
     ...mapActions(["carregaLocalStorage"]),
+    ...mapMutations(["setLogado"]),
+    carregaUser(){
+      if(this.$cookies.get("logado")){
+        this.setLogado(this.$cookies.get("logado"))
+        console.log(this.logado.status, this.logado.user)
+        this.$toast.success(`Bem vindo, ${this.logado.user}!`)
+      }
+    }
   },
   mounted() {
     this.carregaLocalStorage()
+    this.carregaUser()
   },
 };
 </script>

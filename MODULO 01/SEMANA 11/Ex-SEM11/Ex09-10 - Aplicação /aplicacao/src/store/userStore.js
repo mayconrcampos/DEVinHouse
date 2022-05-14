@@ -60,16 +60,16 @@ export default {
     auth(context, user) {
       context.commit("setAlertaLogado", false)
 
-      if(context.state.logado.status){
-        context.commit("setAlertaLogado", "Você já se encontra logado no sistema")
-        return
-      }
       context.commit("setConfereEmail", false)
       context.commit("setConfereSenha", false)
       context.commit("setErroEmailLogin", false)
       context.commit("setErroSenhaLogin", false)
 
-
+      if(context.state.logado.status){
+        context.commit("setAlertaLogado", "Você já se encontra logado no sistema")
+        return
+      }
+      
       context.state.usuarios.forEach(item => {
         if (user.email == item.email) {
           context.commit("setConfereEmail", true)
