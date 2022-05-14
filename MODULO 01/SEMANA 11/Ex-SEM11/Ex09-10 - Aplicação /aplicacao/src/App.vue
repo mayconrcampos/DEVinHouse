@@ -1,26 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="container">
+    <navbar />
+    <div id="content" class="container w-100 m-auto">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { mapActions } from "vuex";
+import navbar from "./components/Navbar/Navbar.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    navbar,
+  },
+  methods: {
+    ...mapActions(["carregaLocalStorage"]),
+  },
+  mounted() {
+    this.carregaLocalStorage()
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+body {
+  padding: 0;
+  left: 0;
+  bottom: 0;
+}
+#container {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(210, 210, 210, 1) 100%
+  );
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  position: fixed;
+  width: 100%;
+  min-height: max-content;
+  bottom: 0;
+  top: 0;
+}
+#content {
+  height: 95% !important;
 }
 </style>
