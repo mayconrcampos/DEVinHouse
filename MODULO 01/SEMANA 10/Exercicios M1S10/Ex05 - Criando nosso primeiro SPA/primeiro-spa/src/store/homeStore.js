@@ -1,5 +1,5 @@
 export default {
-    state(){
+    state() {
         return {
             conteudohome: "Esta pequena aplicação foi desenvolvida para solucionar os exercícios da SEMANA 10 do curso SENAI[ConectaNuvem], aplicado pelo prof Gilmar Bennert Jr. e envolvem os seguintes conceitos do Vue.JS.",
             conceitos: [

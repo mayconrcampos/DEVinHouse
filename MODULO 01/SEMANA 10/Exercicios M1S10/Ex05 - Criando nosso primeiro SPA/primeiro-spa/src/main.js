@@ -19,15 +19,15 @@ import VueCookies from 'vue-cookies'
 
 // Definição das rotas
 const routes = [
-    {path: "/", redirect: "/user/login"},
-    {path: "/user/cadastro", component: CadastroUser},
-    {path: "/user/login", component: loginUser},
+    { path: "/", redirect: "/user/login" },
+    { path: "/user/cadastro", component: CadastroUser },
+    { path: "/user/login", component: loginUser },
 
     // Rotas protegidas com autenticação (meta: {auth: true})
-    {path: "/home", component: Home, meta: {auth: true}},
-    {path: "/pessoas/cadastro", component: Cadastro, meta: {auth: true}},
-    {path: "/pessoas/listagem", component: Listagem, meta: {auth: true}},
-    {path: "/:pathMatch(.*)", component: error404}
+    { path: "/home", component: Home, meta: { auth: true } },
+    { path: "/pessoas/cadastro", component: Cadastro, meta: { auth: true } },
+    { path: "/pessoas/listagem", component: Listagem, meta: { auth: true } },
+    { path: "/:pathMatch(.*)", component: error404 }
 ]
 
 const router = createRouter({
@@ -46,13 +46,13 @@ const store = createStore({
 
 // Regras para proteção de Rotas
 router.beforeEach((to, from, next) => {
-    if(to.meta.auth/* && store.state.userStore.token === false*/ && !VueCookies.get("logado")){
+    if (to.meta.auth/* && store.state.userStore.token === false*/ && !VueCookies.get("logado")) {
         next("/user/login")
-    }else{
+    } else {
         next()
     }
-   
-    
+
+
 })
 
-createApp(App).use(router).use(store).use(VueCookies, { expire: '7d'}).mount('#app')
+createApp(App).use(router).use(store).use(VueCookies, { expire: '7d' }).mount('#app')

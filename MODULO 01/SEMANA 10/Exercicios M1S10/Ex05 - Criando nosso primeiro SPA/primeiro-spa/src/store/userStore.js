@@ -1,12 +1,12 @@
 
 export default {
-    state(){
+    state() {
         return {
-           
+
             login: {
                 usuarios: [
-                    {"id": "26357846", "nome": "Maycon Campos", "email": "maycon.campos@gmail.com", "senha": "1234"},
-                    {"id": "15201251", "nome": "Ary Dionel", "email": "arydionel@gmail.com", "senha": "1234"}
+                    { "id": "26357846", "nome": "Maycon Campos", "email": "maycon.campos@gmail.com", "senha": "1234" },
+                    { "id": "15201251", "nome": "Ary Dionel", "email": "arydionel@gmail.com", "senha": "1234" }
                 ]
             },
             validaAddUser: {
@@ -25,60 +25,60 @@ export default {
             senhaCerta: false,
             mensagem: "",
             usuarioLogado: ""
-        
+
         }
     },
     mutations: {
-        setUsuarioLogado(state, usuario){
+        setUsuarioLogado(state, usuario) {
             state.usuarioLogado = usuario
         },
-        addUsuario(state, user){
+        addUsuario(state, user) {
             state.login.usuarios.push(user)
         },
-        setIdUser(state, id){
+        setIdUser(state, id) {
             state.idUser = id
         },
-        setSenhaCerta(state, valor){
+        setSenhaCerta(state, valor) {
             state.senhaCerta = valor
         },
-        setExisteEmail(state, valor){
+        setExisteEmail(state, valor) {
             state.existeEmail = valor
         },
-        setMensagem(state, msg){
+        setMensagem(state, msg) {
             state.mensagem = msg
         },
-        setToken(state, token){
+        setToken(state, token) {
             state.token = token
         },
-        setValidaNome(state, nome){
+        setValidaNome(state, nome) {
             state.validaAddUser.nome = nome
         },
-        setValidaEmail(state, email){
+        setValidaEmail(state, email) {
             state.validaAddUser.email = email
         },
-        setValidaSenha1(state, senha1){
+        setValidaSenha1(state, senha1) {
             state.validaAddUser.senha1 = senha1
         },
-        setValidaSenha2(state, senha2){
+        setValidaSenha2(state, senha2) {
             state.validaAddUser.senha2 = senha2
         },
-        setValidaEmailExiste(state, valor){
+        setValidaEmailExiste(state, valor) {
             state.validaAddUser.emailExiste = valor
         },
-        setMensagemEmailExiste(state, mensagem){
+        setMensagemEmailExiste(state, mensagem) {
             state.validaAddUser.mensagemEmailExiste = mensagem
         },
-        setMensagemSucesso(state, mensagem){
+        setMensagemSucesso(state, mensagem) {
             state.validaAddUser.mensagemSucesso = mensagem
         },
-        setMensagemSenhaDiferente(state, mensagem){
+        setMensagemSenhaDiferente(state, mensagem) {
             state.validaAddUser.mensagemSenhasDiferentes = mensagem
         },
-        
-    
+
+
     },
     actions: {
-        addUser(context, user){
+        addUser(context, user) {
             // Zerando todas as variáveis de validação de user
             context.commit("setValidaNome", null)
             context.commit("setValidaEmail", null)
@@ -89,39 +89,39 @@ export default {
             context.commit("setMensagemSucesso", null)
             context.commit("setMensagemSenhaDiferente", null)
             // Verificando se inputs vieram vazios
-            if(!user.nome){
+            if (!user.nome) {
                 context.commit("setValidaNome", false)
                 return
             }
-            if(!user.email){
+            if (!user.email) {
                 context.commit("setValidaEmail", false)
                 return
             }
-            if(!user.senha1){
+            if (!user.senha1) {
                 context.commit("setValidaSenha1", false)
                 return
             }
-            if(!user.senha2){
+            if (!user.senha2) {
                 context.commit("setValidaSenha2", false)
                 return
             }
 
             // Verificando se usuário já existe
             context.state.login.usuarios.forEach((usuario) => {
-                if(user.email === usuario.email){
+                if (user.email === usuario.email) {
                     context.commit("setValidaEmailExiste", true)
-                    
+
                 }
             })
 
             // Se existir, envia mensagem na tela
-            if(context.state.validaAddUser.emailExiste){
+            if (context.state.validaAddUser.emailExiste) {
                 context.commit("setMensagemEmailExiste", `Usuário ${user.email} já está cadastrado.`)
-            
+
                 // Se não existe, prossegue com validação das senhas digitadas
-            }else{
+            } else {
                 // Se ambas as senhas forem iguais, insere novo usuário no cadastro
-                if(user.senha1 === user.senha2){
+                if (user.senha1 === user.senha2) {
                     context.commit("addUsuario", {
                         "id": user.id,
                         "nome": user.nome,
@@ -130,56 +130,56 @@ export default {
                     })
                     context.commit("setMensagemSucesso", "Usuário criado com sucesso!")
 
-                // Se não forem iguais, mostra mensagem de erro na tela
-                }else{
+                    // Se não forem iguais, mostra mensagem de erro na tela
+                } else {
                     context.commit("setMensagemSenhaDiferente", "ERRO! Senhas não conferem. Tente novamente!")
                 }
             }
         },
-        auth(context, user){
-            if(context.state.token == true){
+        auth(context, user) {
+            if (context.state.token == true) {
                 context.commit("setMensagem", "Você já está logado no sistema.")
                 return
-            }else{
+            } else {
                 context.commit("setExisteEmail", false)
                 context.commit("setSenhaCerta", false)
                 context.commit("setMensagem", "")
             }
-            
+
 
             context.state.login.usuarios.forEach(usuario => {
-                if(usuario.email == user.email){
+                if (usuario.email == user.email) {
                     context.commit("setExisteEmail", true)
                     context.commit("setMensagem", "ERRO! Usuário já está cadastrado no sistema.")
                 }
             })
-            if(context.state.existeEmail == true){
+            if (context.state.existeEmail == true) {
                 context.state.login.usuarios.forEach(usuario => {
-                    if(usuario.email == user.email && usuario.senha == user.senha){
+                    if (usuario.email == user.email && usuario.senha == user.senha) {
                         context.commit("setSenhaCerta", true)
                         context.commit("setIdUser", usuario.id)
                     }
                 })
-                if(context.state.senhaCerta == true){
+                if (context.state.senhaCerta == true) {
                     context.commit("setMensagem", "Usuário logado com sucesso!")
                     context.commit("setToken", true)
                     context.commit("setUsuarioLogado", user.email)
-                    
-        
-        
-                }else{
+
+
+
+                } else {
                     context.commit("setMensagem", "Erro! Senha inválida.")
                     context.commit("setToken", false)
                 }
 
-            }else{
+            } else {
                 context.commit("setExisteEmail", false)
                 context.commit("setToken", false)
                 context.commit("setMensagem", "Erro! Usuário inválido.")
 
             }
         },
-        logoff(context){
+        logoff(context) {
             context.commit("setToken", false)
             context.commit("setMensagem", null)
             context.commit("setSenhaCerta", false)
@@ -187,25 +187,25 @@ export default {
             context.commit("setIdUser", null)
             context.commit("setUsuarioLogado", null)
         },
-        salvaUserDB(context){
-            if(context.state.login.usuarios.length >= 0){
+        salvaUserDB(context) {
+            if (context.state.login.usuarios.length >= 0) {
                 var dados = JSON.stringify(context.state.login.usuarios)
                 localStorage.setItem("cadastroUsuarios", dados)
             }
         },
-        carregaUserDB(context){
-            try{
+        carregaUserDB(context) {
+            try {
                 var dados = localStorage.getItem("cadastroUsuarios")
 
-                if(dados.length > 0 || dados !== null){
+                if (dados.length > 0 || dados !== null) {
                     dados = JSON.parse(dados)
                     for (let index = 0; index < dados.length; index++) {
                         context.commit("addUsuario", dados[index])
-                    } 
+                    }
                 }
 
-            }catch(error){
-                console.log("Error do console log: "+error)
+            } catch (error) {
+                console.log("Error do console log: " + error)
             }
         }
 
