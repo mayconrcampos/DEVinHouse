@@ -10,7 +10,8 @@ export default {
     logado: {
       status: false,
       user: false,
-    }
+    },
+    alertaLogado: false
   },
 
   mutations: {
@@ -34,6 +35,9 @@ export default {
     },
     setLogado(state, set){
       state.logado = set
+    },
+    setAlertaLogado(state, set){
+      state.alertaLogado = set
     }
 
   },
@@ -54,6 +58,12 @@ export default {
 
     },
     auth(context, user) {
+      context.commit("setAlertaLogado", false)
+
+      if(context.state.logado.status){
+        context.commit("setAlertaLogado", "Você já se encontra logado no sistema")
+        return
+      }
       context.commit("setConfereEmail", false)
       context.commit("setConfereSenha", false)
       context.commit("setErroEmailLogin", false)
@@ -87,11 +97,17 @@ export default {
 
       } else {
         context.commit("setErroEmailLogin", {
-          "msg": "Email inválido",
+          "msg": "Usuário não cadastrado",
           "erro": true
         })
       }
     },
+    logoff(context){
+      context.commit("setLogado", {
+        "status": false,
+        "user": ""
+      })
+    },  
     salvaLocalStorage(context) {
       var dados = JSON.stringify(context.state.usuarios)
       localStorage.setItem("usersList", dados)

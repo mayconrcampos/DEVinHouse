@@ -67,13 +67,15 @@
           <router-link class="dropdown-item" to="/login">Login</router-link>
         </li>
         <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li><a class="dropdown-item" @click="deslogar()" href="#">Sign out</a></li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 
 export default {
   name: "navBar",
@@ -82,7 +84,12 @@ export default {
       ativa: "",
     };
   },
-  methods: {},
+  methods: {
+      ...mapActions(["logoff"]),
+      deslogar(){
+          this.logoff()
+      }
+  },
   created() {},
 };
 </script>

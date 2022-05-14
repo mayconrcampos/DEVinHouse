@@ -11,7 +11,7 @@
     ></span>
 
     <div class="container w-75 m-auto">
-      <Form @submit="autenticar()">
+      <Form @submit="autenticar()" class="mb-5">
         <div class="mb-3">
           <label for="inputnome" class="form-label">Email</label>
           <Field
@@ -25,6 +25,12 @@
             required
           />
           <ErrorMessage name="email" class="text-danger" />
+
+          <span
+            class="badge bg-danger border w-100"
+            v-if="erroEmailLogin.erro"
+            v-text="erroEmailLogin.msg"
+          ></span>
         </div>
 
         <div class="mb-3">
@@ -38,6 +44,12 @@
             id="inputsenha1"
           />
           <ErrorMessage name="senha" class="text-danger" />
+
+          <span
+            class="badge bg-danger border w-100"
+            v-if="erroSenhaLogin.erro"
+            v-text="erroSenhaLogin.msg"
+          ></span>
         </div>
 
         <button type="submit" class="btn btn-dark me-2">
@@ -47,7 +59,14 @@
           >Cadastrar-se</router-link
         >
       </Form>
-    {{logado}}
+
+      <span
+        class="alert alert-danger w-100 mt-5"
+        v-if="alertaLogado"
+        v-text="alertaLogado"
+      ></span>
+      <span class="mt-5">{{ logado }}</span>
+      
     </div>
   </div>
 </template>
@@ -72,7 +91,10 @@ export default {
   computed: {
     ...mapState({
       addUserSuccess: (state) => state.storeAlerts.addUserSuccess,
-      logado: state => state.userStore.logado
+      logado: (state) => state.userStore.logado,
+      erroEmailLogin: (state) => state.userStore.erroEmailLogin,
+      erroSenhaLogin: (state) => state.userStore.erroSenhaLogin,
+      alertaLogado: (state) => state.userStore.alertaLogado,
     }),
   },
   methods: {
@@ -80,19 +102,19 @@ export default {
     ...mapActions(["auth"]),
     autenticar() {
       this.auth({
-          "email": this.email,
-          "senha": this.senha
-      }).then(() => {
-          console.log("OK ta logado.")
-      }).catch(erro => {
-          console.log("Deu merda", erro)
+        email: this.email,
+        senha: this.senha,
       })
+        if(this.logado.status){
+            this.email = ""
+            this.senha = ""
+        }
     },
     validaEmail(email) {
       if (email && email.trim()) {
         return true;
       }
-      
+
       return "Campo email obrigatório";
     },
 
@@ -100,7 +122,7 @@ export default {
       if (senha.length > 0 && senha.trim()) {
         return true;
       }
-      
+
       return "Campo senha obrigatório";
     },
   },
