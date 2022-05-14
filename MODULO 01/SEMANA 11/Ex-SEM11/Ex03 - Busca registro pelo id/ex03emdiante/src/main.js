@@ -16,7 +16,7 @@ const routes = [
     { path: "/create", component: CREATE },
     { path: "/read", component: READ },
     { path: "/update", component: UPDATE },
-    { path: "/delete", component: DELETE }
+    { path: "/delete", component: DELETE } 
 ]
 
 
