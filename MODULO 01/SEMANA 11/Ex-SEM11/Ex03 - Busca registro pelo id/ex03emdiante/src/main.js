@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import {createWebHashHistory, createRouter} from 'vue-router'
+import { createWebHashHistory, createRouter } from 'vue-router'
 
 // Import rotas
 import CREATE from "./components/01-CREATE.vue"
@@ -11,12 +11,12 @@ import Home from "./components/Home.vue"
 import store from './store'
 
 const routes = [
-    {path: "/", redirect: "/home"},
-    {path: "/home", component: Home},
-    {path: "/create", component: CREATE},
-    {path: "/read", component: READ},
-    {path: "/update", component: UPDATE},
-    {path: "/delete", component: DELETE}
+    { path: "/", redirect: "/home" },
+    { path: "/home", component: Home },
+    { path: "/create", component: CREATE },
+    { path: "/read", component: READ },
+    { path: "/update", component: UPDATE },
+    { path: "/delete", component: DELETE }
 ]
 
 
