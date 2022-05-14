@@ -18,7 +18,6 @@
         <p>{{endereco.localidade}}</p>
         <p>{{endereco.logradouro}}</p>
         <p>{{endereco.complemento}}</p>
-        {{endereco}}
       </div>
       <p class="alert alert-danger mt-3" v-else v-text="mensagem"></p>
     </transition>
