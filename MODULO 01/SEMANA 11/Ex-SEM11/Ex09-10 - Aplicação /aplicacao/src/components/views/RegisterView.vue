@@ -26,7 +26,7 @@
             v-model="formSchema.email"
             type="email"
             class="form-control"
-            id="inputemail"
+            id="Fieldemail"
           />
           <ErrorMessage name="email" class="text-danger" />
         </div>
@@ -163,4 +163,16 @@ export default {
 </script>
 
 <style>
+@media (max-width: 600px) {
+  #form {
+    width: 100%;
+  }
+  .btn {
+    font-size: x-small;
+  }
+  #Fieldnome, #Fieldemail, #Fieldsenha1, #Fieldsenha2 {
+    min-width: 250px;
+    margin-left: 0;
+  }
+}
 </style>
