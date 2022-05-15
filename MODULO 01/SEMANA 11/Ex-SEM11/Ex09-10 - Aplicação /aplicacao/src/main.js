@@ -16,6 +16,8 @@ import Login from "./components/views/LoginView.vue"
 import Dashboard from "./components/views/DashboardView.vue"
 import error404 from "./components/views/Error404.vue"
 
+// Importando módulos das stores
+
 const store = createStore({
     modules: {
         userStore,
@@ -23,7 +25,7 @@ const store = createStore({
     }
 })
 
-
+// Definição das rotas
 
 const routes = [
     { path: "/", redirect: "/login" },
@@ -34,6 +36,7 @@ const routes = [
     { path: "/:pathMatch(.*)", component: error404 }
 ]
 
+// Create Router
 
 const router = new createRouter({
     routes,
