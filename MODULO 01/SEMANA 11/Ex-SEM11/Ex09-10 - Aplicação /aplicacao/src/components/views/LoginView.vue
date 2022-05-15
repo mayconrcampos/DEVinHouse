@@ -4,7 +4,7 @@
     <hr />
 
     <div class="container w-75 m-auto">
-      <Form @submit="autenticar()" class="mb-5">
+      <Form id="form" @submit="autenticar()" class="mb-5">
         <div class="mb-3">
           <label for="inputnome" class="form-label">Email</label>
           <Field
@@ -34,7 +34,7 @@
             v-model="senha"
             type="password"
             class="form-control"
-            id="inputsenha1"
+            id="Fieldsenha"
           />
           <ErrorMessage name="senha" class="text-danger" />
 
@@ -132,4 +132,16 @@ export default {
 </script>
 
 <style>
+@media (max-width: 600px) {
+  #form {
+    width: 100%;
+  }
+  .btn {
+    font-size: x-small;
+  }
+  #Fieldnome, #Fieldsenha {
+    min-width: 250px;
+    margin-left: 0;
+  }
+}
 </style>
