@@ -46,7 +46,7 @@ const store = createStore({
 
 // Regras para proteção de Rotas
 router.beforeEach((to, from, next) => {
-    if (to.meta.auth/* && store.state.userStore.token === false*/ && !VueCookies.get("logado")) {
+    if (to.meta.auth && !VueCookies.get("logado")) {
         next("/user/login")
     } else {
         next()
