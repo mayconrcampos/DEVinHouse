@@ -3,7 +3,7 @@ import App from './App.vue'
 import { createRouter, createWebHashHistory } from "vue-router"
 import { createStore } from 'vuex'
 import Toaster from '@meforma/vue-toaster';
-import VueCookies from 'vue3-cookies'
+import VueCookies from 'vue-cookies'
 
 // Import das Stores
 import userStore from './store/userStore'
@@ -27,10 +27,10 @@ const store = createStore({
 
 const routes = [
     { path: "/", redirect: "/login" },
-    { path: "/home", component: Home },
-    { path: "/register", component: Register },
     { path: "/login", component: Login },
-    { path: "/dashboard", component: Dashboard },
+    { path: "/home", component: Home, meta: { auth: true } },
+    { path: "/register", component: Register },
+    { path: "/dashboard", component: Dashboard , meta: { auth: true } },
     { path: "/:pathMatch(.*)", component: error404 }
 ]
 
@@ -38,6 +38,18 @@ const routes = [
 const router = new createRouter({
     routes,
     history: createWebHashHistory()
+})
+
+// Regras para proteção de rotas
+router.beforeEach((to, from, next) => {
+    if (to.meta.auth && !VueCookies.get("logado")) {
+        next("/login")
+    }else if(!to.meta.auth && VueCookies.get("logado")){
+        next("/dashboard")
+    }else{
+        next()
+    }
+    
 })
 
 createApp(App)

@@ -21,7 +21,7 @@
     </a>
     <hr />
     <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
+      <li v-if="logado.status" class="nav-item">
         <router-link to="/home" class="nav-link text-white" aria-current="page">
           <svg class="bi me-2" width="16" height="16">
             <use xlink:href="#home"></use>
@@ -29,7 +29,7 @@
           <i class="fa-solid fa-house"></i> Home
         </router-link>
       </li>
-      <li>
+      <li v-if="logado.status">
         <router-link to="/dashboard" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16">
             <use xlink:href="#speedometer2"></use>
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 
 export default {
@@ -84,12 +84,17 @@ export default {
       ativa: "",
     };
   },
+  computed: {
+      ...mapState({
+          logado: (state) => state.userStore.logado
+      })
+  },
   methods: {
       ...mapActions(["logoff"]),
       deslogar(){
           this.logoff()
           this.$cookies.remove("logado")
-          this.$toast.error("Você fez logoff!")
+          this.$toast.error("Você fez Logout!")
       }
   },
   created() {},

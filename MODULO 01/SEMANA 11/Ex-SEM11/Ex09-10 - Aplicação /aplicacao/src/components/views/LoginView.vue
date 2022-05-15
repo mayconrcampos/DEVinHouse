@@ -3,7 +3,6 @@
     <h1 class="text-center">Login</h1>
     <hr />
 
-
     <div class="container w-75 m-auto">
       <Form @submit="autenticar()" class="mb-5">
         <div class="mb-3">
@@ -59,7 +58,6 @@
         v-if="alertaLogado"
         v-text="alertaLogado"
       ></span>
-      <span class="mt-5">{{ logado }}</span>
     </div>
   </div>
 </template>
@@ -104,15 +102,14 @@ export default {
           this.$toast.success(`Seja Bem vindo, ${this.email}!`);
           this.email = "";
           this.senha = "";
-          this.$cookies.set("logado", this.logado)
+          this.$cookies.set("logado", this.logado);
           this.$router.push("/home");
         } else {
           this.$toast.error("Erro de autenticação");
         }
-
       } else {
         this.$toast.error("Usuário já está logado");
-        this.$router.push("/home")
+        this.$router.push("/home");
       }
     },
     validaEmail(email) {

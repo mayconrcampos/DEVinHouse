@@ -11,7 +11,8 @@ export default {
       status: false,
       user: false,
     },
-    alertaLogado: false
+    alertaLogado: false,
+    idUser: false
   },
 
   mutations: {
@@ -38,6 +39,9 @@ export default {
     },
     setAlertaLogado(state, set){
       state.alertaLogado = set
+    },
+    setIdUser(state, set){
+      state.idUser = set
     }
 
   },
@@ -79,12 +83,14 @@ export default {
         context.state.usuarios.forEach(item => {
           if (item.senha == user.senha) {
             context.commit("setConfereSenha", true)
+            context.commit("setIdUser", item.id)
           }
         })
         if (context.state.confereSenha) {
           context.commit("setLogado",{
             "status": true,
-            "user": user.email
+            "user": user.email,
+            "id": context.state.idUser
           })
 
 
