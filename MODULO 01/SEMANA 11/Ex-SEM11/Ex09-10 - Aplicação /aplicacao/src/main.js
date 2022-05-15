@@ -30,8 +30,8 @@ const store = createStore({
 const routes = [
     { path: "/", redirect: "/login" },
     { path: "/login", component: Login },
-    { path: "/home", component: Home, meta: { auth: true } },
     { path: "/register", component: Register },
+    { path: "/home", component: Home, meta: { auth: true } },
     { path: "/dashboard", component: Dashboard , meta: { auth: true } },
     { path: "/:pathMatch(.*)", component: error404 }
 ]
