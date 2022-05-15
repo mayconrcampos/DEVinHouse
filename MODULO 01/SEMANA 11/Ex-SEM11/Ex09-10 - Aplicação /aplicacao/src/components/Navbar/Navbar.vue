@@ -14,9 +14,10 @@
         text-white text-decoration-none
       "
     >
+    <!-----
       <svg class="bi me-2" width="40" height="32">
         <use xlink:href="#bootstrap"></use>
-      </svg>
+      </svg>-->
       <span class="fs-4">Sidebar</span>
     </a>
     <hr />
@@ -37,9 +38,17 @@
           <i class="fa-solid fa-align-justify"></i> Dashboard
         </router-link>
       </li>
+      <li v-if="logado.status">
+        <div>
+         
+          <a class="nav-link text-white ms-3" @click="deslogar()" href="#">Logout</a>
+        </div>
+      </li>
+      
     </ul>
     <hr />
-    <div class="dropdown">
+    
+    <div v-if="!logado.status" class="dropdown">
       <a
         href="#"
         class="
@@ -57,6 +66,7 @@
       <ul
         class="dropdown-menu dropdown-menu-dark text-small shadow"
         aria-labelledby="dropdownUser1"
+        id="dropdownlist"
       >
         <li>
           <router-link class="dropdown-item" to="/register"
@@ -67,9 +77,10 @@
           <router-link class="dropdown-item" to="/login">Login</router-link>
         </li>
         <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" @click="deslogar()" href="#">Sign out</a></li>
+        <!---<li><a class="dropdown-item" @click="deslogar()" href="#">Sign out</a></li>---->
       </ul>
     </div>
+    
   </div>
 </template>
 
@@ -115,5 +126,43 @@ ul li:hover {
     rgba(111, 113, 121, 1) 51%,
     rgba(30, 30, 30, 1) 96%
   );
+}
+@media (max-width: 600px) {
+  #div {
+    font-size: small;
+    width: 100% !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    
+  }
+  #div a span {
+    display: none;
+    width: 0;
+  }
+  #div ul {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start;
+   
+    
+  }
+  #div ul li {
+    font-size: x-small;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start;
+  }
+
+  #dropdownUser1{
+    display: none !important;
+  }
+  #dropdownlist {
+    width: 300px !important;
+  }
+  #dropdownlist li{
+    display: flex !important;
+    
+    font-size: small;
+  }
 }
 </style>

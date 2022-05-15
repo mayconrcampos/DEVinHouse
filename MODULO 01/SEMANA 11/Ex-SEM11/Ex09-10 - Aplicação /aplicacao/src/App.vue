@@ -60,6 +60,12 @@ body {
   bottom: 0;
   top: 0;
 }
+@media (max-width: 600px) {
+  #container {
+    position: inherit;
+    flex-direction: column;
+  }
+}
 #content {
   height: 95% !important;
 }
