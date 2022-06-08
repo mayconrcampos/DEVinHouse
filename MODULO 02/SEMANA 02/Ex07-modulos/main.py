@@ -39,6 +39,7 @@ while True:
         case "2":
             print("Subtraindo")
             print(subtracao(n1, n2))
+
         case "3":
             print("Multiplicando")
             print(multiplicacao(n1, n2))
