@@ -5,7 +5,6 @@ import os
 
 dezenas = pegaResultadoLoteriasAPI("mega-sena")
 
-print(dezenas)
 
 dezenas_aleatorias = []
 while True:
@@ -19,7 +18,6 @@ while True:
     if escolha == "0":
         print("Você saiu do programa")
         break
-    
 
     print(f"Jogo da Mega: {dezenas}")
     if escolha.isnumeric():
@@ -27,21 +25,18 @@ while True:
         while len(dezenas_aleatorias) < 6:
             dezena = randint(1, 60)
             if dezena not in dezenas_aleatorias:
-                dezenas_aleatorias.append(f"0{dezena}" if dezena < 10  else f"{dezena}")
+                dezenas_aleatorias.append(
+                    f"0{dezena}" if dezena < 10 else f"{dezena}")
                 conta += 1
             else:
                 continue
-
 
         acertos = 0
 
         print("Meus números aleatórios: ", end=" => ")
         for numero in dezenas_aleatorias:
-            if numero in dezenas:
-                print(f"({numero})", end=" ")
-                acertos += 1
-            else:
-                print(f"{numero}", end=" ")
-
+            print(f"({numero})" if numero in dezenas else f"{numero}", end=" ")
+            acertos += 1 if numero in dezenas else 0
+           
 
         print(f" <= Você teve {acertos} acerto(s).\n\n\n\n\n")
