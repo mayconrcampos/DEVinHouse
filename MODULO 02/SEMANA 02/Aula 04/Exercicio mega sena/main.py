@@ -24,17 +24,18 @@ while True:
         while len(dezenas_aleatorias) < 6:
             dezena = randint(1, 60)
             if dezena not in dezenas_aleatorias:
-                dezenas_aleatorias.append(
-                    f"0{dezena}" if dezena < 10 else f"{dezena}")
+                dezenas_aleatorias.append(dezena)
             else:
                 continue
 
-        acertos = 0
+        dezenas_aleatorias.sort()
 
+        acertos = 0
         print("Meus números aleatórios: ", end=" => ")
         for numero in dezenas_aleatorias:
+            numero = f"0{numero}" if numero < 9 else f"{numero}"
+
             print(f"({numero})" if numero in dezenas else f"{numero}", end=" ")
             acertos += 1 if numero in dezenas else 0
-           
 
         print(f" <= Você teve {acertos} acerto(s).\n\n\n\n\n")
