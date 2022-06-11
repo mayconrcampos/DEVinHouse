@@ -21,13 +21,11 @@ while True:
 
     print(f"Jogo da Mega: {dezenas}")
     if escolha.isnumeric():
-        conta = 0
         while len(dezenas_aleatorias) < 6:
             dezena = randint(1, 60)
             if dezena not in dezenas_aleatorias:
                 dezenas_aleatorias.append(
                     f"0{dezena}" if dezena < 10 else f"{dezena}")
-                conta += 1
             else:
                 continue
 
