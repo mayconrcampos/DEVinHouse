@@ -24,5 +24,13 @@ while True:
 
     if n.isnumeric():
         fibonacci(int(n))
+
+        continua = input("Deseja continuar? s ou n")
+
+        if continua in "sS":
+            continue 
+        else:
+            print("Você saiu do programa.")
+            break
     else:
         print("Número inválido, tente de novo.")
