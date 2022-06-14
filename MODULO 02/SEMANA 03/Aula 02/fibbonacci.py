@@ -25,7 +25,7 @@ while True:
     if n.isnumeric():
         fibonacci(int(n))
 
-        continua = input("Deseja continuar? s ou n")
+        continua = input("Deseja continuar? s ou n: ")
 
         if continua in "sS":
             continue 
