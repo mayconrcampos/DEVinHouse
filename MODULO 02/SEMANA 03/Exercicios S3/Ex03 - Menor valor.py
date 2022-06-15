@@ -18,7 +18,7 @@ while len(n) < 20:
         n.append(int(valor))
     else:
         print("Valor inválido! Tente Novamente!")
-
+ 
 menor = 0
 maior = 0
 posicaoMaior = 0
