@@ -8,11 +8,15 @@ print(f"O maior elemento de N é {menor} e a sua posição dentro da lista é  {
 """
 from random import randint
 
+# Gerando lista com 20 elementos
+n = [randint(1, 2000) for num in range(0, 20)]
+print(f"Array 20 posições: {n}")
 
-n = []
+# pegando menor valor
+menor = [num for num in n if num == min(n)]
 
-for i in range(0, 20):
-    n.append(randint(1, 2000))
+# Pegando indice
+indice = [x for x in range(len(n)) if n[x] == min(n)]
 
 
-print(n)
+print(f"O menor elemento de N é {menor[0]} e a sua posição dentro da lista é {indice[0]}.")
