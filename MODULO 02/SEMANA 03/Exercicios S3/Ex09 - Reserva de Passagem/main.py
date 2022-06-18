@@ -11,27 +11,49 @@ Após o cadastro do voo, o programa deverá permitir o cadastro da reserva de as
 Após a finalização do cadastro de todas as reservas, o funcionário da companhia aérea digita -1 no código da reserva.
 
 """
-from ast import match_case
 import os
 
-assentos = [x for x in range(1, 101)]
-voo = []
-infoVoo = {
-    "numero": "",
-    "origem": "",
-    "destino": "",
-    "assento": "",
-    "valor": ""
-}
+class Voo:
+    def __init__(self, numero, origem, destino, assentos_qte, valor) -> None:
+        self.numero = numero
+        self.origem = origem
+        self.destino = destino
+        self.assentos_qte = assentos_qte
+        self.valor = valor
+    
+    def getNumero(self):
+        return self.numero 
+    
+    def getOrigem(self):
+        return self.origem
+    
+    def getDestino(self):
+        return self.destino
+    
+    def getAssentosQtde(self):
+        return self.assentos_qte
+    
+    def getValor(self):
+        return self.valor
+    
 
-def reservarVoo(numero, origem, destino, assento, valor):
-    pass
+class ReservarAssentos(Voo):
+    def __init__(self, numero, origem, destino, assentos_qte, valor) -> None:
+        super().__init__(numero, origem, destino, assentos_qte, valor)
+
+        self.reservas = []
+    
+    def setReserva(self, voo: Voo):
+        self.reservas.append(voo(self.numero, self.origem, self.destino, self.assentos_qte, self.valor))
+
+    def listarReservas(self):
+         
 
 
 
 while True:
-    print("-=-=-=-= Sistema de Reservas de Vôo -=-=-=-=-=-")
-    print("1. Efetuar Reserva")
+    print("-=-=-=-= Sistema de Reservas de Passagens Aéreas -=-=-=-=-=-")
+    print("1. Efetuar Reserva de Vôo")
     print("2. Visualizar Reservas")
     print("3. Procurar Por Clientes")
     print("0. Sair")
@@ -46,7 +68,6 @@ while True:
             
             case "1":
                 print("1. Efetuar Reserva")
-
 
             case "2":
                 print("2. Visualizar Reservas")
