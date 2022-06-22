@@ -127,7 +127,7 @@ while True:
                     print("1. Conta1")
                     print("2. Conta2")
 
-                    opc = input("Opção: 1-2: ")
+                    opc = input("Opção: 1 - 2: ")
 
                     if opc == "1":
                         conta1.extrato()
