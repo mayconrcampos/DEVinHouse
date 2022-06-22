@@ -11,6 +11,8 @@ Sair
 """
 
 
+from os import system
+import opcode
 from random import randint
 
 
@@ -35,7 +37,7 @@ class VendaPassagem(Passageiro):
     @poltrona.setter
     def poltrona(self, numero):
         self.__poltrona = numero
-    
+
     @property
     def valor(self):
         return self.__valor
@@ -58,7 +60,7 @@ class VendaPassagem(Passageiro):
 
             if ocupada:
                 print(f"Poltrona {poltrona} já está ocupada")
-                
+
             else:
                 self.poltrona = passageiro.poltrona
                 passageiro.comprado = True
@@ -69,19 +71,83 @@ class VendaPassagem(Passageiro):
                             "passageiro": passageiro.nome,
                             "valor": self.valor
                         })
-                        #self.listarPoltronasOcupadas()
+                        # self.listarPoltronasOcupadas()
                     else:
                         print("Poltrona inexistente")
                 else:
                     print("Ônibus Lotado")
-    
-    def cancelarPassagem(self, passageiro: Passageiro):
-        pass
 
+    def cancelarPassagem(self, passageiro: Passageiro):
+        encontrado = False
+        indice = False
+        for i in range(len(self.ocupadas)):
+            if self.ocupadas[i]["poltrona"] == passageiro.poltrona and self.ocupadas[i]["passageiro"] == passageiro.nome:
+                encontrado = True
+                indice = i
+
+        if encontrado:
+            while True:
+                confirma = input(f"Confirma cancelamento do Passageiro: {passageiro.nome} na Poltrona: {passageiro.poltrona}? s ou n")
+
+                if confirma in "sS":
+                    print(f"Cancelada passagem de: \n")
+                    print(
+                        f"Passageiro: {passageiro.nome} - Poltrona: {passageiro.poltrona}")
+
+                    self.ocupadas.pop(indice)
+                    break
+                else:
+                    print(f"Passageiro: {passageiro.nome} - Poltrona: {passageiro.poltrona} Não Excluído!")
+                    break
+        else:
+            print(
+                f"Passageiro: {passageiro.nome} - Poltrona: {passageiro.poltrona} Não Encontrado!")
+
+
+    def mudarPoltrona(self, passageiro: Passageiro):
+        encontrado = False
+        indice = False
+        for i in range(len(self.ocupadas)):
+            if self.ocupadas[i]["poltrona"] == passageiro.poltrona and self.ocupadas[i]["passageiro"] == passageiro.nome:
+                encontrado = True
+                indice = i
+
+        if encontrado:
+            while True:
+                poltrona = input("Digite a poltrona para a qual deseja mudar: ")
+
+                ocupada = False
+                if poltrona.isnumeric():
+                    for p in self.ocupadas:
+                        if poltrona == p["poltrona"]:
+                            ocupada = True
+                    
+                    if ocupada:
+                        print(f"Poltrona {passageiro.poltrona} ocupada! Favor escolha outra!")
+                        continue
+                    else:
+                        print(f"Passageiro {passageiro.nome} mudado para Poltrona {poltrona}.")
+                        self.ocupadas.pop(indice)
+                        passageiro = {
+                            "poltrona": int(poltrona),
+                            "passageiro": passageiro.nome,
+                            "valor": self.valor
+                        }
+                        self.ocupadas.append(passageiro)
+                        break
+
+                else:
+                    print("ERRO! Opção numérica inválida")
+                
+        else:
+            print(
+                f"Passageiro: {passageiro.nome} - Poltrona: {passageiro.poltrona} Não Encontrado!")        
 
     def listarPoltronasOcupadas(self):
+        print("Listando Números das Poltronas disponíveis\n\n")
         total = 0
         num_assentos_ocupados = 0
+        self.ocupadas = sorted(self.ocupadas, key=lambda x: x["poltrona"])
         for p in self.ocupadas:
             num_assentos_ocupados += 1
             total += p["valor"]
@@ -89,21 +155,86 @@ class VendaPassagem(Passageiro):
             print(f"Passageiro: {p['passageiro']}")
             print(f"Valor R$: {p['valor']:.2f}")
             print("-="*20)
-        
+
         if num_assentos_ocupados <= 46:
             vagos = 46 - num_assentos_ocupados
-        print(f"Total R$: {total:.2f}")
-        print(f"Poltronas ocupadas: {num_assentos_ocupados}")
-        print(f"Poltronas Vagas: {vagos}")
-        
 
+        if num_assentos_ocupados == 0:
+            print("Todos os assentos estão vagos\n\n")
+        else:
+            print("\n-=-=-= Status das Vagas -=-=-=")
+            print(f"Poltronas ocupadas: {num_assentos_ocupados}")
+            print(f"Poltronas Vagas: {vagos}")
+            print("-="*20)
+            print(f"\nTotal R$: {total:.2f}\n\n\n\n")
 
 
 compra = VendaPassagem()
 
-for i in range(1, 100):
-    compra.comprarPassagem(Passageiro(f"Passageiro{i}", randint(1, 46)))
+# for i in range(1, 100):
+#    compra.comprarPassagem(Passageiro(f"Passageiro{i}", randint(1, 46)))
+#
+#
+# compra.listarPoltronasOcupadas()
 
+while True:
+    print("1. Comprar passagem")
+    print("2. Cancelar Passagem")
+    print("3. Trocar de Poltrona")
+    print("0. Sair")
 
-compra.listarPoltronasOcupadas()
+    opcao = input("Opção: ")
+    system("clear")
 
+    if opcao.isnumeric():
+        match opcao:
+            case "0":
+                print("Você saiu")
+                break
+            case "1":
+                print("1. Comprar passagem")
+                compra.listarPoltronasOcupadas()
+
+                nome = input("Digite o nome do Passageiro: ")
+                poltrona = input("Digite o número da Poltrona: ")
+
+                if poltrona.isnumeric():
+                    system("clear")
+                    print(f"Passageiro: {nome} - Poltrona Nº {poltrona}\n\n\n")
+                    compra.comprarPassagem(Passageiro(nome, int(poltrona)))
+                    compra.listarPoltronasOcupadas()
+                else:
+                    print("ERRO! Poltrona inválida! Somente números de 1 a 46")
+
+            case "2":
+                print("2. Cancelar Passagem")
+                compra.listarPoltronasOcupadas()
+
+                nome = input("Digite o nome do Passageiro: ")
+                poltrona = input("Digite o número da Poltrona: ")
+
+                if poltrona.isnumeric():
+                    system("clear")
+                    compra.cancelarPassagem(Passageiro(nome, int(poltrona)))
+                    compra.listarPoltronasOcupadas()
+                else:
+                    print("ERRO! Poltrona inválida! Somente números de 1 a 46")
+
+            case "3":
+                print("3. Mudar de Poltrona")
+                compra.listarPoltronasOcupadas()
+
+                nome = input("Digite o nome do Passageiro: ")
+                poltrona = input("Digite o número da Poltrona: ")
+
+                if poltrona.isnumeric():
+                    system("clear")
+                    compra.mudarPoltrona(Passageiro(nome, int(poltrona)))
+                    compra.listarPoltronasOcupadas()
+                else:
+                    print("ERRO! Poltrona inválida! Somente números de 1 a 46")
+
+            case _:
+                print("Opção inválida")
+    else:
+        print("ERRO! É preciso digitar uma opção numérica.")
