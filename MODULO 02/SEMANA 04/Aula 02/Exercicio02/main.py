@@ -118,23 +118,26 @@ class VendaPassagem(Passageiro):
 
                 ocupada = False
                 if poltrona.isnumeric():
-                    for p in self.ocupadas:
-                        if poltrona == p["poltrona"]:
-                            ocupada = True
-                    
-                    if ocupada:
-                        print(f"Poltrona {passageiro.poltrona} ocupada! Favor escolha outra!")
-                        continue
+                    if int(poltrona) >= 1 and int(poltrona) <= 46:
+                        for p in self.ocupadas:
+                            if poltrona == p["poltrona"]:
+                                ocupada = True
+
+                        if ocupada:
+                            print(f"Poltrona {passageiro.poltrona} ocupada! Favor escolha outra!")
+                            continue
+                        else:
+                            print(f"Passageiro {passageiro.nome} mudado para Poltrona {poltrona}.")
+                            self.ocupadas.pop(indice)
+                            passageiro = {
+                                "poltrona": int(poltrona),
+                                "passageiro": passageiro.nome,
+                                "valor": self.valor
+                            }
+                            self.ocupadas.append(passageiro)
+                            break
                     else:
-                        print(f"Passageiro {passageiro.nome} mudado para Poltrona {poltrona}.")
-                        self.ocupadas.pop(indice)
-                        passageiro = {
-                            "poltrona": int(poltrona),
-                            "passageiro": passageiro.nome,
-                            "valor": self.valor
-                        }
-                        self.ocupadas.append(passageiro)
-                        break
+                        print("Poltrona inexistente.")
 
                 else:
                     print("ERRO! Opção numérica inválida")
