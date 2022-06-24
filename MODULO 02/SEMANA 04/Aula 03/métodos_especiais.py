@@ -8,7 +8,7 @@ class Peso:
     
 
     def __str__(self) -> str:
-        pass
+        return str(self.__dict__)
     
 
     def __lt__(self, other):
@@ -21,4 +21,5 @@ p = Peso(50)
 q = Peso(60)
 
 print(p == q)
+print(p)
 
