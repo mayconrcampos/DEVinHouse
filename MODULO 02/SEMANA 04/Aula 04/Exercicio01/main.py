@@ -54,13 +54,13 @@ for i in range(len(nomes)):
 
 
 for aluno in listaAlunos:
-    print(f"NOME    : {aluno.nome}")
-    print(f"IDADE   : {aluno.idade}")
+    print(f"NOME    : {aluno.nome:>20}")
+    print(f"IDADE   : {aluno.idade:>20}")
 
-    print("NOTAS    :", end=" ")
+    print("NOTAS   :", end=" ")
     for nota in aluno.notas:
         print(f"{nota}", end=" - ")
 
-    print(f"\nMEDIA   : {aluno.media:.2f}")
-    print(f"STATUS  : {aluno.aprovado}")
+    print(f"\nMEDIA   : {aluno.media:>20.2f}")
+    print(f"STATUS  : {aluno.aprovado:>20}")
     print("-="*15)
