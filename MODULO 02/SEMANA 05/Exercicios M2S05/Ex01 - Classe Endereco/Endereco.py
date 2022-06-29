@@ -13,5 +13,5 @@ class Endereco:
     def exibir_endereco(self):
         pass
 
-    def salvar_endereco(self):
+    def __salvar_endereco(self):
         pass
