@@ -1,4 +1,6 @@
-class Paciente:
+from pessoa import Pessoa
+
+class Paciente(Pessoa):
     def __init__(self, rg: int, cpf: str, telefone: int, convenio: str, data_nasc: str) -> None:
         self.rg = rg
         self.cpf = cpf

@@ -1,4 +1,6 @@
-class Medico:
+from pessoa import Pessoa
+
+class Medico(Pessoa):
     def __init__(self, crm: int, telefone_sec: int) -> None:
         self.crm = crm
         self.telefone_sec = telefone_sec
