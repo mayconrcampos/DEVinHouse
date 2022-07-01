@@ -1,8 +1,9 @@
 import json
+from exception import AtributoException
 
 class Pessoa:
     def __init__(self) -> None:
-        self.nome = None
+        self.nome = "caralho"
         self.celular = None
         self.email = None
 
@@ -15,7 +16,7 @@ class Pessoa:
 
             self.__salvar_pessoa()
         else:
-            print("É preciso preencher todos os campos")
+            raise AtributoException("É preciso preencher todos os campos")
         
 
     def exibir_pessoa(self):
