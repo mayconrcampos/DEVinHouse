@@ -38,7 +38,7 @@ class Paciente(Pessoa):
 
     def __salvar_paciente(self):
         with open(f"paciente-{self.nome}.json", "w+") as p:
-            pessoa = {
+            paciente = {
                 "nome": self.nome,
                 "celular": self.celular,
                 "email": self.email,
@@ -49,7 +49,7 @@ class Paciente(Pessoa):
                 "data_nasc": self.data_nasc
             }
 
-            json.dump(pessoa, p)
+            json.dump(paciente, p)
 
 
 p = Paciente()
