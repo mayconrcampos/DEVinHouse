@@ -65,7 +65,7 @@ class Paciente(Pessoa):
                     print("-".center(100, "-"))
 
         except Exception as erro:
-            print("Não existe endereço gravado", erro)
+            print("ERRO! Não existem pacientes cadastrados", erro)
 
     def __salvar_paciente(self):
         with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/pacientes.json", "w+") as p:
@@ -92,12 +92,61 @@ class Paciente(Pessoa):
             self.add_pacientes(paciente)
 
             json.dump(self.pacientes, p)
+            self.set_none()
     
     def add_pacientes(self, obj):
         self.pacientes.append(obj)
+    
+    def set_none(self):
+        self.id = None
+        self.rg = None
+        self.cpf = None
+        self.telefone = None
+        self.convenio = None
+        self.data_nasc = None
+    
+    def seleciona_paciente(self):
+        try:
+            with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/pacientes.json", "r") as paciente:
+                self.pacientes = json.load(paciente)
+
+                print("SELECIONE O PACIENTE".center(100, "-"))
+
+                id = None
+                for paciente in self.pacientes:
+                    print("DADOS PESSOAIS".center(100, "-"))
+                    print(f"\nid      : {paciente['id']:>30}", end=" | ")
+                    print(f"NOME    : {paciente['nome']:>30}\n")
+                    print(f"cpf     : {paciente['cpf']:>30}")
+
+                    seleciona = input(
+                        "ENTER pra Continuar\nS pra Selecionar: ")
+
+                    if seleciona not in "":
+                        id = paciente['id']
+                        self.id = paciente['id']
+                        self.nome = paciente['nome']
+                        self.celular = paciente['celular']
+                        self.email = paciente['email']
+                        self.rg = paciente['rg']
+                        self.cpf = paciente['cpf']
+                        self.telefone = paciente['telefone']
+                        self.convenio = paciente['convenio']
+                        self.data_nasc = paciente['data_nasc']
+                        
+                        print(f"PACIENTE: {self.nome} CPF: {self.cpf} SELECIONADO")
+                        break
+
+                    else:
+                        continue
+
+                if self.id != None:
+
+                    return True
+                else:
+                    return False
+
+        except Exception as erro:
+            print(f"ERRO! Não existem pacientes cadastrados - {erro}")
 
 
-#p = Paciente()
-#p.cadastrar_paciente("Maycon", "48984445454", "maycon@gmail.com",
-#                     "42654444", "037721313131", "4832411515", "unimed", "26/08/1982")
-#p.exibir_paciente()

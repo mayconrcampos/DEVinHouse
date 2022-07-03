@@ -1,9 +1,9 @@
 from agenda import Agenda
 from paciente import Paciente
 from medico import Medico
-
+from time import time
 import os
-import json
+
 
 def linha_formatada_esq(palavra: str):
     print(palavra.ljust(40))
@@ -11,33 +11,12 @@ def linha_formatada_esq(palavra: str):
 def linha_formatada_cen(palavra: str):
     print(palavra.center(40, "-"))
 
-#pessoa = dict()
-#
-#
-#with open("pessoa.json", "r") as peoples: 
-#    pessoa = json.load(peoples)
-#
-#
-#maior = 0
-#for n in range(1, len(pessoa) + 1):
-#    print(pessoa[f"{n}"])
 
 agenda = Agenda()
 med = Medico()
 pac = Paciente()
-#endPaciente = Endereco()
-#endPaciente.cadastrar_endereco("Rua Paula Ramos", "3013", "casa", "Capoeiras", "Floripa", "SC")
-#
-
-#
-#
-#p = Paciente()
-#p.cadastrar_paciente("Maycon", "48984445454", "maycon@gmail.com",
-#                     "42654444", "037721313131", "4832411515", "unimed", "26/08/1982")
-#
-##
-#ag.cadastrar_agenda(med, p, 25, 12, 2022, "10:00", "Venha de jejum")
-#ag.exibir_agenda()
+hora_inicio = time()
+hora_fim = 0
 
 
 while True:
@@ -71,6 +50,8 @@ while True:
                 
                 med.cadastrar_medico(nome=nome, celular=celular,
                      email=email, crm=crm, telefone_sec=telefone_sec)
+                
+                os.system("clear")
 
                 
 
@@ -91,6 +72,7 @@ while True:
                 data_nasc = input("Data de Nascimento: ")
 
                 pac.cadastrar_paciente(nome=nome, celular=celular, email=email, rg=rg, cpf=cpf, telefone=telefone, convenio=convenio, data_nasc=data_nasc)
+                os.system("clear")
 
             case "4":
                 print("4. LISTAR PACIENTES".center(100, "-"))
@@ -98,10 +80,75 @@ while True:
 
             case "5":
                 print("5. CADASTRAR AGENDA".center(100, "-"))
+                
+                while True:
+                    if med.seleciona_medico():
+                        print("MÉDICO Selecionado: ", med.nome, med.crm)
+                        break
+
+                    else:
+                        print("Médico não selecionado")
+                        os.system("clear")
+                        continue
+                
+                while True:
+                    if pac.seleciona_paciente():
+                        print("Paciente Selecionado: ",pac.nome, pac.cpf)
+                        break
+                    else:
+                        print("Médico Não selecionado!")
+                        os.system("clear")
+                        continue
+                
+                while True:
+                    print("1. Digite o dia do Ano: ")
+                    dia = input("Dia: ")
+
+                    if dia.isnumeric() and int(dia) >= 1 and int(dia) <= 31:
+                        dia = int(dia)
+                    else:
+                        print("Dia inválido")
+                        break
+
+                    mes = input("Mês: ")
+
+                    if mes.isnumeric() and int(mes) >= 1 and int(mes) <= 31:
+                        mes = int(mes)
+                    else:
+                        print("Mês inválido")
+                        break
+
+                    ano = input("Ano: ")
+
+                    if ano.isnumeric() and int(ano) >= 1 and int(ano) <= 2022:
+                        ano = int(ano)
+                    else:
+                        print("Ano inválido")
+                        break
+
+                    hora = input("Hora")
+
+                    if hora.isnumeric() and int(hora) >= 0 and int(hora) <= 24:
+                        hora = f"0{hora}:00" if int(hora) < 10 else f"{hora}:00"
+                    else:
+                        print("Hora inválida")
+                        break
+
+                    obs = input("Observação: ")
+
+                    agenda.cadastrar_agenda(medico=med, paciente=pac, dia=dia, mes=mes, ano=ano, hora=hora, obs=obs)
+                    break
+
+
             case "6":
                 print("6. LISTAR AGENDA".center(100, "-"))
+                agenda.exibir_agenda()
+
             case "7":
                 print("Você saiu do sistema")
+                hora_fim = time()
+                total_tempo = hora_fim - hora_inicio
+                print(f"Você utilizou o sistema por: {total_tempo:.4f}segs")
                 break
             case _:
                 print("Opção inválida!")
