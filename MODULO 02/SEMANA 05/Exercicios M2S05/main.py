@@ -1,3 +1,6 @@
+from agenda import Agenda
+from paciente import Paciente
+from medico import Medico
 
 import os
 import json
@@ -8,17 +11,33 @@ def linha_formatada_esq(palavra: str):
 def linha_formatada_cen(palavra: str):
     print(palavra.center(40, "-"))
 
-pessoa = dict()
+#pessoa = dict()
+#
+#
+#with open("pessoa.json", "r") as peoples: 
+#    pessoa = json.load(peoples)
+#
+#
+#maior = 0
+#for n in range(1, len(pessoa) + 1):
+#    print(pessoa[f"{n}"])
 
+agenda = Agenda()
+med = Medico()
+pac = Paciente()
+#endPaciente = Endereco()
+#endPaciente.cadastrar_endereco("Rua Paula Ramos", "3013", "casa", "Capoeiras", "Floripa", "SC")
+#
 
-with open("pessoa.json", "r") as peoples: 
-    pessoa = json.load(peoples)
-
-
-maior = 0
-for n in range(1, len(pessoa) + 1):
-    print(pessoa[f"{n}"])
-
+#
+#
+#p = Paciente()
+#p.cadastrar_paciente("Maycon", "48984445454", "maycon@gmail.com",
+#                     "42654444", "037721313131", "4832411515", "unimed", "26/08/1982")
+#
+##
+#ag.cadastrar_agenda(med, p, 25, 12, 2022, "10:00", "Venha de jejum")
+#ag.exibir_agenda()
 
 
 while True:
@@ -40,32 +59,47 @@ while True:
 
     if opcao.isnumeric():
         match opcao:
-            case "1":                
+            case "1":    
+                print("1. CADASTRAR MÉDICOS".center(100, "-"))
+
                 nome = input("Nome: ")
-                idade = input("idade: ")
+                celular = input("Celular: ")
+                email = input("Email: ")
+                crm = input("CRM: ")
+                telefone_sec = input("Telefone Secundário: ")
 
-                pessoa[len(pessoa) + 1] = {"nome": nome, "idade": idade}
+                
+                med.cadastrar_medico(nome=nome, celular=celular,
+                     email=email, crm=crm, telefone_sec=telefone_sec)
 
-                with open("pessoa.json", "w") as peoples: 
-                    json.dump(pessoa, peoples) 
+                
 
             case "2":
-                with open("pessoa.json", "r") as peoples: 
-                    pessoa = json.load(peoples)
-
-                    print(type(pessoa))
-
-                    for p, k in pessoa.items():
-                        print(p, k)
+                print("2. LISTAR MÉDICOS".center(100, "-"))
+                med.exibir_medico()
 
             case "3":
-                pass
+                print("3. CADASTRAR PACIENTE".center(100, "-"))
+                
+                nome = input("Nome: ")
+                celular = input("Celular: ")
+                email = input("Email: ")
+                rg = input("RG :")
+                cpf = input("CPF :")
+                telefone = input("Telefone: ")
+                convenio = input("Convênio :")
+                data_nasc = input("Data de Nascimento: ")
+
+                pac.cadastrar_paciente(nome=nome, celular=celular, email=email, rg=rg, cpf=cpf, telefone=telefone, convenio=convenio, data_nasc=data_nasc)
+
             case "4":
-                pass
+                print("4. LISTAR PACIENTES".center(100, "-"))
+                pac.exibir_paciente()
+
             case "5":
-                pass
+                print("5. CADASTRAR AGENDA".center(100, "-"))
             case "6":
-                pass
+                print("6. LISTAR AGENDA".center(100, "-"))
             case "7":
                 print("Você saiu do sistema")
                 break

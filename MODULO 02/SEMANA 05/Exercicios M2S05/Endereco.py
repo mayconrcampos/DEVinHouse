@@ -1,4 +1,4 @@
-import errno
+import os
 from exception import AtributoException
 import json
 
@@ -36,7 +36,8 @@ class Endereco:
     def exibir_endereco(self):
         
         try:
-            with open(f"endereco.json", "r") as endereco:
+            with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/endereco.json", "r") as endereco:
+                
 
                 p = json.load(endereco)
             
@@ -44,14 +45,14 @@ class Endereco:
                 return p
 
         except Exception as erro:
-            print("Não existe endereço gravado")
+            print("Não existe endereço gravado", erro)
         
     
     
 
     def __salvar_endereco(self):
         
-        with open(f"endereco.json", "w") as p:
+        with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/endereco.json", "w") as p:
             endereco = {
                 "logradouro" : self.logradouro,
                 "numero" : self.numero,
@@ -64,7 +65,7 @@ class Endereco:
             json.dump(endereco, p)
 
 
-e = Endereco()
-
-e.cadastrar_endereco()
-e.exibir_endereco()
+#e = Endereco()
+#
+##e.cadastrar_endereco()
+#e.exibir_endereco()
