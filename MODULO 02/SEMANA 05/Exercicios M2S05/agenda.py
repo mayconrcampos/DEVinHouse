@@ -14,10 +14,13 @@ class Agenda:
         self.ano = None
         self.hora = None
         self.obs = None
-
+        
         self.agenda = []
 
+        self.carrega_agenda()
+
     def cadastrar_agenda(self, medico: Medico, paciente: Paciente, dia: int, mes: int, ano: int, hora: str, obs: str):
+        
         self.id = time()
         self.crm_medico = medico.crm
         self.cpf_paciente = paciente.cpf
@@ -50,6 +53,15 @@ class Agenda:
 
         except Exception as erro:
             print(f"Não existe nenhuma consulta agendada - {erro}")
+    
+    def carrega_agenda(self):
+        try:
+            with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/agenda.json", "r") as agenda:
+                self.agenda = json.load(agenda)
+
+        except Exception as erro:
+            print(f"Não existe nenhuma consulta agendada - {erro}")
+
 
     def __salvar_agenda(self):
         with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/agenda.json", "w+") as p:

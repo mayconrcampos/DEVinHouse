@@ -15,8 +15,10 @@ class Paciente(Pessoa):
         self.data_nasc = None
         self.endereco = Endereco()
         self.pacientes = []
+        self.carrega_pacientes()
 
     def cadastrar_paciente(self, nome: str, celular: str, email: str, rg: str, cpf: str, telefone: str, convenio: str, data_nasc: str):
+        
         if nome and celular and email and rg and cpf and telefone and convenio and data_nasc:
             self.id = time()
             self.nome = nome
@@ -66,6 +68,14 @@ class Paciente(Pessoa):
 
         except Exception as erro:
             print("ERRO! Não existem pacientes cadastrados", erro)
+    
+    def carrega_pacientes(self):
+        try:
+            with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/pacientes.json", "r") as paciente:
+                self.pacientes = json.load(paciente)
+
+        except Exception as erro:
+            print("Não existem pacientes cadastrados", erro)
 
     def __salvar_paciente(self):
         with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/pacientes.json", "w+") as p:

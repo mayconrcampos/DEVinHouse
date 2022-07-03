@@ -12,6 +12,7 @@ class Medico(Pessoa):
         self.telefone_sec = None
         self.endereco = Endereco()
         self.medicos = []
+        self.carrega_medicos()
 
     def cadastrar_medico(self, nome: str, celular: str, email: str, crm: str, telefone_sec: str):
         if nome and celular and email and crm and telefone_sec:
@@ -61,6 +62,14 @@ class Medico(Pessoa):
 
         except Exception as erro:
             print(f"ERRO! Não existem médicos cadastrados - {erro}")
+
+    def carrega_medicos(self):
+        try:
+            with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/medicos.json", "r") as medico:
+                self.medicos = json.load(medico)
+
+        except Exception as erro:
+            print(f"Não existem médicos cadastrados - {erro}")
 
     def __salvar_medico(self):
         with open(f"/mnt/Arquivos/MEGA/DEVinHouse/MODULO 02/SEMANA 05/Exercicios M2S05/data/medicos.json", "w+") as p:
@@ -123,8 +132,9 @@ class Medico(Pessoa):
                         self.email = medico['email']
                         self.crm = medico['crm']
                         self.telefone_sec = medico['telefone_sec']
-                        
-                        print(f"MÉDICO: {self.nome} CRM: {self.crm} SELECIONADO")
+
+                        print(
+                            f"MÉDICO: {self.nome} CRM: {self.crm} SELECIONADO")
                         break
 
                     else:
@@ -138,8 +148,3 @@ class Medico(Pessoa):
 
         except Exception as erro:
             print(f"ERRO! Não existem médicos cadastrados - {erro}")
-
-
-#med = Medico()
-#med.cadastrar_medico("Benhur", "48984445454", "benhur@gmail.com", "53452345", "04823411992")
-# med.exibir_medico()
