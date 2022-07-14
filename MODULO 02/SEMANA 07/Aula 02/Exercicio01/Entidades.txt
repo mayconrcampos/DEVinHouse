@@ -1,0 +1,39 @@
+Identifique as entidades no texto a seguir: 
+
+Para cada funcionário é armazenado o nome, registro geral, endereço, salário. Um funcionário está associado a um departamento mas pode trabalhar em vários projetos, o qual não é necessariamente controlado pelo mesmo departamento. O número de horas que cada funcionário trabalha em cada projeto por semana e o seu supervisor direto devem ser registrados.
+Temos também os dependentes de cada funcionário para diferentes propósitos. Para isso, temos o nome, aniversário e o parentesco do dependente com o funcionário.
+
+
+--------------------------------
+
+Funcionário
+id					int
+nome 				varchar(128)
+cargo				varchar(128)
+num_matricula		int
+rg 					varchar(10)
+salario 			float
+id_depto  			int
+
+--------------------------------
+Dependentes
+id 					int
+nome				varchar(128)
+data_niver			date
+parentesco			varchar(128)
+id_funcionario		int
+
+--------------------------------
+Departamento
+id 					int
+nome				varchar
+num_horas			int
+
+--------------------------------
+Projetos
+id 					int
+nome_projeto		varchar
+horas_semanais			int
+id_funcionario 		int
+id_supervisor		int
+
