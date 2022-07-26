@@ -22,7 +22,10 @@ VALUES
 ('Luis Inacio', '012.345.678-78', '2011-01-10', 18990.90, 974631, 3),
 ('Francisco Tainha', '012.345.678-78', '2011-01-10', 28990.90, 2648721, 4);
 
-DELETE FROM colegio.professor;
+-- Apagar um registro
+DELETE FROM colegio.professor WHERE id=1;
+-- Apagar tabela
+DROP TABLE colegio.professor;
 
 INSERT INTO colegio.turma (cod_turma, horario, id_professor, id_disciplina)
 VALUES
