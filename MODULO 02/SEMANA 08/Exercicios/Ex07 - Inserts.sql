@@ -34,15 +34,15 @@ ADD FOREIGN KEY (mat_alu) REFERENCES university.alunos(id);
 INSERT INTO university.matriculas (cod_disc, faltas, mat_alu, nota, semestre, status)
 VALUES
 (1, 2, 1, 8.0, 1, 'A'),
-(2, 4, 1, 7.0, 1, 'A'),
-(3, 12, 1, 6.0, 1, 'R'),
-(4, 0, 1, 8.0, 1, 'A'),
-(5, 4, 1, 8.0, 1, 'A'),
-(6, 5, 1, 9.0, 1, 'A'),
-(7, 3, 1, 10.0, 1, 'A'),
-(8, 3, 1, 8.5, 1, 'A'),
-(9, 7, 1, 7.0, 1, 'A'),
-(10, 12, 1, 8.9, 1, 'A');
+(2, 4, 2, 7.0, 1, 'A'),
+(3, 12, 3, 6.0, 1, 'R'),
+(4, 0, 4, 8.0, 1, 'A'),
+(5, 4, 5, 8.0, 1, 'A'),
+(6, 5, 6, 9.0, 1, 'A'),
+(7, 3, 7, 10.0, 1, 'A'),
+(8, 3, 8, 8.5, 1, 'A'),
+(9, 7, 9, 7.0, 1, 'A'),
+(10, 12, 10, 8.9, 1, 'A');
 
 INSERT INTO university.matrizes_cursos (cod_curso, cod_disc, periodo)
 VALUES
